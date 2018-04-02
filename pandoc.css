@@ -18,7 +18,7 @@ html {
 
 body {
   color: #444;
-  font-family: 'Avenir Next', Avenir;
+  font-family: 'Lato', 'Avenir Next', Avenir, Arial, sans-serif;
   font-size: 12px;
   line-height: 1.7;
   padding: 1em;
@@ -204,11 +204,11 @@ pre, code, samp {
 }
 
 kbd {
-  font-family: 'Avenir Next', Avenir;
+  font-family: 'Lato', 'Avenir Next', Avenir, Arial, sans-serif;
   border: 1px solid rgba(0, 0, 0, .15);
   font-variant: small-caps;
   padding: 4px;
-  font-size: 0.75em;
+  font-size: 0.85em;
 }
 
 pre {

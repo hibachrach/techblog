@@ -1,0 +1,285 @@
+% A brief tour of tools
+% Harry Bachrach
+% Sun Apr  1 16:28:04 PDT 2018
+
+## Core philosophy
+
+### Make your tools as ergonomic as possible
+
+Ergonomics often comes up when talking with HR during onboarding: it's the
+reason why you should use comfortable, supportive chairs, keyboards, mice, and
+such. "Battle scars" from work shouldn't be encouraged. If your eyes, wrists, or
+butt cheeks are hurting, try to address that problem. You're doing labor. Labor
+that most likely isn't as tolling, as say, construction, but labor nonetheless.
+Take care of your body. If you try to fight it, it's likely to win. Even if
+you're not feeling active pain now, you might start experiencing symptoms after
+years of damage. "It works for me" shouldn't be the end of it. Get an ergonomic
+chair, keyboard, and mouse to reduce strain. Here[^1][^2] are some good
+guidelines on reducing eyestrain (I can personally vouch for tools like
+[f.lux](https://justgetflux.com/)!).
+
+What does this mean for software? If you don't like the way you're interacting
+with your tools (physical _or_ virtual), you're not going to have as much fun
+using them.
+
+Sometimes that can be a _good_ thing: if a tool
+_shouldn't_ be used, then you can design your system with that idea in mind. As
+we are all designers in some way, this should be a familiar idea---e.g. if you
+add a feature that forces a user to do 10 clicks instead of one, they're less
+likely to use that feature (c.f. trying to close your Amazon account).
+
+Notice that I'm not talking about speed. The amount of time that you save with
+one configuration or another probably isn't going to save you the amount of time
+that you put into setting it up (unless something was _really_ wrong
+before-hand). But reducing UX friction can often make you more productive,
+reduce extraneous repetitive motion, and eliminate unnecessary mental work to
+get from point A to point B. Some things that help towards this end include:
+
+- Reducing mouse usage[^4]
+- Reducing chorded shortcuts (e.g. minimizing stuff like <kbd>shift</kbd>+<kbd>&#8984;</kbd>+<kbd>option</kbd>+<kbd>t</kbd>)
+- Reducing the steps to switch between tools and contexts
+
+### Make your tools accessible to an outsider without a large amount of reconfiguration
+
+Everything that you do to configure your machine is most likely increasing the
+barrier to entry somehow. That's okay. It's your machine---it should be most
+comfortable for _you_. However, that doesn't mean there won't be a time where
+someone else might have to use your keyboard or read your monitor. It should be
+easy enough for that visitor to understand what's going on or do some simple
+tasks without you restarting your damn machine. Note that that doesn't mean
+disabling all of your config when someone walks over[^wizardry].
+
+### Don't overdo it
+
+Your tools or configuration won't make you a significantly better developer. It
+might even make you a more annoying developer if you won't stop talking about
+such topics. And it always takes time to customize these things---the increased
+efficiency won't make up for that. Again, it's about getting you to enjoy using
+the tools while reducing strain, whether that strain is physical or mental.
+
+## tmux
+
+I use tmux inside of iTerm2[^3]. Tmux is a "terminal multiplexer" which is an
+incredibly geeky way of saying it allows you to have windows/splits inside of a
+OS level window. Here are my main motivations for using it.
+
+### Attach and detach
+
+When you start up tmux you're starting up a server, on which you create and
+attach "sessions" (basically just workspaces) where you can create windows
+(really closer to tabs) which can have splits. These sessions can be attached
+to and detached from at will. And that action is a completely distinct one from
+opening or closing iTerm2, meaning if iTerm2 has to close for one reason or
+another, my windows and splits set up exactly as when I left them.
+
+This is great on a local machine but invaluable on remote sessions: when I was
+doing research on machines that could only be SSH'd into, a random drop in the
+Internet connection just meant I had to reattach to the session that was running
+on the remote server. Note that the server will still die if your computer has
+to restart.
+
+I also find that this navigation is much easier than fiddling with actual
+windows in a GUI. Which tend to be pretty poorly organized for search and
+retrieval. Even in macOS, if I have a window that is minimized, I have to either
+use my mouse to inspect my collection of hidden windows or cycle through them
+using <kbd>control</kbd>+<kbd>f4</kbd>[^cycle].
+
+### Prefixes over chords
+
+This is going to be a bit of a recurring theme, but tmux allows you to go from
+split to split, window to window, or session to session without pressing many
+keys _simultaneously_. Instead, you can define a common prefix (I have
+<kbd>control</kbd>+<kbd>space</kbd>) and then press the tmux-specific shortcut
+of your choosing.
+
+### How to get started
+
+If you're on a Mac, you can use Homebrew:
+
+```
+brew install tmux
+```
+
+[Here's][tmux-tutorial] a tutorial to get you started.
+
+## Vim/Neovim
+
+I could talk probably all day about Vim and why I love it. I'll try to summarize
+here to save your time and/or sanity. I _will_ note that Vim has a fairly steep
+learning curve but I find is worth it in the end. See [here][vim-usability] for
+a great blogpost about Vim and usability.
+
+### Ubiquity
+
+Vi or Vim is on basically every \*nix machine that you might come across. If you
+know how to use it in one place, you can use it anywhere.
+
+### Keyboard-first design
+
+Every interaction with Vim is intended to be done with the keyboard. There are
+some things that _can_ be done with the mouse (like scrolling or cursor
+movement), but it's primarily designed to be manipulated via the keyboard. That
+makes it generally quite fast, eliminating the time to move your hand to the
+mouse and back.
+
+### Composability
+
+This is probably the biggest and most Vim-specific point here. When you
+manipulate text in Vim, you do so in a sort of "language", complete with verbs,
+nouns, adjectives, adverbs, etc.
+
+Let's say I'm editing a Ruby script and I've got this double negative here. We
+want to make this a bit more readable, replacing the `unless` with an `if` and
+the `empty?` with a `present?`.
+
+<script src="https://asciinema.org/a/HRBzkylrV8Bih8llxcEY8nJWV.js" id="asciicast-HRBzkylrV8Bih8llxcEY8nJWV" async></script>
+
+Here are all the key presses I needed to do to perform the above:
+```
+ciwifjjwwwct?presentjj:wq
+```
+
+Let's break that down:
+
+- `ciw`: This is basically a "sentence". I'm pressing these keys them in what is
+  called "normal mode". `c` means "change", `i` means "inner", and `w` means
+  "word". "Change" means delete and then go into "insert mode", the mode where
+  when I type, those characters appear on screen. I applied that "verb" to what
+  is called a "text object". Here that "text object" is made up of the adjective
+  "inner" with the noun "word".
+- `if`: This is just me typing the word "if".
+- `jj`: This is a command I have set up for "insert mode" that gets me back to
+  "normal mode". This is <kbd>escape</kbd> by default but I find this much
+  easier.
+- `www`: Here I'm pressing that "noun" `w` three times. Since there's no "verb"
+  here, that just moves my cursor 1 "word" each time. I could have also typed
+  `3w` and achieved the same thing.
+- `ct?`: Here I'm using the same `c` verb but this time with the "noun" `t?`
+  which means "to `?`", i.e. all the characters from my current position up to
+  (but not including) the next incidence of the character `?` on the current
+  line.
+- `present`: This is just me typing the word "present".
+- `jj`: Same as before.
+- `:wq`: Here I'm performing what is known as a "command". `:` gets me into
+  "command mode" (moving my cursor temporarily to the bottom of the Vim window)
+  where I then type `w` for "write" (meaning "save") and `q` for "quit".
+
+This is a simple example, but as you can see, you can mix and match all these
+building blocks to manipulate your files in quite complex ways. Many Vim users
+also create plugins that add core "parts of speech" to the editor. E.g.
+[vim-surround][vim-surround] enables the sequence `cs"'` which allows you to
+"change the surrounding characters" (`cs`) from `"` to `'` as well as the
+sequence `ysiw]` "add surrounding characters" (`ys`) to the "inner word" (`iw`),
+specifically brackets (`]`).
+
+### Integration with the terminal
+
+(Partly thanks to tmux) I can run Vim in the same program that has my
+`foreman` procs, my git interface, my logs, and pretty much everything else.
+Switching between all of those things is super easy thanks to a plugin I use
+called [vim-tmux-navigator][vim-tmux-navigator]. Basically I can use
+
+- <kbd>control</kbd>+<kbd>h</kbd> (left)
+- <kbd>control</kbd>+<kbd>j</kbd> (down)
+- <kbd>control</kbd>+<kbd>k</kbd> (up)
+- <kbd>control</kbd>+<kbd>l</kbd> (right)
+
+to navigate between tmux and Vim panes indiscriminately.
+
+When I need to run a test, I have a plugin called [vim-test][vim-test] that
+allows me to run a test in a neighboring tmux pane and then interact with that
+terminal session afterwards.
+
+There are many other niceties here as well (e.g. sending the contents of a SQL
+query edited in a Vim session to an interactive `psql` session) that I may go
+into in a later post.
+
+
+### So much more
+
+
+Again, I can talk about Vim all day (and probably will). There are many things
+not covered here that I will return to later (possibly including a breakdown of
+my `.vimrc`).
+
+
+### How to get started
+
+Like I said before, Vim is famous for having a bit of a steep learning curve.
+I'd recommend trying it out in your leisure time because it _will_ slow you down
+at first.
+
+Once again, the download for the newest version (probably more up to date than
+what you have on your machine already) is on Homebrew as well. However, I'd
+recommend installing the relatively recent fork `neovim` instead (it has a few
+nicities including better built-in tutorial:
+
+```
+brew install neovim
+```
+
+Launch it from the shell (using the name `nvim`, *not* `neovim`). Then I'd
+follow the built-in tutorial by typing `:Tutor`. The first online resource given
+at the bottom of the tutorial, ["Learn Vim
+Progressively"][learn-vim-progressively] is also great---it's how I first
+started.
+
+
+## FZF
+
+FZF is a fuzzy-finder for the shell that you can use in a bunch of different
+ways, like...
+
+### Finding files (while also obeying your `.gitignore`)[^vim-color-note]
+<script src="https://asciinema.org/a/28rDzTqI5nEE9mM89DKZmf5Zo.js" id="asciicast-28rDzTqI5nEE9mM89DKZmf5Zo" async></script>
+### Finding git commits
+<script src="https://asciinema.org/a/xYrk74sFKjQXzGKEPJSrdypXs.js" id="asciicast-xYrk74sFKjQXzGKEPJSrdypXs" async></script>
+### Finding old commands
+I couldn't manage to record this one without any potentially sensitive
+information, but it works as you might expect.
+
+At its core, FZF is just a way of filtering data in a human-friendly way. You
+can pipe anything in and get the same fuzzy-find interface
+(e.g. `cat file.txt | fzf`).
+
+### How to get started
+
+Once again, if you can, just use Homebrew.
+
+```
+brew install fzf
+```
+
+See [the project's installation instructions][fzf-installation-instructions] for
+details, including howt to integrate FZF with tmux and vim. These integrations
+work incredibly well so I'd highly recommend setting that up.
+
+
+<div style="text-align: center;">•••</div>
+
+That's it for now! More posts on this stuff to come, I'm sure.
+
+<!--footnotes & references-->
+
+[^1]: <https://ergonomics.ucla.edu/injuries-and-prevention/eye-strain.html>
+[^2]: <https://lifehacker.com/5818056/how-do-i-prevent-eyestrain>
+[^3]: The main reason for using it over the default macOS Terminal is for 256 color support.
+[^4]: This isn't a cure-all for repetitive strain injuries. Stretching and
+  regular breaks are more important.
+[^wizardry]: It can be a great way to learn tricks
+  when you see someone do some keyboard wizardry and you ask "How did you do that!?"
+[^cycle]: Just as a heads up: you can cycle through open applications with
+  <kbd>&#8984;</kbd>+<kbd>tab</kbd> and open windows for your current
+  application with <kbd>&#8984;</kbd>+<kbd>\`</kbd>.
+[^vim-color-note]: I'm not sure why the colors on this recording are inaccurate,
+  but I assure you Vim on my machine is quite colorful. I use the colorscheme
+  [seoul256][seoul256].
+
+[vim-tmux-navigator]: https://github.com/christoomey/vim-tmux-navigator
+[vim-usability]: http://www.terminally-incoherent.com/blog/2012/09/05/vim-is-a-usability-nightmare/
+[vim-test]: https://github.com/janko-m/vim-test
+[vim-surround]: https://github.com/tpope/vim-surround
+[fzf-installation-instructions]: https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
+[seoul256]: https://github.com/junegunn/seoul256.vim
+[tmux-tutorial]: https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340
+[learn-vim-progressively]: http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/

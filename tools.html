@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Harry Bachrach" />
+  <title>A brief tour of tools</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" class="toc">
+  <input type="checkbox" id="mobile-menu-checkbox" class="mobile-menu-checkbox">
+  <div class="toc-list-wrapper">
+    <ul>
+    <li><a href="#core-philosophy">Core philosophy</a><ul>
+    <li><a href="#make-your-tools-as-ergonomic-as-possible">Make your tools as ergonomic as possible</a></li>
+    <li><a href="#make-your-tools-accessible-to-an-outsider-without-a-large-amount-of-reconfiguration">Make your tools accessible to an outsider without a large amount of reconfiguration</a></li>
+    <li><a href="#dont-overdo-it">Don’t overdo it</a></li>
+    </ul></li>
+    <li><a href="#tmux">tmux</a><ul>
+    <li><a href="#attach-and-detach">Attach and detach</a></li>
+    <li><a href="#prefixes-over-chords">Prefixes over chords</a></li>
+    <li><a href="#how-to-get-started">How to get started</a></li>
+    </ul></li>
+    <li><a href="#vimneovim">Vim/Neovim</a><ul>
+    <li><a href="#ubiquity">Ubiquity</a></li>
+    <li><a href="#keyboard-first-design">Keyboard-first design</a></li>
+    <li><a href="#composability">Composability</a></li>
+    <li><a href="#integration-with-the-terminal">Integration with the terminal</a></li>
+    <li><a href="#so-much-more">So much more</a></li>
+    <li><a href="#how-to-get-started-1">How to get started</a></li>
+    </ul></li>
+    <li><a href="#fzf">FZF</a><ul>
+    <li><a href="#finding-files-while-also-obeying-your-.gitignorevim-color-note">Finding files (while also obeying your <code>.gitignore</code>)</a></li>
+    <li><a href="#finding-git-commits">Finding git commits</a></li>
+    <li><a href="#finding-old-commands">Finding old commands</a></li>
+    <li><a href="#how-to-get-started-2">How to get started</a></li>
+    </ul></li>
+    </ul>
+  </div>
+  <label class="mobile-menu-toggle" for="mobile-menu-checkbox">TOC</label>
+</nav>
+<header>
+<h1 class="title">A brief tour of tools</h1>
+<p class="author">Harry Bachrach</p>
+<p class="date">Sun Apr 1 16:28:04 PDT 2018</p>
+</header>
+<h2 id="core-philosophy">Core philosophy</h2>
+<h3 id="make-your-tools-as-ergonomic-as-possible">Make your tools as ergonomic as possible</h3>
+<p>Ergonomics often comes up when talking with HR during onboarding: it’s the reason why you should use comfortable, supportive chairs, keyboards, mice, and such. “Battle scars” from work shouldn’t be encouraged. If your eyes, wrists, or butt cheeks are hurting, try to address that problem. You’re doing labor. Labor that most likely isn’t as tolling, as say, construction, but labor nonetheless. Take care of your body. If you try to fight it, it’s likely to win. Even if you’re not feeling active pain now, you might start experiencing symptoms after years of damage. “It works for me” shouldn’t be the end of it. Get an ergonomic chair, keyboard, and mouse to reduce strain. Here<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> are some good guidelines on reducing eyestrain (I can personally vouch for tools like <a href="https://justgetflux.com/">f.lux</a>!).</p>
+<p>What does this mean for software? If you don’t like the way you’re interacting with your tools (physical <em>or</em> virtual), you’re not going to have as much fun using them.</p>
+<p>Sometimes that can be a <em>good</em> thing: if a tool <em>shouldn’t</em> be used, then you can design your system with that idea in mind. As we are all designers in some way, this should be a familiar idea—e.g. if you add a feature that forces a user to do 10 clicks instead of one, they’re less likely to use that feature (c.f. trying to close your Amazon account).</p>
+<p>Notice that I’m not talking about speed. The amount of time that you save with one configuration or another probably isn’t going to save you the amount of time that you put into setting it up (unless something was <em>really</em> wrong before-hand). But reducing UX friction can often make you more productive, reduce extraneous repetitive motion, and eliminate unnecessary mental work to get from point A to point B. Some things that help towards this end include:</p>
+<ul>
+<li>Reducing mouse usage<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></li>
+<li>Reducing chorded shortcuts (e.g. minimizing stuff like <kbd>shift</kbd>+<kbd>⌘</kbd>+<kbd>option</kbd>+<kbd>t</kbd>)</li>
+<li>Reducing the steps to switch between tools and contexts</li>
+</ul>
+<h3 id="make-your-tools-accessible-to-an-outsider-without-a-large-amount-of-reconfiguration">Make your tools accessible to an outsider without a large amount of reconfiguration</h3>
+<p>Everything that you do to configure your machine is most likely increasing the barrier to entry somehow. That’s okay. It’s your machine—it should be most comfortable for <em>you</em>. However, that doesn’t mean there won’t be a time where someone else might have to use your keyboard or read your monitor. It should be easy enough for that visitor to understand what’s going on or do some simple tasks without you restarting your damn machine. Note that that doesn’t mean disabling all of your config when someone walks over<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<h3 id="dont-overdo-it">Don’t overdo it</h3>
+<p>Your tools or configuration won’t make you a significantly better developer. It might even make you a more annoying developer if you won’t stop talking about such topics. And it always takes time to customize these things—the increased efficiency won’t make up for that. Again, it’s about getting you to enjoy using the tools while reducing strain, whether that strain is physical or mental.</p>
+<h2 id="tmux">tmux</h2>
+<p>I use tmux inside of iTerm2<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>. Tmux is a “terminal multiplexer” which is an incredibly geeky way of saying it allows you to have windows/splits inside of a OS level window. Here are my main motivations for using it.</p>
+<h3 id="attach-and-detach">Attach and detach</h3>
+<p>When you start up tmux you’re starting up a server, on which you create and attach “sessions” (basically just workspaces) where you can create windows (really closer to tabs) which can have splits. These sessions can be attached to and detached from at will. And that action is a completely distinct one from opening or closing iTerm2, meaning if iTerm2 has to close for one reason or another, my windows and splits set up exactly as when I left them.</p>
+<p>This is great on a local machine but invaluable on remote sessions: when I was doing research on machines that could only be SSH’d into, a random drop in the Internet connection just meant I had to reattach to the session that was running on the remote server. Note that the server will still die if your computer has to restart.</p>
+<p>I also find that this navigation is much easier than fiddling with actual windows in a GUI. Which tend to be pretty poorly organized for search and retrieval. Even in macOS, if I have a window that is minimized, I have to either use my mouse to inspect my collection of hidden windows or cycle through them using <kbd>control</kbd>+<kbd>f4</kbd><a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p>
+<h3 id="prefixes-over-chords">Prefixes over chords</h3>
+<p>This is going to be a bit of a recurring theme, but tmux allows you to go from split to split, window to window, or session to session without pressing many keys <em>simultaneously</em>. Instead, you can define a common prefix (I have <kbd>control</kbd>+<kbd>space</kbd>) and then press the tmux-specific shortcut of your choosing.</p>
+<h3 id="how-to-get-started">How to get started</h3>
+<p>If you’re on a Mac, you can use Homebrew:</p>
+<pre><code>brew install tmux</code></pre>
+<p><a href="https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340">Here’s</a> a tutorial to get you started.</p>
+<h2 id="vimneovim">Vim/Neovim</h2>
+<p>I could talk probably all day about Vim and why I love it. I’ll try to summarize here to save your time and/or sanity. I <em>will</em> note that Vim has a fairly steep learning curve but I find is worth it in the end. See <a href="http://www.terminally-incoherent.com/blog/2012/09/05/vim-is-a-usability-nightmare/">here</a> for a great blogpost about Vim and usability.</p>
+<h3 id="ubiquity">Ubiquity</h3>
+<p>Vi or Vim is on basically every *nix machine that you might come across. If you know how to use it in one place, you can use it anywhere.</p>
+<h3 id="keyboard-first-design">Keyboard-first design</h3>
+<p>Every interaction with Vim is intended to be done with the keyboard. There are some things that <em>can</em> be done with the mouse (like scrolling or cursor movement), but it’s primarily designed to be manipulated via the keyboard. That makes it generally quite fast, eliminating the time to move your hand to the mouse and back.</p>
+<h3 id="composability">Composability</h3>
+<p>This is probably the biggest and most Vim-specific point here. When you manipulate text in Vim, you do so in a sort of “language”, complete with verbs, nouns, adjectives, adverbs, etc.</p>
+<p>Let’s say I’m editing a Ruby script and I’ve got this double negative here. We want to make this a bit more readable, replacing the <code>unless</code> with an <code>if</code> and the <code>empty?</code> with a <code>present?</code>.</p>
+<script src="https://asciinema.org/a/HRBzkylrV8Bih8llxcEY8nJWV.js" id="asciicast-HRBzkylrV8Bih8llxcEY8nJWV" async></script>
+<p>Here are all the key presses I needed to do to perform the above:</p>
+<pre><code>ciwifjjwwwct?presentjj:wq</code></pre>
+<p>Let’s break that down:</p>
+<ul>
+<li><code>ciw</code>: This is basically a “sentence”. I’m pressing these keys them in what is called “normal mode”. <code>c</code> means “change”, <code>i</code> means “inner”, and <code>w</code> means “word”. “Change” means delete and then go into “insert mode”, the mode where when I type, those characters appear on screen. I applied that “verb” to what is called a “text object”. Here that “text object” is made up of the adjective “inner” with the noun “word”.</li>
+<li><code>if</code>: This is just me typing the word “if”.</li>
+<li><code>jj</code>: This is a command I have set up for “insert mode” that gets me back to “normal mode”. This is <kbd>escape</kbd> by default but I find this much easier.</li>
+<li><code>www</code>: Here I’m pressing that “noun” <code>w</code> three times. Since there’s no “verb” here, that just moves my cursor 1 “word” each time. I could have also typed <code>3w</code> and achieved the same thing.</li>
+<li><code>ct?</code>: Here I’m using the same <code>c</code> verb but this time with the “noun” <code>t?</code> which means “to <code>?</code>”, i.e. all the characters from my current position up to (but not including) the next incidence of the character <code>?</code> on the current line.</li>
+<li><code>present</code>: This is just me typing the word “present”.</li>
+<li><code>jj</code>: Same as before.</li>
+<li><code>:wq</code>: Here I’m performing what is known as a “command”. <code>:</code> gets me into “command mode” (moving my cursor temporarily to the bottom of the Vim window) where I then type <code>w</code> for “write” (meaning “save”) and <code>q</code> for “quit”.</li>
+</ul>
+<p>This is a simple example, but as you can see, you can mix and match all these building blocks to manipulate your files in quite complex ways. Many Vim users also create plugins that add core “parts of speech” to the editor. E.g. <a href="https://github.com/tpope/vim-surround">vim-surround</a> enables the sequence <code>cs&quot;'</code> which allows you to “change the surrounding characters” (<code>cs</code>) from <code>&quot;</code> to <code>'</code> as well as the sequence <code>ysiw]</code> “add surrounding characters” (<code>ys</code>) to the “inner word” (<code>iw</code>), specifically brackets (<code>]</code>).</p>
+<h3 id="integration-with-the-terminal">Integration with the terminal</h3>
+<p>(Partly thanks to tmux) I can run Vim in the same program that has my <code>foreman</code> procs, my git interface, my logs, and pretty much everything else. Switching between all of those things is super easy thanks to a plugin I use called <a href="https://github.com/christoomey/vim-tmux-navigator">vim-tmux-navigator</a>. Basically I can use</p>
+<ul>
+<li><kbd>control</kbd>+<kbd>h</kbd> (left)</li>
+<li><kbd>control</kbd>+<kbd>j</kbd> (down)</li>
+<li><kbd>control</kbd>+<kbd>k</kbd> (up)</li>
+<li><kbd>control</kbd>+<kbd>l</kbd> (right)</li>
+</ul>
+<p>to navigate between tmux and Vim panes indiscriminately.</p>
+<p>When I need to run a test, I have a plugin called <a href="https://github.com/janko-m/vim-test">vim-test</a> that allows me to run a test in a neighboring tmux pane and then interact with that terminal session afterwards.</p>
+<p>There are many other niceties here as well (e.g. sending the contents of a SQL query edited in a Vim session to an interactive <code>psql</code> session) that I may go into in a later post.</p>
+<h3 id="so-much-more">So much more</h3>
+<p>Again, I can talk about Vim all day (and probably will). There are many things not covered here that I will return to later (possibly including a breakdown of my <code>.vimrc</code>).</p>
+<h3 id="how-to-get-started-1">How to get started</h3>
+<p>Like I said before, Vim is famous for having a bit of a steep learning curve. I’d recommend trying it out in your leisure time because it <em>will</em> slow you down at first.</p>
+<p>Once again, the download for the newest version (probably more up to date than what you have on your machine already) is on Homebrew as well. However, I’d recommend installing the relatively recent fork <code>neovim</code> instead (it has a few nicities including better built-in tutorial:</p>
+<pre><code>brew install neovim</code></pre>
+<p>Launch it from the shell (using the name <code>nvim</code>, <em>not</em> <code>neovim</code>). Then I’d follow the built-in tutorial by typing <code>:Tutor</code>. The first online resource given at the bottom of the tutorial, <a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">“Learn Vim Progressively”</a> is also great—it’s how I first started.</p>
+<h2 id="fzf">FZF</h2>
+<p>FZF is a fuzzy-finder for the shell that you can use in a bunch of different ways, like…</p>
+<h3 id="finding-files-while-also-obeying-your-.gitignorevim-color-note">Finding files (while also obeying your <code>.gitignore</code>)<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></h3>
+<script src="https://asciinema.org/a/28rDzTqI5nEE9mM89DKZmf5Zo.js" id="asciicast-28rDzTqI5nEE9mM89DKZmf5Zo" async></script>
+<h3 id="finding-git-commits">Finding git commits</h3>
+<script src="https://asciinema.org/a/xYrk74sFKjQXzGKEPJSrdypXs.js" id="asciicast-xYrk74sFKjQXzGKEPJSrdypXs" async></script>
+<h3 id="finding-old-commands">Finding old commands</h3>
+<p>I couldn’t manage to record this one without any potentially sensitive information, but it works as you might expect.</p>
+<p>At its core, FZF is just a way of filtering data in a human-friendly way. You can pipe anything in and get the same fuzzy-find interface (e.g. <code>cat file.txt | fzf</code>).</p>
+<h3 id="how-to-get-started-2">How to get started</h3>
+<p>Once again, if you can, just use Homebrew.</p>
+<pre><code>brew install fzf</code></pre>
+<p>See <a href="https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew">the project’s installation instructions</a> for details, including howt to integrate FZF with tmux and vim. These integrations work incredibly well so I’d highly recommend setting that up.</p>
+<div style="text-align: center;">
+•••
+</div>
+<p>That’s it for now! More posts on this stuff to come, I’m sure.</p>
+<!--footnotes & references-->
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://ergonomics.ucla.edu/injuries-and-prevention/eye-strain.html" class="uri">https://ergonomics.ucla.edu/injuries-and-prevention/eye-strain.html</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p><a href="https://lifehacker.com/5818056/how-do-i-prevent-eyestrain" class="uri">https://lifehacker.com/5818056/how-do-i-prevent-eyestrain</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>This isn’t a cure-all for repetitive strain injuries. Stretching and regular breaks are more important.<a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>It can be a great way to learn tricks when you see someone do some keyboard wizardry and you ask “How did you do that!?”<a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>The main reason for using it over the default macOS Terminal is for 256 color support.<a href="#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn6"><p>Just as a heads up: you can cycle through open applications with <kbd>⌘</kbd>+<kbd>tab</kbd> and open windows for your current application with <kbd>⌘</kbd>+<kbd>`</kbd>.<a href="#fnref6" class="footnote-back">↩</a></p></li>
+<li id="fn7"><p>I’m not sure why the colors on this recording are inaccurate, but I assure you Vim on my machine is quite colorful. I use the colorscheme <a href="https://github.com/junegunn/seoul256.vim">seoul256</a>.<a href="#fnref7" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+</body>
+</html>
