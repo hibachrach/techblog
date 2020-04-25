@@ -4,10 +4,7 @@
  * I add this to html files generated with pandoc.
  */
 
-@font-face {
-  font-family: 'Fira Code';
-  src: url('https://cdn.rawgit.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Regular.ttf');
-}
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600&display=swap');
 
 html {
   font-size: 100%;
@@ -115,26 +112,6 @@ a:focus {
   outline: thin dotted;
 }
 
-*::-moz-selection {
-  background: rgba(255, 255, 0, 0.3);
-  color: #000;
-}
-
-*::selection {
-  background: rgba(255, 255, 0, 0.3);
-  color: #000;
-}
-
-a::-moz-selection {
-  background: rgba(255, 255, 0, 0.3);
-  color: #0645ad;
-}
-
-a::selection {
-  background: rgba(255, 255, 0, 0.3);
-  color: #0645ad;
-}
-
 p {
   margin: 1em 0;
 }
@@ -198,9 +175,21 @@ hr {
 
 pre, code, samp {
   color: #000;
-  font-family: 'Fira Code', monospace;
-  _font-family: 'courier new', monospace;
+  font-family: 'Inconsolata', monospace;
   font-size: 0.98em;
+}
+
+div.sourceCode {
+  background-color: rgba(0, 0, 0, .10);
+  padding: 1rem;
+}
+
+div.sourceCode code {
+  background-color: transparent;
+}
+
+code {
+  background-color: rgba(0, 0, 0, .10);
 }
 
 kbd {
