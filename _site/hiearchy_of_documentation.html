@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>A Hierarchy of Documentation | ChallahScript</title>
+<meta name="generator" content="Jekyll v4.1.0" />
+<meta property="og:title" content="A Hierarchy of Documentation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="“Where should this information live?” is a common question I encounter daily as a software engineer. I (alone or in consultation with others) will make a decision and that information needs to persist…somewhere. The goal of course is to prevent some future engineer (often myself) from encountering some code and asking “why?” or, even worse, “what?”." />
+<meta property="og:description" content="“Where should this information live?” is a common question I encounter daily as a software engineer. I (alone or in consultation with others) will make a decision and that information needs to persist…somewhere. The goal of course is to prevent some future engineer (often myself) from encountering some code and asking “why?” or, even worse, “what?”." />
+<link rel="canonical" href="https://techblog.harrisonbachrach.com/hiearchy_of_documentation" />
+<meta property="og:url" content="https://techblog.harrisonbachrach.com/hiearchy_of_documentation" />
+<meta property="og:site_name" content="ChallahScript" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-24T00:00:00-07:00" />
+<script type="application/ld+json">
+{"url":"https://techblog.harrisonbachrach.com/hiearchy_of_documentation","description":"“Where should this information live?” is a common question I encounter daily as a software engineer. I (alone or in consultation with others) will make a decision and that information needs to persist…somewhere. The goal of course is to prevent some future engineer (often myself) from encountering some code and asking “why?” or, even worse, “what?”.","headline":"A Hierarchy of Documentation","dateModified":"2020-04-24T00:00:00-07:00","datePublished":"2020-04-24T00:00:00-07:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://techblog.harrisonbachrach.com/hiearchy_of_documentation"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://techblog.harrisonbachrach.com/feed.xml" title="ChallahScript" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">ChallahScript</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">A Hierarchy of Documentation</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2020-04-24T00:00:00-07:00" itemprop="datePublished">Apr 24, 2020
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>“Where should this information live?” is a common question I encounter daily as
+a software engineer. I (alone or in consultation with others) will make a
+decision and that information needs to persist…somewhere. The goal of course
+is to prevent some future engineer (often myself) from encountering some code
+and asking “why?” or, even worse, “what?”.</p>
+
+<p>I’ve found there’s a sort of hierarchy to the accessibility
+of various information that I found useful in sharing.</p>
+
+<p>In order of most accessible to least, the hierarchy is as follows:</p>
+
+<ol>
+  <li>Code (identifiers)</li>
+  <li>In-code comments</li>
+  <li>Commit messages</li>
+  <li>Pull/merge requests &amp; issue trackers</li>
+</ol>
+
+<p>This list may be different for other people and may change in time as tools
+get better, but for now, this has held true for me.</p>
+
+<p>I’m sure that similar things have also been said before. Shoulders of giants and
+all that—would love to read any previous writings on similar topics!</p>
+
+<p>So! Let’s get into some of the reasoning…</p>
+
+<h2 id="code-identifiers">Code (Identifiers)</h2>
+
+<h3 id="accessibility">Accessibility</h3>
+
+<p>By far, the most important place to put information is in the code itself. Why?</p>
+
+<ul>
+  <li>It can be easily searched with tools like <code class="language-plaintext highlighter-rouge">grep</code>, <code class="language-plaintext highlighter-rouge">ag</code>, <code class="language-plaintext highlighter-rouge">ripgrep</code>, or your
+favorite file searcher</li>
+  <li>It (generally) follows a predictable structure and connections between
+components can be traced (e.g. through the call stack)</li>
+  <li>It is <em>very</em> unlikely to be discarded accidentally</li>
+</ul>
+
+<h3 id="responsibilities">Responsibilities</h3>
+
+<p>Because of their inherent visibility, identifiers<sup id="fnref:identifiers_meaning" role="doc-noteref"><a href="#fn:identifiers_meaning" class="footnote">1</a></sup> should
+always be the first place to put information, especially</p>
+
+<ul>
+  <li>What values represent</li>
+  <li>What functions do &amp; how they do it</li>
+  <li>(Sparingly) when functions are invoked<sup id="fnref:identifiers_when" role="doc-noteref"><a href="#fn:identifiers_when" class="footnote">2</a></sup></li>
+</ul>
+
+<h3 id="identifiers-and-code-simplification">Identifiers and Code Simplification</h3>
+
+<p>I’m going to intentionally give you no context for the following code:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span>
+  <span class="nx">userSession</span><span class="p">[</span><span class="dl">'</span><span class="s1">signed</span><span class="dl">'</span><span class="p">][</span><span class="dl">'</span><span class="s1">admin</span><span class="dl">'</span><span class="p">][</span><span class="dl">'</span><span class="s1">update</span><span class="dl">'</span><span class="p">]</span> <span class="o">||</span>
+  <span class="nx">AdminOverrides</span><span class="p">[</span><span class="nx">userSession</span><span class="p">[</span><span class="dl">'</span><span class="s1">signed</span><span class="dl">'</span><span class="p">][</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">]]</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="nx">repository</span><span class="p">.</span><span class="k">delete</span><span class="p">();</span>
+  <span class="k">return</span> <span class="nx">render</span><span class="p">({</span>
+    <span class="na">status</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">notice</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Repository successfully deleted.</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">render</span><span class="p">({</span>
+    <span class="na">status</span><span class="p">:</span> <span class="mi">403</span><span class="p">,</span>
+    <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">errors</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">You are not allowed to perform that action.</span><span class="dl">'</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Okay, pretty straightforward. But consider this version instead:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">userHasUpdateAccess</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="nx">userSession</span><span class="p">[</span><span class="dl">'</span><span class="s1">signed</span><span class="dl">'</span><span class="p">][</span><span class="dl">'</span><span class="s1">admin</span><span class="dl">'</span><span class="p">][</span><span class="dl">'</span><span class="s1">update</span><span class="dl">'</span><span class="p">]</span> <span class="o">||</span>
+  <span class="nx">AdminOverrides</span><span class="p">.</span><span class="nx">update</span><span class="p">[</span><span class="nx">userSession</span><span class="p">[</span><span class="dl">'</span><span class="s1">signed</span><span class="dl">'</span><span class="p">][</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">]]</span>
+<span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">userHasAdminUpdateAccess</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">repository</span><span class="p">.</span><span class="k">delete</span><span class="p">();</span>
+  <span class="k">return</span> <span class="nx">render</span><span class="p">({</span>
+    <span class="na">status</span><span class="p">:</span> <span class="nx">STATUS_CODES</span><span class="p">.</span><span class="nx">ok</span><span class="p">,</span>
+    <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">notice</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Repository successfully deleted.</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">render</span><span class="p">({</span>
+    <span class="na">status</span><span class="p">:</span> <span class="nx">STATUS_CODES</span><span class="p">.</span><span class="nx">unauthorized</span><span class="p">,</span>
+    <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">errors</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">You are not allowed to perform that action.</span><span class="dl">'</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>We’ve made a few updates. First, we’ve pulled the condition out into its own
+variable. What that’s done is document the intention of what the condition is
+<em>supposed</em> to mean. This has a few benefits:</p>
+
+<ul>
+  <li><strong>Each line is doing less, cognitively.</strong> That means you have to think about
+less when reading. You’re going to read code way more than you’re going to
+write it—why make it harder for yourself?<sup id="fnref:code_boring_good" role="doc-noteref"><a href="#fn:code_boring_good" class="footnote">3</a></sup></li>
+  <li><strong>Pulling that connection out and labeling it makes it harder to miss when
+changes happen.</strong> At some point, how we determine whether a user has
+update access will probably change. Additionally, the body of the first branch
+of the <code class="language-plaintext highlighter-rouge">if</code> may get much larger. It’s always easier to keep things tidy one
+piece at a time (as opposed to going back and cleaning it up later)!</li>
+</ul>
+
+<p>The other two changes are to replace the HTTP status codes (which are
+essentially <a href="https://en.wikipedia.org/wiki/Magic_number_(programming)">magic numbers</a>) with references to a global
+<code class="language-plaintext highlighter-rouge">STATUS_CODES</code> object. While HTTP status codes are fairly well known (e.g. a
+“404” is meaningful to many that have never done web development), they’re
+likely not going to be better known than English.</p>
+
+<p>Generally, breaking things down like this makes the answer to “why?” very
+obvious.</p>
+
+<h3 id="caveat-enigmatic-language-syntax">Caveat: Enigmatic language syntax</h3>
+
+<p>Unlike libraries which can often be worked around, specific hard-to-parse
+features of a language’s syntax may be unavoidable. For example, most languages
+have regular expressions which are infamous for how easy they are to mess up.
+Consider the following regular expression in JavaScript:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">IS_VALID_EMAIL_REGEX</span> <span class="o">=</span> <span class="sr">/^</span><span class="se">[^</span><span class="sr">@</span><span class="se">]</span><span class="sr">+@</span><span class="se">[^</span><span class="sr">@</span><span class="se">]</span><span class="sr">+$/</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>There’s not really much more we can do in terms of adding/changing identifiers
+to clarify how the regular expression determines which email addresses are valid
+and which aren’t–you just have to know the specific syntax of (JavaScript)
+regular expressions. In cases like these, an in-code comment (which we’ll talk
+about more in the next section) is the next best place to put this information:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Matches one or more non-`@` characters, folloed by a `@` character, followed</span>
+<span class="c1">// by one or more non-`@` characters.</span>
+<span class="kd">const</span> <span class="nx">IS_VALID_EMAIL_REGEX</span> <span class="o">=</span> <span class="sr">/^</span><span class="se">[^</span><span class="sr">@</span><span class="se">]</span><span class="sr">+@</span><span class="se">[^</span><span class="sr">@</span><span class="se">]</span><span class="sr">+$/</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="in-code-comments">In-code comments</h2>
+
+<h3 id="accessibility-1">Accessibility</h3>
+
+<p>One of the points made about code also apply to in-code comments: they are
+easily searchable using a file searcher. Also, they do not need any further
+seeking out than code,<sup id="fnref:dimmed_comments" role="doc-noteref"><a href="#fn:dimmed_comments" class="footnote">4</a></sup> unlike something like commit messages.</p>
+
+<p>However, as they are in a non-programming language, they can be a bit less
+predictable in terms of structure—you’ll have a harder of a time breaking an
+English sentence into an abstract syntax tree than compared with something like
+JavaScript!</p>
+
+<p>Additionally, in-code comments are related to their subjects
+typically by proximity alone. If someone moves that code without taking the
+comment with it, the comment ceases to be helpful (or, worse, becomes
+confusing/misleading). We talk about this more in the <a href="#common-pitfall-poor-comment-location">“Pitfall”
+section</a> below.</p>
+
+<h3 id="responsibilities-1">Responsibilities</h3>
+
+<p>Comments, while still being very visible, afford a much greater level of
+flexibility in comparison with code identifiers for documenting behavior,
+decisions, etc. Comments are where you put</p>
+
+<ul>
+  <li>Explanations of why a section of code is the way that it is</li>
+  <li>Explanations of why a section of code <em>isn’t</em> written another way <strong>if one may
+be tempted to rewrite it</strong></li>
+  <li>Contextual information for where a code snippet came from if possibly helpful
+to future readers<sup id="fnref:snippet_came_from" role="doc-noteref"><a href="#fn:snippet_came_from" class="footnote">5</a></sup></li>
+  <li>Explanations of <a href="#caveat-enigmatic-language-syntax">enigmatic language syntax</a></li>
+  <li>(Sparingly) warnings and assumptions<sup id="fnref:warnings_and_assumptions" role="doc-noteref"><a href="#fn:warnings_and_assumptions" class="footnote">6</a></sup></li>
+</ul>
+
+<h3 id="common-pitfall-poor-comment-location">Common Pitfall: Poor Comment Location</h3>
+
+<p>For example, say we have this method:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Must be done in reverse order to be done in O(N) time due to</span>
+<span class="c1">// Kleppner's Law of Stupid Data Structures</span>
+<span class="kd">function</span> <span class="nx">smooshify</span><span class="p">(</span><span class="nx">newElements</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">newElements</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">flarbo</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">newElements</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>At some later point, it turns out are some <code class="language-plaintext highlighter-rouge">null</code> elements that need to be
+screened out:<sup id="fnref:null_screening" role="doc-noteref"><a href="#fn:null_screening" class="footnote">7</a></sup></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Must be done in reverse order to be done in O(N) time due to</span>
+<span class="c1">// Kleppner's Law of Stupid Data Structures</span>
+<span class="kd">function</span> <span class="nx">smooshify</span><span class="p">(</span><span class="nx">newElements</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">nonNullNewElements</span> <span class="o">=</span> <span class="nx">newElements</span><span class="p">.</span><span class="nx">withoutNulls</span><span class="p">();</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">newElements</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">flarbo</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">nonNullNewElements</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>With the code as it is now, another dev may stumble along one day and ask “Is
+<code class="language-plaintext highlighter-rouge">withoutNulls</code> iterating in reverse order?” While this may be a bit of a trivial
+example, these things can lead to a lot more headache down the line</p>
+
+<p>The only way to truly avoid mistakes like this is by is by keeping a vigilant
+eye on comments. Some techniques I’ve found to be helpful:</p>
+
+<ul>
+  <li>
+    <p>Keep comments as closely positioned to the code they’re describing as
+possible. E.g. if talking about code in the first branch of an <code class="language-plaintext highlighter-rouge">if</code> statement,
+put that comment <strong>in the first branch</strong>, not above the entire statement:</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// comment about why `floarp` should be used --- BAD</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">somethingOrOther</span><span class="p">())</span> <span class="p">{</span>
+  <span class="c1">// comment about why `floarp` should be used --- GOOD</span>
+  <span class="nx">floarp</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">blarg</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Make references to specific identifiers in comments as these tend to garner
+more attention and help establish a more explicit relationship between the
+comment and the code</p>
+  </li>
+</ul>
+
+<h2 id="commit-messages">Commit Messages</h2>
+
+<p>Most code that I’ve interacted with is version-controlled with something like
+Git, and if not Git, some other version-control software like Mercurial. I’m
+going to be referring to Git exclusively in this section, but I’m sure that
+there are similar tools for other version-control software.</p>
+
+<h3 id="accessibility-2">Accessibility</h3>
+
+<p>Unlike code or in-code comments, commit messages are not immediately visible
+when browsing a codebase. However, they can be made much more easily accessible
+with tools like <a href="https://github.com/tpope/vim-fugitive">Fugitive</a> (for Vim) or
+<a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">GitLens</a>
+(for VSCode). However, they can be searched–just run <code class="language-plaintext highlighter-rouge">git log</code> and press
+<kbd>/</kbd> and <em>BAM</em>! You can search through all your commit history (thanks
+to <a href="https://en.wikipedia.org/wiki/Less_(Unix)"><code class="language-plaintext highlighter-rouge">less</code></a>)</p>
+
+<p>Unfortunately, commit messages can sometimes be squashed or lost during a
+rebase, so the information placed there may not be preserved forever, though
+this mostly depends upon the other collaborators working on the repository.</p>
+
+<h3 id="responsibilities-2">Responsibilities</h3>
+
+<p>Much has been written about <a href="https://chris.beams.io/posts/git-commit/">how to write good commit
+messages</a>, so I won’t be too
+comprehensive here. However, I’d say the things I’m talking about here are, in
+my opinion, the most important things about writing a useful commit message.  As
+much as I like consistency, the grammatical aspects of commit message guidelines
+are not nearly as helpful as guidelines on the <em>content</em> of the message (as long
+as it’s readable!).</p>
+
+<p>Commit messages are all about change. A commit itself is an object representing
+a change to a codebase and commit messages ought to do the following:</p>
+
+<ul>
+  <li>Briefly summarize what changed, from a high level</li>
+  <li>Explain why the changes in the commit are necessary</li>
+  <li>Explain why other possible strategies were <em>not</em> attempted, if relevant</li>
+</ul>
+
+<p>These are much easier to accomplish when the commits you make are small and
+focused (within reason).<sup id="fnref:atomic_commits" role="doc-noteref"><a href="#fn:atomic_commits" class="footnote">8</a></sup></p>
+
+<h3 id="tip-using-references-to-other-commits">Tip: using references to other commits</h3>
+
+<p>While commit messages allow you to tell a story, any single commit rarely allows
+you to tell the whole story. If referencing earlier changes, I highly encourage
+you to make such references by using the commit hash. This will enable those
+reading those commit messages later to gain the same context you had when
+writing the message in the first place with a simple <code class="language-plaintext highlighter-rouge">git show</code>. A word of
+warning however: commit hashes will change when you rebase or amend a commit, so
+if referencing an earlier commit in a commit message, make sure to update that
+hash if the earlier commit is ever altered.</p>
+
+<h2 id="pullmerge-requests--issue-trackers">Pull/merge requests &amp; issue trackers</h2>
+
+<p>These are your GitHubs, your Asanas, your Jiras. I’m lumping issue trackers and
+hosted version control together because some of these services function as both
+(e.g.  GitHub).</p>
+
+<h3 id="accessibility-3">Accessibility</h3>
+
+<p>While there’s a large amount of variance here, I always have found messages and
+comments to get lost somehow, even when generally good search functionality is
+present.  Some services are better than others at this, but even in GitHub
+(which automatically doubly-link issues to pull requests), comments will be
+collapsed or hidden in large pull requests, making them a pain to excavate.</p>
+
+<h3 id="responsibilities-3">Responsibilities</h3>
+
+<p>These services are all about facilitating conversation and communication. As
+such, their responsibilities are focused on those topics:<sup id="fnref:use_of_trackers" role="doc-noteref"><a href="#fn:use_of_trackers" class="footnote">9</a></sup></p>
+
+<ul>
+  <li>Documenting why certain changes weren’t done and/or aren’t worth doing
+    <ul>
+      <li>However, these should instead be put in the relevant commit messages if they
+are related to certain changes that <em>did</em> make it into the codebase</li>
+    </ul>
+  </li>
+  <li>Containing or summarizing deliberation about proposed changes, even when that
+deliberation happens in real life or on something like Slack</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Hope you found this helpful in answering the question “where do I put this
+information?”. If you have any thoughts, <a href="https://twitter.com/HarryB">I’m on Twitter</a>.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:identifiers_meaning" role="doc-endnote">
+
+      <p>Identifiers include variable names, function names,
+class names/types, operators—basically anything that has a name that you can
+control! <a href="#fnref:identifiers_meaning" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:identifiers_when" role="doc-endnote">
+
+      <p>I’ll probably make another post about this, but I’ve found
+answering the question of “when” to be a bit of a slippery slope, especially
+in function names. When you answer the question of “when”, you are often doing
+so at the expense of “what”. Who hasn’t written a function like <code class="language-plaintext highlighter-rouge">onClick</code> or
+<code class="language-plaintext highlighter-rouge">after_save</code> that spans 20+ lines, accomplishing many disparate tasks? One
+technique I’ve employed when these are unavoidable (as these identifiers are
+often dictated by some external API) is to push all sense of “how” out of the
+bodies of these functions—they merely list off the things to do and the “how”
+is pushed into other functions. If you read on, we’re trying to lighten
+cognitive load here! <a href="#fnref:identifiers_when" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:code_boring_good" role="doc-endnote">
+      <p><a href="https://www.google.com/search?q=code+boring+good">This is not a new idea</a>. <a href="#fnref:code_boring_good" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:dimmed_comments" role="doc-endnote">
+      <p>However, they may be slightly dimmed depending on the code editor. <a href="#fnref:dimmed_comments" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:snippet_came_from" role="doc-endnote">
+      <p>I most often use this for adaptations of code from StackOverflow or blog posts. <a href="#fnref:snippet_came_from" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:warnings_and_assumptions" role="doc-endnote">
+
+      <p>If possible, these should be replaced with good identifier naming, type
+checking, validations, etc. <a href="#fnref:warnings_and_assumptions" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:null_screening" role="doc-endnote">
+
+      <p>If this were real code, I would hope that someone would also
+leave a comment explaining why we are doing this screening! <a href="#fnref:null_screening" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:atomic_commits" role="doc-endnote">
+
+      <p>I found <a href="https://www.freshconsulting.com/atomic-commits/">this article</a> a great summary of the how/why
+of keeping commits small <a href="#fnref:atomic_commits" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:use_of_trackers" role="doc-endnote">
+
+      <p>Of course, these services have usages beyond the topics
+addressed in this post like:</p>
+      <ul>
+        <li>centralizing the agreed upon priority of upcoming work</li>
+        <li>establishing the owner(s) of specific tasks</li>
+        <li>informing those outside the dev team about the progress of tasks, etc.</li>
+      </ul>
+      <p><a href="#fnref:use_of_trackers" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div><a class="u-url" href="/hiearchy_of_documentation" hidden></a>
+</article><script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+<script>
+  // if a p only has an img inside of it, urlify the alt text 
+  // of the img and set that as the p's id so anchors can use it
+  document.querySelectorAll('.post-content > p > img').forEach(function(el) { 
+    var idText = anchors.urlify("img-" + el.getAttribute('alt')); 
+    el.parentNode.setAttribute('id', idText);
+  });
+
+  // if a table has the "alt" property, use it to set the table's 
+  // id otherwise just use the index of that table within .post-content
+  document.querySelectorAll('.post-content > table').forEach(function(el, idx) { 
+    var uniqueTextForTable = el.getAttribute('alt') ? el.getAttribute('alt') : idx;
+    var idText = anchors.urlify('table-' + uniqueTextForTable); 
+    el.setAttribute('id', idText);
+  });
+
+  anchors.options.visible = 'always'; 
+  anchors.add('.post-content > h1, h2, h3, h4, h5, h6');
+
+  anchors.options.icon = '¶';
+  anchors.options.placement = 'left';
+  anchors.options.visible = 'hover';
+  anchors.add('.post-content > p');
+  anchors.add('.post-content > table');
+  // For code blocks
+  anchors.add('.post-content > .highlighter-rouge');
+</script>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">ChallahScript</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">ChallahScript</li><li><a class="u-email" href="mailto:harrison.bachrach@gmail.com">harrison.bachrach@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/HarrisonB"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">HarrisonB</span></a></li><li><a href="https://www.twitter.com/harryb"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">harryb</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Harrison Bachrach&#39;s technical blog. Should include some dumb and not-so-dumb stuff about software engineering.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

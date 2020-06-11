@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+<script>
+  // if a p only has an img inside of it, urlify the alt text 
+  // of the img and set that as the p's id so anchors can use it
+  document.querySelectorAll('.post-content > p > img').forEach(function(el) { 
+    var idText = anchors.urlify("img-" + el.getAttribute('alt')); 
+    el.parentNode.setAttribute('id', idText);
+  });
+
+  // if a table has the "alt" property, use it to set the table's 
+  // id otherwise just use the index of that table within .post-content
+  document.querySelectorAll('.post-content > table').forEach(function(el, idx) { 
+    var uniqueTextForTable = el.getAttribute('alt') ? el.getAttribute('alt') : idx;
+    var idText = anchors.urlify('table-' + uniqueTextForTable); 
+    el.setAttribute('id', idText);
+  });
+
+  anchors.options.visible = 'always'; 
+  anchors.add('.post-content > h1, h2, h3, h4, h5, h6');
+
+  anchors.options.icon = '¶';
+  anchors.options.placement = 'left';
+  anchors.options.visible = 'hover';
+  anchors.add('.post-content > p');
+  anchors.add('.post-content > table');
+  // For code blocks
+  anchors.add('.post-content > .highlighter-rouge');
+</script>

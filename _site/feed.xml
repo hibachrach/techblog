@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.0">Jekyll</generator><link href="https://techblog.harrisonbachrach.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://techblog.harrisonbachrach.com/" rel="alternate" type="text/html" /><updated>2020-06-11T00:49:04-07:00</updated><id>https://techblog.harrisonbachrach.com/feed.xml</id><title type="html">ChallahScript</title><subtitle>Harrison Bachrach's technical blog. Should include some dumb and not-so-dumb stuff about software engineering.</subtitle><entry><title type="html">A Hierarchy of Documentation</title><link href="https://techblog.harrisonbachrach.com/hiearchy_of_documentation" rel="alternate" type="text/html" title="A Hierarchy of Documentation" /><published>2020-04-24T00:00:00-07:00</published><updated>2020-04-24T00:00:00-07:00</updated><id>https://techblog.harrisonbachrach.com/hiearchy_of_documentation</id><content type="html" xml:base="https://techblog.harrisonbachrach.com/hiearchy_of_documentation">&lt;p&gt;“Where should this information live?” is a common question I encounter daily as
+a software engineer. I (alone or in consultation with others) will make a
+decision and that information needs to persist…somewhere. The goal of course
+is to prevent some future engineer (often myself) from encountering some code
+and asking “why?” or, even worse, “what?”.&lt;/p&gt;
+
+&lt;p&gt;I’ve found there’s a sort of hierarchy to the accessibility
+of various information that I found useful in sharing.&lt;/p&gt;
+
+&lt;p&gt;In order of most accessible to least, the hierarchy is as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Code (identifiers)&lt;/li&gt;
+  &lt;li&gt;In-code comments&lt;/li&gt;
+  &lt;li&gt;Commit messages&lt;/li&gt;
+  &lt;li&gt;Pull/merge requests &amp;amp; issue trackers&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This list may be different for other people and may change in time as tools
+get better, but for now, this has held true for me.&lt;/p&gt;
+
+&lt;p&gt;I’m sure that similar things have also been said before. Shoulders of giants and
+all that—would love to read any previous writings on similar topics!&lt;/p&gt;
+
+&lt;p&gt;So! Let’s get into some of the reasoning…&lt;/p&gt;
+
+&lt;h2 id=&quot;code-identifiers&quot;&gt;Code (Identifiers)&lt;/h2&gt;
+
+&lt;h3 id=&quot;accessibility&quot;&gt;Accessibility&lt;/h3&gt;
+
+&lt;p&gt;By far, the most important place to put information is in the code itself. Why?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It can be easily searched with tools like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grep&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ag&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ripgrep&lt;/code&gt;, or your
+favorite file searcher&lt;/li&gt;
+  &lt;li&gt;It (generally) follows a predictable structure and connections between
+components can be traced (e.g. through the call stack)&lt;/li&gt;
+  &lt;li&gt;It is &lt;em&gt;very&lt;/em&gt; unlikely to be discarded accidentally&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;responsibilities&quot;&gt;Responsibilities&lt;/h3&gt;
+
+&lt;p&gt;Because of their inherent visibility, identifiers&lt;sup id=&quot;fnref:identifiers_meaning&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:identifiers_meaning&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; should
+always be the first place to put information, especially&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What values represent&lt;/li&gt;
+  &lt;li&gt;What functions do &amp;amp; how they do it&lt;/li&gt;
+  &lt;li&gt;(Sparingly) when functions are invoked&lt;sup id=&quot;fnref:identifiers_when&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:identifiers_when&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;identifiers-and-code-simplification&quot;&gt;Identifiers and Code Simplification&lt;/h3&gt;
+
+&lt;p&gt;I’m going to intentionally give you no context for the following code:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;userSession&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;signed&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;AdminOverrides&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userSession&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;signed&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;repository&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;notice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Repository successfully deleted.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;403&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;You are not allowed to perform that action.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Okay, pretty straightforward. But consider this version instead:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;userHasUpdateAccess&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;userSession&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;signed&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;AdminOverrides&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userSession&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;signed&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userHasAdminUpdateAccess&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;repository&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;STATUS_CODES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;notice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Repository successfully deleted.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;STATUS_CODES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unauthorized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;You are not allowed to perform that action.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We’ve made a few updates. First, we’ve pulled the condition out into its own
+variable. What that’s done is document the intention of what the condition is
+&lt;em&gt;supposed&lt;/em&gt; to mean. This has a few benefits:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Each line is doing less, cognitively.&lt;/strong&gt; That means you have to think about
+less when reading. You’re going to read code way more than you’re going to
+write it—why make it harder for yourself?&lt;sup id=&quot;fnref:code_boring_good&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:code_boring_good&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Pulling that connection out and labeling it makes it harder to miss when
+changes happen.&lt;/strong&gt; At some point, how we determine whether a user has
+update access will probably change. Additionally, the body of the first branch
+of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt; may get much larger. It’s always easier to keep things tidy one
+piece at a time (as opposed to going back and cleaning it up later)!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The other two changes are to replace the HTTP status codes (which are
+essentially &lt;a href=&quot;https://en.wikipedia.org/wiki/Magic_number_(programming)&quot;&gt;magic numbers&lt;/a&gt;) with references to a global
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STATUS_CODES&lt;/code&gt; object. While HTTP status codes are fairly well known (e.g. a
+“404” is meaningful to many that have never done web development), they’re
+likely not going to be better known than English.&lt;/p&gt;
+
+&lt;p&gt;Generally, breaking things down like this makes the answer to “why?” very
+obvious.&lt;/p&gt;
+
+&lt;h3 id=&quot;caveat-enigmatic-language-syntax&quot;&gt;Caveat: Enigmatic language syntax&lt;/h3&gt;
+
+&lt;p&gt;Unlike libraries which can often be worked around, specific hard-to-parse
+features of a language’s syntax may be unavoidable. For example, most languages
+have regular expressions which are infamous for how easy they are to mess up.
+Consider the following regular expression in JavaScript:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;IS_VALID_EMAIL_REGEX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/^&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;[^&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;+@&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;[^&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;+$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There’s not really much more we can do in terms of adding/changing identifiers
+to clarify how the regular expression determines which email addresses are valid
+and which aren’t–you just have to know the specific syntax of (JavaScript)
+regular expressions. In cases like these, an in-code comment (which we’ll talk
+about more in the next section) is the next best place to put this information:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Matches one or more non-`@` characters, folloed by a `@` character, followed&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// by one or more non-`@` characters.&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;IS_VALID_EMAIL_REGEX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/^&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;[^&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;+@&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;[^&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;+$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;in-code-comments&quot;&gt;In-code comments&lt;/h2&gt;
+
+&lt;h3 id=&quot;accessibility-1&quot;&gt;Accessibility&lt;/h3&gt;
+
+&lt;p&gt;One of the points made about code also apply to in-code comments: they are
+easily searchable using a file searcher. Also, they do not need any further
+seeking out than code,&lt;sup id=&quot;fnref:dimmed_comments&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:dimmed_comments&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; unlike something like commit messages.&lt;/p&gt;
+
+&lt;p&gt;However, as they are in a non-programming language, they can be a bit less
+predictable in terms of structure—you’ll have a harder of a time breaking an
+English sentence into an abstract syntax tree than compared with something like
+JavaScript!&lt;/p&gt;
+
+&lt;p&gt;Additionally, in-code comments are related to their subjects
+typically by proximity alone. If someone moves that code without taking the
+comment with it, the comment ceases to be helpful (or, worse, becomes
+confusing/misleading). We talk about this more in the &lt;a href=&quot;#common-pitfall-poor-comment-location&quot;&gt;“Pitfall”
+section&lt;/a&gt; below.&lt;/p&gt;
+
+&lt;h3 id=&quot;responsibilities-1&quot;&gt;Responsibilities&lt;/h3&gt;
+
+&lt;p&gt;Comments, while still being very visible, afford a much greater level of
+flexibility in comparison with code identifiers for documenting behavior,
+decisions, etc. Comments are where you put&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Explanations of why a section of code is the way that it is&lt;/li&gt;
+  &lt;li&gt;Explanations of why a section of code &lt;em&gt;isn’t&lt;/em&gt; written another way &lt;strong&gt;if one may
+be tempted to rewrite it&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Contextual information for where a code snippet came from if possibly helpful
+to future readers&lt;sup id=&quot;fnref:snippet_came_from&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:snippet_came_from&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+  &lt;li&gt;Explanations of &lt;a href=&quot;#caveat-enigmatic-language-syntax&quot;&gt;enigmatic language syntax&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;(Sparingly) warnings and assumptions&lt;sup id=&quot;fnref:warnings_and_assumptions&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:warnings_and_assumptions&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;common-pitfall-poor-comment-location&quot;&gt;Common Pitfall: Poor Comment Location&lt;/h3&gt;
+
+&lt;p&gt;For example, say we have this method:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Must be done in reverse order to be done in O(N) time due to&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Kleppner's Law of Stupid Data Structures&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;smooshify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newElements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newElements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flarbo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newElements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;At some later point, it turns out are some &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;null&lt;/code&gt; elements that need to be
+screened out:&lt;sup id=&quot;fnref:null_screening&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:null_screening&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Must be done in reverse order to be done in O(N) time due to&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Kleppner's Law of Stupid Data Structures&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;smooshify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newElements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nonNullNewElements&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newElements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;withoutNulls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newElements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flarbo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nonNullNewElements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;With the code as it is now, another dev may stumble along one day and ask “Is
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;withoutNulls&lt;/code&gt; iterating in reverse order?” While this may be a bit of a trivial
+example, these things can lead to a lot more headache down the line&lt;/p&gt;
+
+&lt;p&gt;The only way to truly avoid mistakes like this is by is by keeping a vigilant
+eye on comments. Some techniques I’ve found to be helpful:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Keep comments as closely positioned to the code they’re describing as
+possible. E.g. if talking about code in the first branch of an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt; statement,
+put that comment &lt;strong&gt;in the first branch&lt;/strong&gt;, not above the entire statement:&lt;/p&gt;
+
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// comment about why `floarp` should be used --- BAD&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;somethingOrOther&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// comment about why `floarp` should be used --- GOOD&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;floarp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;blarg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make references to specific identifiers in comments as these tend to garner
+more attention and help establish a more explicit relationship between the
+comment and the code&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;commit-messages&quot;&gt;Commit Messages&lt;/h2&gt;
+
+&lt;p&gt;Most code that I’ve interacted with is version-controlled with something like
+Git, and if not Git, some other version-control software like Mercurial. I’m
+going to be referring to Git exclusively in this section, but I’m sure that
+there are similar tools for other version-control software.&lt;/p&gt;
+
+&lt;h3 id=&quot;accessibility-2&quot;&gt;Accessibility&lt;/h3&gt;
+
+&lt;p&gt;Unlike code or in-code comments, commit messages are not immediately visible
+when browsing a codebase. However, they can be made much more easily accessible
+with tools like &lt;a href=&quot;https://github.com/tpope/vim-fugitive&quot;&gt;Fugitive&lt;/a&gt; (for Vim) or
+&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens&quot;&gt;GitLens&lt;/a&gt;
+(for VSCode). However, they can be searched–just run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git log&lt;/code&gt; and press
+&lt;kbd&gt;/&lt;/kbd&gt; and &lt;em&gt;BAM&lt;/em&gt;! You can search through all your commit history (thanks
+to &lt;a href=&quot;https://en.wikipedia.org/wiki/Less_(Unix)&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;less&lt;/code&gt;&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, commit messages can sometimes be squashed or lost during a
+rebase, so the information placed there may not be preserved forever, though
+this mostly depends upon the other collaborators working on the repository.&lt;/p&gt;
+
+&lt;h3 id=&quot;responsibilities-2&quot;&gt;Responsibilities&lt;/h3&gt;
+
+&lt;p&gt;Much has been written about &lt;a href=&quot;https://chris.beams.io/posts/git-commit/&quot;&gt;how to write good commit
+messages&lt;/a&gt;, so I won’t be too
+comprehensive here. However, I’d say the things I’m talking about here are, in
+my opinion, the most important things about writing a useful commit message.  As
+much as I like consistency, the grammatical aspects of commit message guidelines
+are not nearly as helpful as guidelines on the &lt;em&gt;content&lt;/em&gt; of the message (as long
+as it’s readable!).&lt;/p&gt;
+
+&lt;p&gt;Commit messages are all about change. A commit itself is an object representing
+a change to a codebase and commit messages ought to do the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Briefly summarize what changed, from a high level&lt;/li&gt;
+  &lt;li&gt;Explain why the changes in the commit are necessary&lt;/li&gt;
+  &lt;li&gt;Explain why other possible strategies were &lt;em&gt;not&lt;/em&gt; attempted, if relevant&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These are much easier to accomplish when the commits you make are small and
+focused (within reason).&lt;sup id=&quot;fnref:atomic_commits&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:atomic_commits&quot; class=&quot;footnote&quot;&gt;8&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;tip-using-references-to-other-commits&quot;&gt;Tip: using references to other commits&lt;/h3&gt;
+
+&lt;p&gt;While commit messages allow you to tell a story, any single commit rarely allows
+you to tell the whole story. If referencing earlier changes, I highly encourage
+you to make such references by using the commit hash. This will enable those
+reading those commit messages later to gain the same context you had when
+writing the message in the first place with a simple &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git show&lt;/code&gt;. A word of
+warning however: commit hashes will change when you rebase or amend a commit, so
+if referencing an earlier commit in a commit message, make sure to update that
+hash if the earlier commit is ever altered.&lt;/p&gt;
+
+&lt;h2 id=&quot;pullmerge-requests--issue-trackers&quot;&gt;Pull/merge requests &amp;amp; issue trackers&lt;/h2&gt;
+
+&lt;p&gt;These are your GitHubs, your Asanas, your Jiras. I’m lumping issue trackers and
+hosted version control together because some of these services function as both
+(e.g.  GitHub).&lt;/p&gt;
+
+&lt;h3 id=&quot;accessibility-3&quot;&gt;Accessibility&lt;/h3&gt;
+
+&lt;p&gt;While there’s a large amount of variance here, I always have found messages and
+comments to get lost somehow, even when generally good search functionality is
+present.  Some services are better than others at this, but even in GitHub
+(which automatically doubly-link issues to pull requests), comments will be
+collapsed or hidden in large pull requests, making them a pain to excavate.&lt;/p&gt;
+
+&lt;h3 id=&quot;responsibilities-3&quot;&gt;Responsibilities&lt;/h3&gt;
+
+&lt;p&gt;These services are all about facilitating conversation and communication. As
+such, their responsibilities are focused on those topics:&lt;sup id=&quot;fnref:use_of_trackers&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:use_of_trackers&quot; class=&quot;footnote&quot;&gt;9&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Documenting why certain changes weren’t done and/or aren’t worth doing
+    &lt;ul&gt;
+      &lt;li&gt;However, these should instead be put in the relevant commit messages if they
+are related to certain changes that &lt;em&gt;did&lt;/em&gt; make it into the codebase&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Containing or summarizing deliberation about proposed changes, even when that
+deliberation happens in real life or on something like Slack&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Hope you found this helpful in answering the question “where do I put this
+information?”. If you have any thoughts, &lt;a href=&quot;https://twitter.com/HarryB&quot;&gt;I’m on Twitter&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:identifiers_meaning&quot; role=&quot;doc-endnote&quot;&gt;
+
+      &lt;p&gt;Identifiers include variable names, function names,
+class names/types, operators—basically anything that has a name that you can
+control! &lt;a href=&quot;#fnref:identifiers_meaning&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:identifiers_when&quot; role=&quot;doc-endnote&quot;&gt;
+
+      &lt;p&gt;I’ll probably make another post about this, but I’ve found
+answering the question of “when” to be a bit of a slippery slope, especially
+in function names. When you answer the question of “when”, you are often doing
+so at the expense of “what”. Who hasn’t written a function like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;onClick&lt;/code&gt; or
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;after_save&lt;/code&gt; that spans 20+ lines, accomplishing many disparate tasks? One
+technique I’ve employed when these are unavoidable (as these identifiers are
+often dictated by some external API) is to push all sense of “how” out of the
+bodies of these functions—they merely list off the things to do and the “how”
+is pushed into other functions. If you read on, we’re trying to lighten
+cognitive load here! &lt;a href=&quot;#fnref:identifiers_when&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:code_boring_good&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://www.google.com/search?q=code+boring+good&quot;&gt;This is not a new idea&lt;/a&gt;. &lt;a href=&quot;#fnref:code_boring_good&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:dimmed_comments&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;However, they may be slightly dimmed depending on the code editor. &lt;a href=&quot;#fnref:dimmed_comments&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:snippet_came_from&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;I most often use this for adaptations of code from StackOverflow or blog posts. &lt;a href=&quot;#fnref:snippet_came_from&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:warnings_and_assumptions&quot; role=&quot;doc-endnote&quot;&gt;
+
+      &lt;p&gt;If possible, these should be replaced with good identifier naming, type
+checking, validations, etc. &lt;a href=&quot;#fnref:warnings_and_assumptions&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:null_screening&quot; role=&quot;doc-endnote&quot;&gt;
+
+      &lt;p&gt;If this were real code, I would hope that someone would also
+leave a comment explaining why we are doing this screening! &lt;a href=&quot;#fnref:null_screening&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:atomic_commits&quot; role=&quot;doc-endnote&quot;&gt;
+
+      &lt;p&gt;I found &lt;a href=&quot;https://www.freshconsulting.com/atomic-commits/&quot;&gt;this article&lt;/a&gt; a great summary of the how/why
+of keeping commits small &lt;a href=&quot;#fnref:atomic_commits&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:use_of_trackers&quot; role=&quot;doc-endnote&quot;&gt;
+
+      &lt;p&gt;Of course, these services have usages beyond the topics
+addressed in this post like:&lt;/p&gt;
+      &lt;ul&gt;
+        &lt;li&gt;centralizing the agreed upon priority of upcoming work&lt;/li&gt;
+        &lt;li&gt;establishing the owner(s) of specific tasks&lt;/li&gt;
+        &lt;li&gt;informing those outside the dev team about the progress of tasks, etc.&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;p&gt;&lt;a href=&quot;#fnref:use_of_trackers&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">“Where should this information live?” is a common question I encounter daily as a software engineer. I (alone or in consultation with others) will make a decision and that information needs to persist…somewhere. The goal of course is to prevent some future engineer (often myself) from encountering some code and asking “why?” or, even worse, “what?”.</summary></entry><entry><title type="html">A Brief Tour of Tools</title><link href="https://techblog.harrisonbachrach.com/tools" rel="alternate" type="text/html" title="A Brief Tour of Tools" /><published>2018-04-01T00:00:00-07:00</published><updated>2018-04-01T00:00:00-07:00</updated><id>https://techblog.harrisonbachrach.com/tools</id><content type="html" xml:base="https://techblog.harrisonbachrach.com/tools">&lt;h2 id=&quot;core-philosophy&quot;&gt;Core philosophy&lt;/h2&gt;
+
+&lt;h3 id=&quot;make-your-tools-as-ergonomic-as-possible&quot;&gt;Make your tools as ergonomic as possible&lt;/h3&gt;
+
+&lt;p&gt;Ergonomics often comes up when talking with HR during onboarding: it’s the
+reason why you should use comfortable, supportive chairs, keyboards, mice, and
+such. “Battle scars” from work shouldn’t be encouraged. If your eyes, wrists, or
+butt cheeks are hurting, try to address that problem. You’re doing labor. Labor
+that most likely isn’t as tolling, as say, construction, but labor nonetheless.
+Take care of your body. If you try to fight it, it’s likely to win. Even if
+you’re not feeling active pain now, you might start experiencing symptoms after
+years of damage. “It works for me” shouldn’t be the end of it. Get an ergonomic
+chair, keyboard, and mouse to reduce strain. Here&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; are some good
+guidelines on reducing eyestrain (I can personally vouch for tools like
+&lt;a href=&quot;https://justgetflux.com/&quot;&gt;f.lux&lt;/a&gt;!).&lt;/p&gt;
+
+&lt;p&gt;What does this mean for software? If you don’t like the way you’re interacting
+with your tools (physical &lt;em&gt;or&lt;/em&gt; virtual), you’re not going to have as much fun
+using them.&lt;/p&gt;
+
+&lt;p&gt;Sometimes that can be a &lt;em&gt;good&lt;/em&gt; thing: if a tool
+&lt;em&gt;shouldn’t&lt;/em&gt; be used, then you can design your system with that idea in mind. As
+we are all designers in some way, this should be a familiar idea—e.g. if you
+add a feature that forces a user to do 10 clicks instead of one, they’re less
+likely to use that feature (c.f. trying to close your Amazon account).&lt;/p&gt;
+
+&lt;p&gt;Notice that I’m not talking about speed. The amount of time that you save with
+one configuration or another probably isn’t going to save you the amount of time
+that you put into setting it up (unless something was &lt;em&gt;really&lt;/em&gt; wrong
+before-hand). But reducing UX friction can often make you more productive,
+reduce extraneous repetitive motion, and eliminate unnecessary mental work to
+get from point A to point B. Some things that help towards this end include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Reducing mouse usage&lt;sup id=&quot;fnref:4&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+  &lt;li&gt;Reducing chorded shortcuts (e.g. minimizing stuff like &lt;kbd&gt;shift&lt;/kbd&gt;+&lt;kbd&gt;&amp;#8984;&lt;/kbd&gt;+&lt;kbd&gt;option&lt;/kbd&gt;+&lt;kbd&gt;t&lt;/kbd&gt;)&lt;/li&gt;
+  &lt;li&gt;Reducing the steps to switch between tools and contexts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;make-your-tools-accessible-to-an-outsider-without-a-large-amount-of-reconfiguration&quot;&gt;Make your tools accessible to an outsider without a large amount of reconfiguration&lt;/h3&gt;
+
+&lt;p&gt;Everything that you do to configure your machine is most likely increasing the
+barrier to entry somehow. That’s okay. It’s your machine—it should be most
+comfortable for &lt;em&gt;you&lt;/em&gt;. However, that doesn’t mean there won’t be a time where
+someone else might have to use your keyboard or read your monitor. It should be
+easy enough for that visitor to understand what’s going on or do some simple
+tasks without you restarting your damn machine. Note that that doesn’t mean
+disabling all of your config when someone walks over&lt;sup id=&quot;fnref:wizardry&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:wizardry&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;dont-overdo-it&quot;&gt;Don’t overdo it&lt;/h3&gt;
+
+&lt;p&gt;Your tools or configuration won’t make you a significantly better developer. It
+might even make you a more annoying developer if you won’t stop talking about
+such topics. And it always takes time to customize these things—the increased
+efficiency won’t make up for that. Again, it’s about getting you to enjoy using
+the tools while reducing strain, whether that strain is physical or mental.&lt;/p&gt;
+
+&lt;h2 id=&quot;tmux&quot;&gt;tmux&lt;/h2&gt;
+
+&lt;p&gt;I use tmux inside of iTerm2&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;. Tmux is a “terminal multiplexer” which is an
+incredibly geeky way of saying it allows you to have windows/splits inside of a
+OS level window. Here are my main motivations for using it.&lt;/p&gt;
+
+&lt;h3 id=&quot;attach-and-detach&quot;&gt;Attach and detach&lt;/h3&gt;
+
+&lt;p&gt;When you start up tmux you’re starting up a server, on which you create and
+attach “sessions” (basically just workspaces) where you can create windows
+(really closer to tabs) which can have splits. These sessions can be attached
+to and detached from at will. And that action is a completely distinct one from
+opening or closing iTerm2, meaning if iTerm2 has to close for one reason or
+another, my windows and splits set up exactly as when I left them.&lt;/p&gt;
+
+&lt;p&gt;This is great on a local machine but invaluable on remote sessions: when I was
+doing research on machines that could only be SSH’d into, a random drop in the
+Internet connection just meant I had to reattach to the session that was running
+on the remote server. Note that the server will still die if your computer has
+to restart.&lt;/p&gt;
+
+&lt;p&gt;I also find that this navigation is much easier than fiddling with actual
+windows in a GUI. Which tend to be pretty poorly organized for search and
+retrieval. Even in macOS, if I have a window that is minimized, I have to either
+use my mouse to inspect my collection of hidden windows or cycle through them
+using &lt;kbd&gt;control&lt;/kbd&gt;+&lt;kbd&gt;f4&lt;/kbd&gt;&lt;sup id=&quot;fnref:cycle&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:cycle&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;prefixes-over-chords&quot;&gt;Prefixes over chords&lt;/h3&gt;
+
+&lt;p&gt;This is going to be a bit of a recurring theme, but tmux allows you to go from
+split to split, window to window, or session to session without pressing many
+keys &lt;em&gt;simultaneously&lt;/em&gt;. Instead, you can define a common prefix (I have
+&lt;kbd&gt;control&lt;/kbd&gt;+&lt;kbd&gt;space&lt;/kbd&gt;) and then press the tmux-specific shortcut
+of your choosing.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-get-started&quot;&gt;How to get started&lt;/h3&gt;
+
+&lt;p&gt;If you’re on a Mac, you can use Homebrew:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install tmux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340&quot;&gt;Here’s&lt;/a&gt; a tutorial to get you started.&lt;/p&gt;
+
+&lt;h2 id=&quot;vimneovim&quot;&gt;Vim/Neovim&lt;/h2&gt;
+
+&lt;p&gt;I could talk probably all day about Vim and why I love it. I’ll try to summarize
+here to save your time and/or sanity. I &lt;em&gt;will&lt;/em&gt; note that Vim has a fairly steep
+learning curve but I find is worth it in the end. See &lt;a href=&quot;http://www.terminally-incoherent.com/blog/2012/09/05/vim-is-a-usability-nightmare/&quot;&gt;here&lt;/a&gt; for
+a great blogpost about Vim and usability.&lt;/p&gt;
+
+&lt;h3 id=&quot;ubiquity&quot;&gt;Ubiquity&lt;/h3&gt;
+
+&lt;p&gt;Vi or Vim is on basically every *nix machine that you might come across. If you
+know how to use it in one place, you can use it anywhere.&lt;/p&gt;
+
+&lt;h3 id=&quot;keyboard-first-design&quot;&gt;Keyboard-first design&lt;/h3&gt;
+
+&lt;p&gt;Every interaction with Vim is intended to be done with the keyboard. There are
+some things that &lt;em&gt;can&lt;/em&gt; be done with the mouse (like scrolling or cursor
+movement), but it’s primarily designed to be manipulated via the keyboard. That
+makes it generally quite fast, eliminating the time to move your hand to the
+mouse and back.&lt;/p&gt;
+
+&lt;h3 id=&quot;composability&quot;&gt;Composability&lt;/h3&gt;
+
+&lt;p&gt;This is probably the biggest and most Vim-specific point here. When you
+manipulate text in Vim, you do so in a sort of “language”, complete with verbs,
+nouns, adjectives, adverbs, etc.&lt;/p&gt;
+
+&lt;p&gt;Let’s say I’m editing a Ruby script and I’ve got this double negative here. We
+want to make this a bit more readable, replacing the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unless&lt;/code&gt; with an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt; and
+the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;empty?&lt;/code&gt; with a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;present?&lt;/code&gt;.&lt;/p&gt;
+
+&lt;script src=&quot;https://asciinema.org/a/HRBzkylrV8Bih8llxcEY8nJWV.js&quot; id=&quot;asciicast-HRBzkylrV8Bih8llxcEY8nJWV&quot; async=&quot;&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Here are all the key presses I needed to do to perform the above:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ciwifjjwwwct?presentjj:wq
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Let’s break that down:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ciw&lt;/code&gt;: This is basically a “sentence”. I’m pressing these keys them in what is
+called “normal mode”. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;c&lt;/code&gt; means “change”, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;i&lt;/code&gt; means “inner”, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;w&lt;/code&gt; means
+“word”. “Change” means delete and then go into “insert mode”, the mode where
+when I type, those characters appear on screen. I applied that “verb” to what
+is called a “text object”. Here that “text object” is made up of the adjective
+“inner” with the noun “word”.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt;: This is just me typing the word “if”.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jj&lt;/code&gt;: This is a command I have set up for “insert mode” that gets me back to
+“normal mode”. This is &lt;kbd&gt;escape&lt;/kbd&gt; by default but I find this much
+easier.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www&lt;/code&gt;: Here I’m pressing that “noun” &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;w&lt;/code&gt; three times. Since there’s no “verb”
+here, that just moves my cursor 1 “word” each time. I could have also typed
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3w&lt;/code&gt; and achieved the same thing.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ct?&lt;/code&gt;: Here I’m using the same &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;c&lt;/code&gt; verb but this time with the “noun” &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t?&lt;/code&gt;
+which means “to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;?&lt;/code&gt;”, i.e. all the characters from my current position up to
+(but not including) the next incidence of the character &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;?&lt;/code&gt; on the current
+line.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;present&lt;/code&gt;: This is just me typing the word “present”.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jj&lt;/code&gt;: Same as before.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:wq&lt;/code&gt;: Here I’m performing what is known as a “command”. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:&lt;/code&gt; gets me into
+“command mode” (moving my cursor temporarily to the bottom of the Vim window)
+where I then type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;w&lt;/code&gt; for “write” (meaning “save”) and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;q&lt;/code&gt; for “quit”.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is a simple example, but as you can see, you can mix and match all these
+building blocks to manipulate your files in quite complex ways. Many Vim users
+also create plugins that add core “parts of speech” to the editor. E.g.
+&lt;a href=&quot;https://github.com/tpope/vim-surround&quot;&gt;vim-surround&lt;/a&gt; enables the sequence &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cs&quot;'&lt;/code&gt; which allows you to
+“change the surrounding characters” (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cs&lt;/code&gt;) from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'&lt;/code&gt; as well as the
+sequence &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ysiw]&lt;/code&gt; “add surrounding characters” (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ys&lt;/code&gt;) to the “inner word” (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iw&lt;/code&gt;),
+specifically brackets (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;]&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;integration-with-the-terminal&quot;&gt;Integration with the terminal&lt;/h3&gt;
+
+&lt;p&gt;(Partly thanks to tmux) I can run Vim in the same program that has my
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;foreman&lt;/code&gt; procs, my git interface, my logs, and pretty much everything else.
+Switching between all of those things is super easy thanks to a plugin I use
+called &lt;a href=&quot;https://github.com/christoomey/vim-tmux-navigator&quot;&gt;vim-tmux-navigator&lt;/a&gt;. Basically I can use&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;kbd&gt;control&lt;/kbd&gt;+&lt;kbd&gt;h&lt;/kbd&gt; (left)&lt;/li&gt;
+  &lt;li&gt;&lt;kbd&gt;control&lt;/kbd&gt;+&lt;kbd&gt;j&lt;/kbd&gt; (down)&lt;/li&gt;
+  &lt;li&gt;&lt;kbd&gt;control&lt;/kbd&gt;+&lt;kbd&gt;k&lt;/kbd&gt; (up)&lt;/li&gt;
+  &lt;li&gt;&lt;kbd&gt;control&lt;/kbd&gt;+&lt;kbd&gt;l&lt;/kbd&gt; (right)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;to navigate between tmux and Vim panes indiscriminately.&lt;/p&gt;
+
+&lt;p&gt;When I need to run a test, I have a plugin called &lt;a href=&quot;https://github.com/janko-m/vim-test&quot;&gt;vim-test&lt;/a&gt; that
+allows me to run a test in a neighboring tmux pane and then interact with that
+terminal session afterwards.&lt;/p&gt;
+
+&lt;p&gt;There are many other niceties here as well (e.g. sending the contents of a SQL
+query edited in a Vim session to an interactive &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;psql&lt;/code&gt; session) that I may go
+into in a later post.&lt;/p&gt;
+
+&lt;h3 id=&quot;so-much-more&quot;&gt;So much more&lt;/h3&gt;
+
+&lt;p&gt;Again, I can talk about Vim all day (and probably will). There are many things
+not covered here that I will return to later (possibly including a breakdown of
+my &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-get-started-1&quot;&gt;How to get started&lt;/h3&gt;
+
+&lt;p&gt;Like I said before, Vim is famous for having a bit of a steep learning curve.
+I’d recommend trying it out in your leisure time because it &lt;em&gt;will&lt;/em&gt; slow you down
+at first.&lt;/p&gt;
+
+&lt;p&gt;Once again, the download for the newest version (probably more up to date than
+what you have on your machine already) is on Homebrew as well. However, I’d
+recommend installing the relatively recent fork &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;neovim&lt;/code&gt; instead (it has a few
+nicities including better built-in tutorial:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install neovim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Launch it from the shell (using the name &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvim&lt;/code&gt;, &lt;em&gt;not&lt;/em&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;neovim&lt;/code&gt;). Then I’d
+follow the built-in tutorial by typing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:Tutor&lt;/code&gt;. The first online resource given
+at the bottom of the tutorial, &lt;a href=&quot;http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/&quot;&gt;“Learn Vim
+Progressively”&lt;/a&gt; is also great—it’s how I first
+started.&lt;/p&gt;
+
+&lt;h2 id=&quot;fzf&quot;&gt;FZF&lt;/h2&gt;
+
+&lt;p&gt;FZF is a fuzzy-finder for the shell that you can use in a bunch of different
+ways, like…&lt;/p&gt;
+
+&lt;h3 id=&quot;finding-files-while-also-obeying-your-gitignore&quot;&gt;Finding files (while also obeying your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt;)&lt;sup id=&quot;fnref:vim-color-note&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:vim-color-note&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/h3&gt;
+&lt;script src=&quot;https://asciinema.org/a/28rDzTqI5nEE9mM89DKZmf5Zo.js&quot; id=&quot;asciicast-28rDzTqI5nEE9mM89DKZmf5Zo&quot; async=&quot;&quot;&gt;&lt;/script&gt;
+
+&lt;h3 id=&quot;finding-git-commits&quot;&gt;Finding git commits&lt;/h3&gt;
+&lt;script src=&quot;https://asciinema.org/a/xYrk74sFKjQXzGKEPJSrdypXs.js&quot; id=&quot;asciicast-xYrk74sFKjQXzGKEPJSrdypXs&quot; async=&quot;&quot;&gt;&lt;/script&gt;
+
+&lt;h3 id=&quot;finding-old-commands&quot;&gt;Finding old commands&lt;/h3&gt;
+&lt;p&gt;I couldn’t manage to record this one without any potentially sensitive
+information, but it works as you might expect.&lt;/p&gt;
+
+&lt;p&gt;At its core, FZF is just a way of filtering data in a human-friendly way. You
+can pipe anything in and get the same fuzzy-find interface
+(e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cat file.txt | fzf&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-get-started-2&quot;&gt;How to get started&lt;/h3&gt;
+
+&lt;p&gt;Once again, if you can, just use Homebrew.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install fzf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;See &lt;a href=&quot;https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew&quot;&gt;the project’s installation instructions&lt;/a&gt; for
+details, including howt to integrate FZF with tmux and vim. These integrations
+work incredibly well so I’d highly recommend setting that up.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;•••&lt;/div&gt;
+
+&lt;p&gt;That’s it for now! More posts on this stuff to come, I’m sure.&lt;/p&gt;
+
+&lt;!--footnotes &amp; references--&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://ergonomics.ucla.edu/injuries-and-prevention/eye-strain.html&quot;&gt;https://ergonomics.ucla.edu/injuries-and-prevention/eye-strain.html&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://lifehacker.com/5818056/how-do-i-prevent-eyestrain&quot;&gt;https://lifehacker.com/5818056/how-do-i-prevent-eyestrain&lt;/a&gt; &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot; role=&quot;doc-endnote&quot;&gt;
+
+      &lt;p&gt;This isn’t a cure-all for repetitive strain injuries. Stretching and
+regular breaks are more important. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:wizardry&quot; role=&quot;doc-endnote&quot;&gt;
+
+      &lt;p&gt;It can be a great way to learn tricks
+when you see someone do some keyboard wizardry and you ask “How did you do that!?” &lt;a href=&quot;#fnref:wizardry&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;The main reason for using it over the default macOS Terminal is for 256 color support. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:cycle&quot; role=&quot;doc-endnote&quot;&gt;
+
+      &lt;p&gt;Just as a heads up: you can cycle through open applications with
+&lt;kbd&gt;&amp;#8984;&lt;/kbd&gt;+&lt;kbd&gt;tab&lt;/kbd&gt; and open windows for your current
+application with &lt;kbd&gt;&amp;#8984;&lt;/kbd&gt;+&lt;kbd&gt;`&lt;/kbd&gt;. &lt;a href=&quot;#fnref:cycle&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:vim-color-note&quot; role=&quot;doc-endnote&quot;&gt;
+
+      &lt;p&gt;I’m not sure why the colors on this recording are inaccurate,
+but I assure you Vim on my machine is quite colorful. I use the colorscheme
+&lt;a href=&quot;https://github.com/junegunn/seoul256.vim&quot;&gt;seoul256&lt;/a&gt;. &lt;a href=&quot;#fnref:vim-color-note&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">Core philosophy</summary></entry></feed>

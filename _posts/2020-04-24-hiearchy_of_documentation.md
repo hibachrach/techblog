@@ -1,6 +1,9 @@
-% A Hierarchy of Documentation
-% Harry Bachrach
-% Apr 24 2020
+---
+layout: post
+title:  A Hierarchy of Documentation
+date:   2020-04-24
+---
+
 
 "Where should this information live?" is a common question I encounter daily as
 a software engineer. I (alone or in consultation with others) will make a
@@ -312,33 +315,46 @@ Hope you found this helpful in answering the question "where do I put this
 information?". If you have any thoughts, [I'm on Twitter][twitter_profile].
 
 [^code_boring_good]: [This is not a new idea][code_boring_good_search].
-[^identifiers_when]: I'll probably make another post about this, but I've found
-  answering the question of "when" to be a bit of a slippery slope, especially
-  in function names. When you answer the question of "when", you are often doing
-  so at the expense of "what". Who hasn't written a function like `onClick` or
-  `after_save` that spans 20+ lines, accomplishing many disparate tasks? One
-  technique I've employed when these are unavoidable (as these identifiers are
-  often dictated by some external API) is to push all sense of "how" out of the
-  bodies of these functions---they merely list off the things to do and the "how"
-  is pushed into other functions. If you read on, we're trying to lighten
-  cognitive load here!
-[^identifiers_meaning]: Identifiers include variable names, function names,
-  class names/types, operators---basically anything that has a name that you can
-  control!
-[^null_screening]: If this were real code, I would hope that someone would also
-  leave a comment explaining why we are doing this screening!
-[^warnings_and_assumptions]: If possible, these should be replaced with good identifier naming, type
+
+[^identifiers_when]:
+    I'll probably make another post about this, but I've found
+    answering the question of "when" to be a bit of a slippery slope, especially
+    in function names. When you answer the question of "when", you are often doing
+    so at the expense of "what". Who hasn't written a function like `onClick` or
+    `after_save` that spans 20+ lines, accomplishing many disparate tasks? One
+    technique I've employed when these are unavoidable (as these identifiers are
+    often dictated by some external API) is to push all sense of "how" out of the
+    bodies of these functions---they merely list off the things to do and the "how"
+    is pushed into other functions. If you read on, we're trying to lighten
+    cognitive load here!
+
+[^identifiers_meaning]:
+    Identifiers include variable names, function names,
+    class names/types, operators---basically anything that has a name that you can
+    control!
+
+[^null_screening]:
+    If this were real code, I would hope that someone would also
+    leave a comment explaining why we are doing this screening!
+
+[^warnings_and_assumptions]:
+    If possible, these should be replaced with good identifier naming, type
     checking, validations, etc.
+
 [^snippet_came_from]: I most often use this for adaptations of code from StackOverflow or blog posts.
+
 [^dimmed_comments]: However, they may be slightly dimmed depending on the code editor.
-[^atomic_commits]: I found [this
-  article][atomic_commit_article] a great summary of
-  the how/why of keeping commits small
-[^use_of_trackers]: Of course, these services have usages beyond the topics
-  addressed in this post like: 
-  * centralizing the agreed upon priority of upcoming work
-  * establishing the owner(s) of specific tasks
-  * informing those outside the dev team about the progress of tasks, etc.
+
+[^atomic_commits]:
+    I found [this article][atomic_commit_article] a great summary of the how/why
+    of keeping commits small
+
+[^use_of_trackers]:
+    Of course, these services have usages beyond the topics
+    addressed in this post like: 
+    * centralizing the agreed upon priority of upcoming work
+    * establishing the owner(s) of specific tasks
+    * informing those outside the dev team about the progress of tasks, etc.
 
 [magic_numbers]: https://en.wikipedia.org/wiki/Magic_number_(programming)
 [twitter_profile]: https://twitter.com/HarryB
