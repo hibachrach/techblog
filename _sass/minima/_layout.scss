@@ -211,6 +211,10 @@
 /**
  * Posts
  */
+.post {
+  max-width: calc(#{$content-width} - (#{$spacing-unit} * 2));
+}
+
 .post-header {
   margin-bottom: $spacing-unit;
 }
@@ -251,4 +255,9 @@
       @include relative-font-size(1.125);
     }
   }
+}
+
+.toc {
+  position: fixed;
+  left: $content-width;
 }

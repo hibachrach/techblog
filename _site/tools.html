@@ -9,15 +9,15 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Core philosophy" />
 <meta property="og:description" content="Core philosophy" />
-<link rel="canonical" href="https://challahscript.com/tools" />
-<meta property="og:url" content="https://challahscript.com/tools" />
+<link rel="canonical" href="http://localhost:4000/tools" />
+<meta property="og:url" content="http://localhost:4000/tools" />
 <meta property="og:site_name" content="ChallahScript" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-04-01T00:00:00-07:00" />
 <script type="application/ld+json">
-{"url":"https://challahscript.com/tools","headline":"A Brief Tour of Tools","dateModified":"2018-04-01T00:00:00-07:00","datePublished":"2018-04-01T00:00:00-07:00","description":"Core philosophy","mainEntityOfPage":{"@type":"WebPage","@id":"https://challahscript.com/tools"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/tools","headline":"A Brief Tour of Tools","dateModified":"2018-04-01T00:00:00-07:00","datePublished":"2018-04-01T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tools"},"description":"Core philosophy","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://challahscript.com/feed.xml" title="ChallahScript" /></head>
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="ChallahScript" /></head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/">ChallahScript</a><nav class="site-nav">
@@ -35,7 +35,45 @@
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+        <aside class='toc'>
+  <ul>
+  <li><a href="#core-philosophy">Core philosophy</a>
+    <ul>
+      <li><a href="#make-your-tools-as-ergonomic-as-possible">Make your tools as ergonomic as possible</a></li>
+      <li><a href="#make-your-tools-accessible-to-an-outsider-without-a-large-amount-of-reconfiguration">Make your tools accessible to an outsider without a large amount of reconfiguration</a></li>
+      <li><a href="#dont-overdo-it">Don’t overdo it</a></li>
+    </ul>
+  </li>
+  <li><a href="#tmux">tmux</a>
+    <ul>
+      <li><a href="#attach-and-detach">Attach and detach</a></li>
+      <li><a href="#prefixes-over-chords">Prefixes over chords</a></li>
+      <li><a href="#how-to-get-started">How to get started</a></li>
+    </ul>
+  </li>
+  <li><a href="#vimneovim">Vim/Neovim</a>
+    <ul>
+      <li><a href="#ubiquity">Ubiquity</a></li>
+      <li><a href="#keyboard-first-design">Keyboard-first design</a></li>
+      <li><a href="#composability">Composability</a></li>
+      <li><a href="#integration-with-the-terminal">Integration with the terminal</a></li>
+      <li><a href="#so-much-more">So much more</a></li>
+      <li><a href="#how-to-get-started-1">How to get started</a></li>
+    </ul>
+  </li>
+  <li><a href="#fzf">FZF</a>
+    <ul>
+      <li><a href="#finding-files-while-also-obeying-your-gitignore">Finding files (while also obeying your <code class="language-plaintext highlighter-rouge">.gitignore</code>)<sup id="fnref:vim-color-note" role="doc-noteref"><a href="#fn:vim-color-note" class="footnote">7</a></sup></a></li>
+      <li><a href="#finding-git-commits">Finding git commits</a></li>
+      <li><a href="#finding-old-commands">Finding old commands</a></li>
+      <li><a href="#how-to-get-started-2">How to get started</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</aside>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">A Brief Tour of Tools</h1>
