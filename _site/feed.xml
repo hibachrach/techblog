@@ -1,4 +1,205 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-07T21:12:46-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">ChallahScript</title><subtitle>Harrison Bachrach's technical blog. Should include some dumb and not-so-dumb stuff about software engineering.</subtitle><entry><title type="html">A Hierarchy of Documentation</title><link href="http://localhost:4000/hiearchy_of_documentation" rel="alternate" type="text/html" title="A Hierarchy of Documentation" /><published>2020-04-24T00:00:00-07:00</published><updated>2020-04-24T00:00:00-07:00</updated><id>http://localhost:4000/hiearchy_of_documentation</id><content type="html" xml:base="http://localhost:4000/hiearchy_of_documentation">&lt;p&gt;“Where should this information live?” is a common question I encounter daily as
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-07T22:02:17-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">ChallahScript</title><subtitle>Harrison Bachrach's technical blog. Should include some dumb and not-so-dumb stuff about software engineering.</subtitle><entry><title type="html">JavaScript Improvements</title><link href="http://localhost:4000/javascript_improvements" rel="alternate" type="text/html" title="JavaScript Improvements" /><published>2020-10-07T00:00:00-07:00</published><updated>2020-10-07T00:00:00-07:00</updated><id>http://localhost:4000/javascript_improvements</id><content type="html" xml:base="http://localhost:4000/javascript_improvements">&lt;p&gt;In this article I go over three things that, in my mind, would make JavaScript
+better. None are new ideas. This post is an expansion of a tweet I had when I saw
+someone asking about improvements for JS. (though probably are impossible for
+various reasons). I’m going to be primarily speaking about browsers and the web,
+though much of this might apply to Node.js (though I’m not as familiar with that
+area so I can’t speak on it confidently).&lt;/p&gt;
+
+&lt;h1 id=&quot;versions-for-js&quot;&gt;Versions for JS&lt;/h1&gt;
+
+&lt;p&gt;Just as a heads up: I’m not really talking about different ECMAScript versions
+(e.g. ES6, ES2019, etc.) here–I’m talking about how most programming languages
+refer to versions.&lt;/p&gt;
+
+&lt;p&gt;Right now, there are two versions of JS: &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode&quot;&gt;Strict mode&lt;/a&gt; and &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Glossary/Sloppy_mode&quot;&gt;“sloppy
+mode”&lt;/a&gt;. Feature detection is done dynamically: if a
+script makes use of any feature or change in the language that isn’t supported
+by the environment running it, it will error, either silently or loudly
+depending on what that feature is.&lt;/p&gt;
+
+&lt;p&gt;To get around this, developers do one or both of the following:&lt;/p&gt;
+
+&lt;h2 id=&quot;strategy-1-transpilepolyfill-to-the-lowest-common-denominator&quot;&gt;Strategy 1: Transpile/polyfill to the lowest common denominator&lt;/h2&gt;
+
+&lt;p&gt;To get around browsers not supporting features, we use tools like &lt;a href=&quot;https://babeljs.io/&quot;&gt;Babel&lt;/a&gt;
+to convert JS making use of newer features to JS supported by all or polyfill
+them with. However, this
+has a few problems:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Most of the time, the transpilation increases file size and parsing time.
+&lt;a href=&quot;https://babeljs.io/repl#?browsers=ie%2011e&amp;amp;build=&amp;amp;builtIns=false&amp;amp;spec=false&amp;amp;loose=false&amp;amp;code_lz=GYewTgBAFAxiB2BnALhAhhEwICMCUEA3gFAC-QA&amp;amp;debug=false&amp;amp;forceAllTransforms=true&amp;amp;shippedProposals=false&amp;amp;circleciRepo=&amp;amp;evaluate=false&amp;amp;fileSize=false&amp;amp;timeTravel=false&amp;amp;sourceType=module&amp;amp;lineWrap=true&amp;amp;presets=es2015&amp;amp;prettier=false&amp;amp;targets=&amp;amp;version=7.11.6&amp;amp;externalPlugins=&quot;&gt;Here&lt;/a&gt; is a dramatic instance of that (&lt;a href=&quot;https://babeljs.io/docs/en/faq#why-is-the-output-of-forof-so-verbose-and-ugly&quot;&gt;not that this is
+Babel’s fault…&lt;/a&gt;). This is despite the fact that most
+browsers don’t need this extra code.&lt;/li&gt;
+  &lt;li&gt;Transpilation requires a target platform. For now, it seems like the defacto
+standard is ES5, but this is already changing: websites that can afford to
+drop older browsers like IE11 are doing so (e.g. GitHub). What is the &lt;em&gt;right&lt;/em&gt;
+target? This might get harder to answer once IE11 disappears and we truly
+only need to support evergreen (i.e. silently auto-updating) browsers.
+Different browsers might implement features in different orders. Automated
+tools like &lt;a href=&quot;https://github.com/browserslist/browserslist&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;browserslist&lt;/code&gt;&lt;/a&gt; reduce the impact of this point,
+but they require upkeep. If a website stops development now but stays online,
+its JS bundle won’t get any faster despite the herd of browsers moving to
+support the newer features in the source JS.&lt;/li&gt;
+  &lt;li&gt;If one takes shortcuts (via options like “loose mode” for various Babel
+transpilations) you could actually be introducing bugs by fragmenting the
+underling semantics of a particular feature (though I admit this problem is
+not super likely).&lt;/li&gt;
+  &lt;li&gt;Transpilation does not get around efforts to dramatically evolve the JS
+language (especially those which remove old baggage). Syntax that is
+fundamentally incompatible with old and seldom-used features simply can’t be
+introduced because we &lt;a href=&quot;https://www.w3.org/TR/html-design-principles/#support-existing-content&quot;&gt;can’t break the web&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;strategy-2-offer-different-bundles-to-different-platforms-based-on-proxies&quot;&gt;Strategy 2: Offer different bundles to different platforms based on proxies&lt;/h2&gt;
+
+&lt;p&gt;The idea is that you can identify what a browser might need based on the version
+presented in its “user agent” (UA). There’s &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent&quot;&gt;a whole article on MDN on why this is a
+bad idea in general&lt;/a&gt;. However, this hasn’t stopped
+influential companies like Twitter from &lt;a href=&quot;https://twitter.com/CharlieCroom/status/1291478104016289799&quot;&gt;doing it&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Google Developers instead &lt;a href=&quot;https://web.dev/codelab-serve-modern-code/#using-es-modules-with-babel&quot;&gt;encourages using the support for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;script
+type=&quot;module&quot;&amp;gt;&lt;/code&gt; as a discriminating factor&lt;/a&gt;. This seems a bit
+better, but of course this is just one test–&lt;a href=&quot;https://thingsthemselves.com/reminder-safari-is-not-an-evergreen-browser/&quot;&gt;Safari is not an evergreen
+browser&lt;/a&gt; and so despite it supporting modules, we can’t
+rely on this to check for support for “generally new feature” availability in
+the medium or long-term.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-versioning-fits-in&quot;&gt;How versioning fits in&lt;/h2&gt;
+
+&lt;p&gt;As I said at the beginning, there already is a versioning scheme for JS. &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode&quot;&gt;Strict
+mode&lt;/a&gt; changes the behavior of JS scripts in a backwards
+incompatible way: if you had a script that worked in “sloppy mode”, it might
+break in strict mode.&lt;/p&gt;
+
+&lt;p&gt;However, it doesn’t look like there are any plans to further extend this
+approach. When &lt;a href=&quot;https://developers.google.com/web/updates/2018/03/smooshgate&quot;&gt;“#SmooshGate”&lt;/a&gt; (an incident of browsers accidentally
+breaking sites relying on old JS extensions by adding incompatible features)
+happened, versioning was suggested by &lt;a href=&quot;https://www.reddit.com/r/javascript/comments/8ln83r/at_todays_tc39_meeting_smooshgate_was_resolved_by/dzhvvhy?utm_source=share&amp;amp;utm_medium=web2x&amp;amp;context=3&quot;&gt;more&lt;/a&gt;
+&lt;a href=&quot;https://news.ycombinator.com/item?id=17141522&quot;&gt;than&lt;/a&gt; &lt;a href=&quot;https://news.ycombinator.com/item?id=17141494&quot;&gt;one&lt;/a&gt;
+&lt;a href=&quot;https://dev.to/joelnet/a-pragmatic-solution-to-flatten-proposal-problem-smooshgate-javascript--jal&quot;&gt;person&lt;/a&gt;. After all, with versioned JS, the issue
+evaporates. Commenters on Hacker News responded to these suggestions, suggesting
+that supporting multiple distinct versions &lt;a href=&quot;https://news.ycombinator.com/item?id=17141024&quot;&gt;introduces significant complexity
+for developers of JS engines&lt;/a&gt;. One person even
+&lt;a href=&quot;https://news.ycombinator.com/item?id=17143251&quot;&gt;noted&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This has been discussed at length and they have decided not to do it. It’s not
+a missing feature, it’s by design.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;There are other negatives to versioning expounded on in &lt;a href=&quot;https://exploringjs.com/es6/ch_one-javascript.html#sec_versioning&quot;&gt;this wonderful
+article&lt;/a&gt;, such as the following quoted here:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Engines become bloated, because they need to implement the semantics of all
+versions. The same applies to tools analyzing the language (e.g. style
+checkers such as JSLint).&lt;/li&gt;
+    &lt;li&gt;Programmers need to remember how the versions differ.&lt;/li&gt;
+    &lt;li&gt;Code becomes harder to refactor, because you need to take versions into
+consideration when you move pieces of code.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I can’t speak much to the work of maintaining engines–this is done by engineers
+far more skilled than myself. My immediate reaction is that managing different
+versions might enable stricter handling of various code, leading to
+simplification, though that’s probably a naive perspective.&lt;/p&gt;
+
+&lt;p&gt;On the topic of remembering how versions differ, I would say this is simple in
+comparison to the inconsistent mess of browser compatibility, JS transpilation
+configuration, and generally frequent change within the ecosystem (though I will
+be the first to say that the last point has been fairly exaggerated). In other
+languages, versions change, and this is considered business as usual.&lt;/p&gt;
+
+&lt;p&gt;With regards to added difficulty in refactoring, I would say that this again is
+probably simpler than other things which we do semi-regularly, such as upgrading
+major versions of important libraries (e.g. jQuery, webpack), and is likely able
+to be automated. Additionally, the difficulty is highly dependent on the
+audacity of those at the reins of JavaScript, who, based on the current
+environment, seem unlikely to cause unnecessary upset.&lt;/p&gt;
+
+&lt;h1 id=&quot;everything-is-an-expression&quot;&gt;Everything is an expression&lt;/h1&gt;
+
+&lt;p&gt;The main area where I wish this were the standard within JS is with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;else&lt;/code&gt;,
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;try&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;catch&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;switch&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;case&lt;/code&gt; statements. This is something that I use very
+frequently within Ruby&lt;/p&gt;
+
+&lt;h2 id=&quot;example-ifelse&quot;&gt;Example: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;else&lt;/code&gt;&lt;/h2&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cond&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;example-trycatch&quot;&gt;Example: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;try&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;catch&lt;/code&gt;&lt;/h2&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;somethingThatMightFail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;fallbackValue&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;example-switchcase&quot;&gt;Example: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;switch&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;case&lt;/code&gt;&lt;/h2&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;apple&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;fruit&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;broccoli&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vegetable&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;unknown&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Its possible this would need to use different keywords to replace &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;case&lt;/code&gt; and
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default&lt;/code&gt; for the sake of JS interpreters and maximizing backwards
+compatibility because &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;case&lt;/code&gt;s function as labels.&lt;/p&gt;
+
+&lt;h2 id=&quot;current-proposals&quot;&gt;Current proposals&lt;/h2&gt;
+
+&lt;p&gt;To achieve this, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;do&lt;/code&gt; expressions were &lt;a href=&quot;https://github.com/tc39/proposal-do-expressions&quot;&gt;proposed 2 years
+ago&lt;/a&gt;, which satisfy the requirements with slightly
+more verbose syntax. E.g. for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;else&lt;/code&gt;, you’d write&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cond&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;However, the proposal is still at stage 1 of &lt;a href=&quot;https://tc39.es/process-document/&quot;&gt;the 4-stage TC39 (effective JS
+steering committee) process&lt;/a&gt;, though &lt;a href=&quot;https://github.com/tc39/proposal-do-expressions/issues/49&quot;&gt;it’s still being
+discussed&lt;/a&gt;. Some have asked “why do we need the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;do&lt;/code&gt;?”
+and make the first syntax (without the explicit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;do&lt;/code&gt;) part of the language,
+though &lt;a href=&quot;https://github.com/tc39/proposal-do-expressions/issues/39#issuecomment-468645498&quot;&gt;this can’t be done without interfering with existing uncommon language
+features&lt;/a&gt; (another example of not being able to change syntax due
+to “version constraint”)&lt;/p&gt;
+
+&lt;h1 id=&quot;improved-caching&quot;&gt;Improved caching&lt;/h1&gt;
+
+&lt;p&gt;I would explain this, but there are actually people &lt;a href=&quot;https://www.pika.dev/&quot;&gt;already solving this
+problem&lt;/a&gt;, and they’ve put together &lt;a href=&quot;https://www.pika.dev/about&quot;&gt;this article explaining how
+caching can be improved around the web&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;However, there are still unresolved issues here: how does this work for
+different browser targets? It’s fine if all libraries are only using
+browser-supported features, but we all know that that won’t be consistent for
+all features across all browsers into the future. A lot of this builds on the
+issues presented in the section on versioning above: if there are no ways to
+talk consistently about versioning, then it’s much harder to solve these
+problems in an automated way.&lt;/p&gt;</content><author><name></name></author><summary type="html">In this article I go over three things that, in my mind, would make JavaScript better. None are new ideas. This post is an expansion of a tweet I had when I saw someone asking about improvements for JS. (though probably are impossible for various reasons). I’m going to be primarily speaking about browsers and the web, though much of this might apply to Node.js (though I’m not as familiar with that area so I can’t speak on it confidently).</summary></entry><entry><title type="html">A Hierarchy of Documentation</title><link href="http://localhost:4000/hiearchy_of_documentation" rel="alternate" type="text/html" title="A Hierarchy of Documentation" /><published>2020-04-24T00:00:00-07:00</published><updated>2020-04-24T00:00:00-07:00</updated><id>http://localhost:4000/hiearchy_of_documentation</id><content type="html" xml:base="http://localhost:4000/hiearchy_of_documentation">&lt;p&gt;“Where should this information live?” is a common question I encounter daily as
 a software engineer. I (alone or in consultation with others) will make a
 decision and that information needs to persist…somewhere. The goal of course
 is to prevent some future engineer (often myself) from encountering some code
