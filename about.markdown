@@ -4,4 +4,4 @@ title: About
 permalink: /about/
 ---
 
-I am Harrison Bachrach, a person trying their best.
+I am Hazel Bachrach, a person trying her best.

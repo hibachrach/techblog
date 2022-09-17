@@ -357,7 +357,7 @@ information?". If you have any thoughts, [I'm on Twitter][twitter_profile].
     * informing those outside the dev team about the progress of tasks, etc.
 
 [magic_numbers]: https://en.wikipedia.org/wiki/Magic_number_(programming)
-[twitter_profile]: https://twitter.com/HarryB
+[twitter_profile]: https://twitter.com/hibachrach
 [atomic_commit_article]: https://www.freshconsulting.com/atomic-commits/
 [code_boring_good_search]: https://www.google.com/search?q=code+boring+good
 [fugitive]: https://github.com/tpope/vim-fugitive
