@@ -27,6 +27,9 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://challahscript.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: hibachrach
 github_username:  hibachrach
+mastodon:
+  - username: hibachrach
+    instance: tech.lgbt
 
 permalink: /:title
 
