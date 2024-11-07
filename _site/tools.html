@@ -2,9 +2,9 @@
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>A Brief Tour of Tools | ChallahScript</title>
-<meta name="generator" content="Jekyll v4.1.0" />
+<meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="A Brief Tour of Tools" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Core philosophy" />
@@ -14,8 +14,10 @@
 <meta property="og:site_name" content="ChallahScript" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-04-01T00:00:00-07:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="A Brief Tour of Tools" />
 <script type="application/ld+json">
-{"url":"https://challahscript.com/tools","headline":"A Brief Tour of Tools","dateModified":"2018-04-01T00:00:00-07:00","datePublished":"2018-04-01T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://challahscript.com/tools"},"description":"Core philosophy","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2018-04-01T00:00:00-07:00","datePublished":"2018-04-01T00:00:00-07:00","description":"Core philosophy","headline":"A Brief Tour of Tools","mainEntityOfPage":{"@type":"WebPage","@id":"https://challahscript.com/tools"},"url":"https://challahscript.com/tools"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://challahscript.com/feed.xml" title="ChallahScript" /></head>
 <body><header class="site-header" role="banner">
@@ -63,7 +65,7 @@
   </li>
   <li><a href="#fzf">FZF</a>
     <ul>
-      <li><a href="#finding-files-while-also-obeying-your-gitignore">Finding files (while also obeying your <code class="language-plaintext highlighter-rouge">.gitignore</code>)<sup id="fnref:vim-color-note" role="doc-noteref"><a href="#fn:vim-color-note" class="footnote">7</a></sup></a></li>
+      <li><a href="#finding-files-while-also-obeying-your-gitignore">Finding files (while also obeying your <code class="language-plaintext highlighter-rouge">.gitignore</code>)<sup id="fnref:vim-color-note" role="doc-noteref"><a href="#fn:vim-color-note" class="footnote" rel="footnote">7</a></sup></a></li>
       <li><a href="#finding-git-commits">Finding git commits</a></li>
       <li><a href="#finding-old-commands">Finding old commands</a></li>
       <li><a href="#how-to-get-started-2">How to get started</a></li>
@@ -95,7 +97,7 @@ that most likely isn’t as tolling, as say, construction, but labor nonetheless
 Take care of your body. If you try to fight it, it’s likely to win. Even if
 you’re not feeling active pain now, you might start experiencing symptoms after
 years of damage. “It works for me” shouldn’t be the end of it. Get an ergonomic
-chair, keyboard, and mouse to reduce strain. Here<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup><sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote">2</a></sup> are some good
+chair, keyboard, and mouse to reduce strain. Here<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup><sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> are some good
 guidelines on reducing eyestrain (I can personally vouch for tools like
 <a href="https://justgetflux.com/">f.lux</a>!).</p>
 
@@ -117,7 +119,7 @@ reduce extraneous repetitive motion, and eliminate unnecessary mental work to
 get from point A to point B. Some things that help towards this end include:</p>
 
 <ul>
-  <li>Reducing mouse usage<sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote">3</a></sup></li>
+  <li>Reducing mouse usage<sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote" rel="footnote">3</a></sup></li>
   <li>Reducing chorded shortcuts (e.g. minimizing stuff like <kbd>shift</kbd>+<kbd>&#8984;</kbd>+<kbd>option</kbd>+<kbd>t</kbd>)</li>
   <li>Reducing the steps to switch between tools and contexts</li>
 </ul>
@@ -130,7 +132,7 @@ comfortable for <em>you</em>. However, that doesn’t mean there won’t be a ti
 someone else might have to use your keyboard or read your monitor. It should be
 easy enough for that visitor to understand what’s going on or do some simple
 tasks without you restarting your damn machine. Note that that doesn’t mean
-disabling all of your config when someone walks over<sup id="fnref:wizardry" role="doc-noteref"><a href="#fn:wizardry" class="footnote">4</a></sup>.</p>
+disabling all of your config when someone walks over<sup id="fnref:wizardry" role="doc-noteref"><a href="#fn:wizardry" class="footnote" rel="footnote">4</a></sup>.</p>
 
 <h3 id="dont-overdo-it">Don’t overdo it</h3>
 
@@ -142,7 +144,7 @@ the tools while reducing strain, whether that strain is physical or mental.</p>
 
 <h2 id="tmux">tmux</h2>
 
-<p>I use tmux inside of iTerm2<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote">5</a></sup>. Tmux is a “terminal multiplexer” which is an
+<p>I use tmux inside of iTerm2<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">5</a></sup>. Tmux is a “terminal multiplexer” which is an
 incredibly geeky way of saying it allows you to have windows/splits inside of a
 OS level window. Here are my main motivations for using it.</p>
 
@@ -165,7 +167,7 @@ to restart.</p>
 windows in a GUI. Which tend to be pretty poorly organized for search and
 retrieval. Even in macOS, if I have a window that is minimized, I have to either
 use my mouse to inspect my collection of hidden windows or cycle through them
-using <kbd>control</kbd>+<kbd>f4</kbd><sup id="fnref:cycle" role="doc-noteref"><a href="#fn:cycle" class="footnote">6</a></sup>.</p>
+using <kbd>control</kbd>+<kbd>f4</kbd><sup id="fnref:cycle" role="doc-noteref"><a href="#fn:cycle" class="footnote" rel="footnote">6</a></sup>.</p>
 
 <h3 id="prefixes-over-chords">Prefixes over chords</h3>
 
@@ -310,7 +312,7 @@ started.</p>
 <p>FZF is a fuzzy-finder for the shell that you can use in a bunch of different
 ways, like…</p>
 
-<h3 id="finding-files-while-also-obeying-your-gitignore">Finding files (while also obeying your <code class="language-plaintext highlighter-rouge">.gitignore</code>)<sup id="fnref:vim-color-note" role="doc-noteref"><a href="#fn:vim-color-note" class="footnote">7</a></sup></h3>
+<h3 id="finding-files-while-also-obeying-your-gitignore">Finding files (while also obeying your <code class="language-plaintext highlighter-rouge">.gitignore</code>)<sup id="fnref:vim-color-note" role="doc-noteref"><a href="#fn:vim-color-note" class="footnote" rel="footnote">7</a></sup></h3>
 <script src="https://asciinema.org/a/28rDzTqI5nEE9mM89DKZmf5Zo.js" id="asciicast-28rDzTqI5nEE9mM89DKZmf5Zo" async=""></script>
 
 <h3 id="finding-git-commits">Finding git commits</h3>
