@@ -1,52 +1,62 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>JavaScript Improvements | ChallahScript</title>
-<meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="JavaScript Improvements" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="In this article I go over three things that, in my mind, would make JavaScript better. None are new ideas. This post is an expansion of a tweet I had when I saw someone asking about improvements for JS. (though probably are impossible for various reasons). I’m going to be primarily speaking about browsers and the web, though much of this might apply to Node.js (though I’m not as familiar with that area so I can’t speak on it confidently)." />
-<meta property="og:description" content="In this article I go over three things that, in my mind, would make JavaScript better. None are new ideas. This post is an expansion of a tweet I had when I saw someone asking about improvements for JS. (though probably are impossible for various reasons). I’m going to be primarily speaking about browsers and the web, though much of this might apply to Node.js (though I’m not as familiar with that area so I can’t speak on it confidently)." />
-<link rel="canonical" href="https://challahscript.com/javascript_improvements" />
-<meta property="og:url" content="https://challahscript.com/javascript_improvements" />
-<meta property="og:site_name" content="ChallahScript" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-10-07T00:00:00-07:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="JavaScript Improvements" />
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="JavaScript Improvements">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="In this article I go over three things that, in my mind, would make JavaScript better. None are new ideas. This post is an expansion of a tweet I had when I saw someone asking about improvements for JS. (though probably are impossible for various reasons). I’m going to be primarily speaking about browsers and the web, though much of this might apply to Node.js (though I’m not as familiar with that area so I can’t speak on it confidently).">
+<meta property="og:description" content="In this article I go over three things that, in my mind, would make JavaScript better. None are new ideas. This post is an expansion of a tweet I had when I saw someone asking about improvements for JS. (though probably are impossible for various reasons). I’m going to be primarily speaking about browsers and the web, though much of this might apply to Node.js (though I’m not as familiar with that area so I can’t speak on it confidently).">
+<link rel="canonical" href="https://challahscript.com/javascript_improvements">
+<meta property="og:url" content="https://challahscript.com/javascript_improvements">
+<meta property="og:site_name" content="ChallahScript">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-10-07T00:00:00-07:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="JavaScript Improvements">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2020-10-07T00:00:00-07:00","datePublished":"2020-10-07T00:00:00-07:00","description":"In this article I go over three things that, in my mind, would make JavaScript better. None are new ideas. This post is an expansion of a tweet I had when I saw someone asking about improvements for JS. (though probably are impossible for various reasons). I’m going to be primarily speaking about browsers and the web, though much of this might apply to Node.js (though I’m not as familiar with that area so I can’t speak on it confidently).","headline":"JavaScript Improvements","mainEntityOfPage":{"@type":"WebPage","@id":"https://challahscript.com/javascript_improvements"},"url":"https://challahscript.com/javascript_improvements"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://challahscript.com/feed.xml" title="ChallahScript" /></head>
-<body><header class="site-header" role="banner">
+<link rel="stylesheet" href="/assets/main.css">
+<link type="application/atom+xml" rel="alternate" href="https://challahscript.com/feed.xml" title="ChallahScript">
+</head>
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">ChallahScript</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/">ChallahScript</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
 
         <div class="trigger"><a class="page-link" href="/about/">About</a></div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <aside class='toc'>
+        <aside class="toc">
   <ul>
-  <li><a href="#versions-for-js">Versions for JS</a>
+  <li>
+<a href="#versions-for-js">Versions for JS</a>
     <ul>
       <li><a href="#strategy-1-transpilepolyfill-to-the-lowest-common-denominator">Strategy 1: Transpile/polyfill to the lowest common denominator</a></li>
       <li><a href="#strategy-2-offer-different-bundles-to-different-platforms-based-on-proxies">Strategy 2: Offer different bundles to different platforms based on proxies</a></li>
       <li><a href="#how-versioning-fits-in">How versioning fits in</a></li>
     </ul>
   </li>
-  <li><a href="#everything-is-an-expression">Everything is an expression</a>
+  <li>
+<a href="#everything-is-an-expression">Everything is an expression</a>
     <ul>
       <li><a href="#example-ifelse">Example: <code class="language-plaintext highlighter-rouge">if</code>/<code class="language-plaintext highlighter-rouge">else</code></a></li>
       <li><a href="#example-trycatch">Example: <code class="language-plaintext highlighter-rouge">try</code>/<code class="language-plaintext highlighter-rouge">catch</code></a></li>
@@ -99,7 +109,7 @@ has a few problems:</p>
 
 <ol>
   <li>Most of the time, the transpilation increases file size and parsing time.
-<a href="https://babeljs.io/repl#?browsers=ie%2011e&amp;build=&amp;builtIns=false&amp;spec=false&amp;loose=false&amp;code_lz=GYewTgBAFAxiB2BnALhAhhEwICMCUEA3gFAC-QA&amp;debug=false&amp;forceAllTransforms=true&amp;shippedProposals=false&amp;circleciRepo=&amp;evaluate=false&amp;fileSize=false&amp;timeTravel=false&amp;sourceType=module&amp;lineWrap=true&amp;presets=es2015&amp;prettier=false&amp;targets=&amp;version=7.11.6&amp;externalPlugins=">Here</a> is a dramatic instance of that (<a href="https://babeljs.io/docs/en/faq#why-is-the-output-of-forof-so-verbose-and-ugly">not that this is
+<a href="https://babeljs.io/repl#?browsers=ie%2011e&build=&builtIns=false&spec=false&loose=false&code_lz=GYewTgBAFAxiB2BnALhAhhEwICMCUEA3gFAC-QA&debug=false&forceAllTransforms=true&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015&prettier=false&targets=&version=7.11.6&externalPlugins=">Here</a> is a dramatic instance of that (<a href="https://babeljs.io/docs/en/faq#why-is-the-output-of-forof-so-verbose-and-ugly">not that this is
 Babel’s fault…</a>). This is despite the fact that most
 browsers don’t need this extra code.</li>
   <li>Transpilation requires a target platform. For now, it seems like the defacto
@@ -146,7 +156,7 @@ break in strict mode.</p>
 <p>However, it doesn’t look like there are any plans to further extend this
 approach. When <a href="https://developers.google.com/web/updates/2018/03/smooshgate">“#SmooshGate”</a> (an incident of browsers accidentally
 breaking sites relying on old JS extensions by adding incompatible features)
-happened, versioning was suggested by <a href="https://www.reddit.com/r/javascript/comments/8ln83r/at_todays_tc39_meeting_smooshgate_was_resolved_by/dzhvvhy?utm_source=share&amp;utm_medium=web2x&amp;context=3">more</a>
+happened, versioning was suggested by <a href="https://www.reddit.com/r/javascript/comments/8ln83r/at_todays_tc39_meeting_smooshgate_was_resolved_by/dzhvvhy?utm_source=share&utm_medium=web2x&context=3">more</a>
 <a href="https://news.ycombinator.com/item?id=17141522">than</a> <a href="https://news.ycombinator.com/item?id=17141494">one</a>
 <a href="https://dev.to/joelnet/a-pragmatic-solution-to-flatten-proposal-problem-smooshgate-javascript--jal">person</a>. After all, with versioned JS, the issue
 evaporates. Commenters on Hacker News responded to these suggestions, suggesting
@@ -196,7 +206,8 @@ environment, seem unlikely to cause unnecessary upset.</p>
 <code class="language-plaintext highlighter-rouge">try</code>/<code class="language-plaintext highlighter-rouge">catch</code>, and <code class="language-plaintext highlighter-rouge">switch</code>/<code class="language-plaintext highlighter-rouge">case</code> statements. This is something that I use very
 frequently within Ruby</p>
 
-<h2 id="example-ifelse">Example: <code class="language-plaintext highlighter-rouge">if</code>/<code class="language-plaintext highlighter-rouge">else</code></h2>
+<h2 id="example-ifelse">Example: <code class="language-plaintext highlighter-rouge">if</code>/<code class="language-plaintext highlighter-rouge">else</code>
+</h2>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">cond</span><span class="p">)</span> <span class="p">{</span>
@@ -206,7 +217,8 @@ frequently within Ruby</p>
   <span class="p">};</span>
 </code></pre></div></div>
 
-<h2 id="example-trycatch">Example: <code class="language-plaintext highlighter-rouge">try</code>/<code class="language-plaintext highlighter-rouge">catch</code></h2>
+<h2 id="example-trycatch">Example: <code class="language-plaintext highlighter-rouge">try</code>/<code class="language-plaintext highlighter-rouge">catch</code>
+</h2>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span>
   <span class="k">try</span> <span class="p">{</span>
@@ -216,7 +228,8 @@ frequently within Ruby</p>
   <span class="p">};</span>
 </code></pre></div></div>
 
-<h2 id="example-switchcase">Example: <code class="language-plaintext highlighter-rouge">switch</code>/<code class="language-plaintext highlighter-rouge">case</code></h2>
+<h2 id="example-switchcase">Example: <code class="language-plaintext highlighter-rouge">switch</code>/<code class="language-plaintext highlighter-rouge">case</code>
+</h2>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span>
   <span class="k">switch</span> <span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
@@ -273,7 +286,8 @@ talk consistently about versioning, then it’s much harder to solve these
 problems in an automated way.</p>
 
 
-  </div><a class="u-url" href="/javascript_improvements" hidden></a>
+  </div>
+<a class="u-url" href="/javascript_improvements" hidden></a>
 </article><script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
 <script>
   // if a p only has an img inside of it, urlify the alt text 
@@ -314,14 +328,21 @@ problems in an automated way.</p>
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">ChallahScript</li><li><a class="u-email" href="mailto:bachrach.hazel@gmail.com">bachrach.hazel@gmail.com</a></li></ul>
+          <li class="p-name">ChallahScript</li>
+<li><a class="u-email" href="mailto:hibachrach@gmail.com">hibachrach@gmail.com</a></li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/hibachrach"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">hibachrach</span></a></li><li><a rel="me" href="https://tech.lgbt/@hibachrach"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">hibachrach</span></a></li><li><a href="https://www.twitter.com/hibachrach"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">hibachrach</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list">
+<li><a href="https://github.com/hibachrach"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">hibachrach</span></a></li>
+<li><a href="https://bsky.app/profile/hibachrach.com"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#bluesky"></use></svg> <span class="username">hibachrach.com</span></a></li>
+<li><a rel="me" href="https://tech.lgbt/@hibachrach"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">hibachrach</span></a></li>
+</ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Hazel Bachrach&#39;s technical blog. Should include some dumb and not-so-dumb stuff about software engineering.</p>
+        <p>Hazel Bachrach's technical blog. Should include some dumb and not-so-dumb stuff about software engineering.</p>
       </div>
     </div>
 

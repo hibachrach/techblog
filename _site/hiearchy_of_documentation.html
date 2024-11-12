@@ -1,45 +1,54 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>A Hierarchy of Documentation | ChallahScript</title>
-<meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="A Hierarchy of Documentation" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="“Where should this information live?” is a common question I encounter daily as a software engineer. I (alone or in consultation with others) will make a decision and that information needs to persist…somewhere. The goal of course is to prevent some future engineer (often myself) from encountering some code and asking “why?” or, even worse, “what?”." />
-<meta property="og:description" content="“Where should this information live?” is a common question I encounter daily as a software engineer. I (alone or in consultation with others) will make a decision and that information needs to persist…somewhere. The goal of course is to prevent some future engineer (often myself) from encountering some code and asking “why?” or, even worse, “what?”." />
-<link rel="canonical" href="https://challahscript.com/hiearchy_of_documentation" />
-<meta property="og:url" content="https://challahscript.com/hiearchy_of_documentation" />
-<meta property="og:site_name" content="ChallahScript" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-04-24T00:00:00-07:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="A Hierarchy of Documentation" />
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="A Hierarchy of Documentation">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="“Where should this information live?” is a common question I encounter daily as a software engineer. I (alone or in consultation with others) will make a decision and that information needs to persist…somewhere. The goal of course is to prevent some future engineer (often myself) from encountering some code and asking “why?” or, even worse, “what?”.">
+<meta property="og:description" content="“Where should this information live?” is a common question I encounter daily as a software engineer. I (alone or in consultation with others) will make a decision and that information needs to persist…somewhere. The goal of course is to prevent some future engineer (often myself) from encountering some code and asking “why?” or, even worse, “what?”.">
+<link rel="canonical" href="https://challahscript.com/hiearchy_of_documentation">
+<meta property="og:url" content="https://challahscript.com/hiearchy_of_documentation">
+<meta property="og:site_name" content="ChallahScript">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-04-24T00:00:00-07:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="A Hierarchy of Documentation">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2020-04-24T00:00:00-07:00","datePublished":"2020-04-24T00:00:00-07:00","description":"“Where should this information live?” is a common question I encounter daily as a software engineer. I (alone or in consultation with others) will make a decision and that information needs to persist…somewhere. The goal of course is to prevent some future engineer (often myself) from encountering some code and asking “why?” or, even worse, “what?”.","headline":"A Hierarchy of Documentation","mainEntityOfPage":{"@type":"WebPage","@id":"https://challahscript.com/hiearchy_of_documentation"},"url":"https://challahscript.com/hiearchy_of_documentation"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://challahscript.com/feed.xml" title="ChallahScript" /></head>
-<body><header class="site-header" role="banner">
+<link rel="stylesheet" href="/assets/main.css">
+<link type="application/atom+xml" rel="alternate" href="https://challahscript.com/feed.xml" title="ChallahScript">
+</head>
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">ChallahScript</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/">ChallahScript</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
 
         <div class="trigger"><a class="page-link" href="/about/">About</a></div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <aside class='toc'>
+        <aside class="toc">
   <ul>
-  <li><a href="#code-identifiers">Code (Identifiers)</a>
+  <li>
+<a href="#code-identifiers">Code (Identifiers)</a>
     <ul>
       <li><a href="#accessibility">Accessibility</a></li>
       <li><a href="#responsibilities">Responsibilities</a></li>
@@ -47,21 +56,24 @@
       <li><a href="#caveat-enigmatic-language-syntax">Caveat: Enigmatic language syntax</a></li>
     </ul>
   </li>
-  <li><a href="#in-code-comments">In-code comments</a>
+  <li>
+<a href="#in-code-comments">In-code comments</a>
     <ul>
       <li><a href="#accessibility-1">Accessibility</a></li>
       <li><a href="#responsibilities-1">Responsibilities</a></li>
       <li><a href="#common-pitfall-poor-comment-location">Common Pitfall: Poor Comment Location</a></li>
     </ul>
   </li>
-  <li><a href="#commit-messages">Commit Messages</a>
+  <li>
+<a href="#commit-messages">Commit Messages</a>
     <ul>
       <li><a href="#accessibility-2">Accessibility</a></li>
       <li><a href="#responsibilities-2">Responsibilities</a></li>
       <li><a href="#tip-using-references-to-other-commits">Tip: using references to other commits</a></li>
     </ul>
   </li>
-  <li><a href="#pullmerge-requests--issue-trackers">Pull/merge requests &amp; issue trackers</a>
+  <li>
+<a href="#pullmerge-requests--issue-trackers">Pull/merge requests &amp; issue trackers</a>
     <ul>
       <li><a href="#accessibility-3">Accessibility</a></li>
       <li><a href="#responsibilities-3">Responsibilities</a></li>
@@ -130,7 +142,8 @@ always be the first place to put information, especially</p>
 <ul>
   <li>What values represent</li>
   <li>What functions do &amp; how they do it</li>
-  <li>(Sparingly) when functions are invoked<sup id="fnref:identifiers_when" role="doc-noteref"><a href="#fn:identifiers_when" class="footnote" rel="footnote">2</a></sup></li>
+  <li>(Sparingly) when functions are invoked<sup id="fnref:identifiers_when" role="doc-noteref"><a href="#fn:identifiers_when" class="footnote" rel="footnote">2</a></sup>
+</li>
 </ul>
 
 <h3 id="identifiers-and-code-simplification">Identifiers and Code Simplification</h3>
@@ -188,10 +201,13 @@ variable. What that’s done is document the intention of what the condition is
 <em>supposed</em> to mean. This has a few benefits:</p>
 
 <ul>
-  <li><strong>Each line is doing less, cognitively.</strong> That means you have to think about
+  <li>
+<strong>Each line is doing less, cognitively.</strong> That means you have to think about
 less when reading. You’re going to read code way more than you’re going to
-write it—why make it harder for yourself?<sup id="fnref:code_boring_good" role="doc-noteref"><a href="#fn:code_boring_good" class="footnote" rel="footnote">3</a></sup></li>
-  <li><strong>Pulling that connection out and labeling it makes it harder to miss when
+write it—why make it harder for yourself?<sup id="fnref:code_boring_good" role="doc-noteref"><a href="#fn:code_boring_good" class="footnote" rel="footnote">3</a></sup>
+</li>
+  <li>
+<strong>Pulling that connection out and labeling it makes it harder to miss when
 changes happen.</strong> At some point, how we determine whether a user has
 update access will probably change. Additionally, the body of the first branch
 of the <code class="language-plaintext highlighter-rouge">if</code> may get much larger. It’s always easier to keep things tidy one
@@ -256,11 +272,15 @@ decisions, etc. Comments are where you put</p>
 <ul>
   <li>Explanations of why a section of code is the way that it is</li>
   <li>Explanations of why a section of code <em>isn’t</em> written another way <strong>if one may
-be tempted to rewrite it</strong></li>
+be tempted to rewrite it</strong>
+</li>
   <li>Contextual information for where a code snippet came from if possibly helpful
-to future readers<sup id="fnref:snippet_came_from" role="doc-noteref"><a href="#fn:snippet_came_from" class="footnote" rel="footnote">5</a></sup></li>
-  <li>Explanations of <a href="#caveat-enigmatic-language-syntax">enigmatic language syntax</a></li>
-  <li>(Sparingly) warnings and assumptions<sup id="fnref:warnings_and_assumptions" role="doc-noteref"><a href="#fn:warnings_and_assumptions" class="footnote" rel="footnote">6</a></sup></li>
+to future readers<sup id="fnref:snippet_came_from" role="doc-noteref"><a href="#fn:snippet_came_from" class="footnote" rel="footnote">5</a></sup>
+</li>
+  <li>Explanations of <a href="#caveat-enigmatic-language-syntax">enigmatic language syntax</a>
+</li>
+  <li>(Sparingly) warnings and assumptions<sup id="fnref:warnings_and_assumptions" role="doc-noteref"><a href="#fn:warnings_and_assumptions" class="footnote" rel="footnote">6</a></sup>
+</li>
 </ul>
 
 <h3 id="common-pitfall-poor-comment-location">Common Pitfall: Poor Comment Location</h3>
@@ -302,7 +322,8 @@ eye on comments. Some techniques I’ve found to be helpful:</p>
 possible. E.g. if talking about code in the first branch of an <code class="language-plaintext highlighter-rouge">if</code> statement,
 put that comment <strong>in the first branch</strong>, not above the entire statement:</p>
 
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// comment about why `floarp` should be used --- BAD</span>
+    <div class="language-javascript highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c1">// comment about why `floarp` should be used --- BAD</span>
 <span class="k">if</span> <span class="p">(</span><span class="nx">somethingOrOther</span><span class="p">())</span> <span class="p">{</span>
   <span class="c1">// comment about why `floarp` should be used --- GOOD</span>
   <span class="nx">floarp</span><span class="p">();</span>
@@ -413,7 +434,7 @@ information?”. If you have any thoughts, <a href="https://twitter.com/hibachra
 
       <p>Identifiers include variable names, function names,
 class names/types, operators—basically anything that has a name that you can
-control! <a href="#fnref:identifiers_meaning" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+control! <a href="#fnref:identifiers_meaning" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:identifiers_when" role="doc-endnote">
 
@@ -426,31 +447,31 @@ technique I’ve employed when these are unavoidable (as these identifiers are
 often dictated by some external API) is to push all sense of “how” out of the
 bodies of these functions—they merely list off the things to do and the “how”
 is pushed into other functions. If you read on, we’re trying to lighten
-cognitive load here! <a href="#fnref:identifiers_when" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+cognitive load here! <a href="#fnref:identifiers_when" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:code_boring_good" role="doc-endnote">
-      <p><a href="https://www.google.com/search?q=code+boring+good">This is not a new idea</a>. <a href="#fnref:code_boring_good" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p><a href="https://www.google.com/search?q=code+boring+good">This is not a new idea</a>. <a href="#fnref:code_boring_good" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:dimmed_comments" role="doc-endnote">
-      <p>However, they may be slightly dimmed depending on the code editor. <a href="#fnref:dimmed_comments" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>However, they may be slightly dimmed depending on the code editor. <a href="#fnref:dimmed_comments" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:snippet_came_from" role="doc-endnote">
-      <p>I most often use this for adaptations of code from StackOverflow or blog posts. <a href="#fnref:snippet_came_from" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>I most often use this for adaptations of code from StackOverflow or blog posts. <a href="#fnref:snippet_came_from" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:warnings_and_assumptions" role="doc-endnote">
 
       <p>If possible, these should be replaced with good identifier naming, type
-checking, validations, etc. <a href="#fnref:warnings_and_assumptions" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+checking, validations, etc. <a href="#fnref:warnings_and_assumptions" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:null_screening" role="doc-endnote">
 
       <p>If this were real code, I would hope that someone would also
-leave a comment explaining why we are doing this screening! <a href="#fnref:null_screening" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+leave a comment explaining why we are doing this screening! <a href="#fnref:null_screening" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:atomic_commits" role="doc-endnote">
 
       <p>I found <a href="https://www.freshconsulting.com/atomic-commits/">this article</a> a great summary of the how/why
-of keeping commits small <a href="#fnref:atomic_commits" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+of keeping commits small <a href="#fnref:atomic_commits" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:use_of_trackers" role="doc-endnote">
 
@@ -461,12 +482,13 @@ addressed in this post like:</p>
         <li>establishing the owner(s) of specific tasks</li>
         <li>informing those outside the dev team about the progress of tasks, etc.</li>
       </ul>
-      <p><a href="#fnref:use_of_trackers" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p><a href="#fnref:use_of_trackers" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
   </ol>
 </div>
 
-  </div><a class="u-url" href="/hiearchy_of_documentation" hidden></a>
+  </div>
+<a class="u-url" href="/hiearchy_of_documentation" hidden></a>
 </article><script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
 <script>
   // if a p only has an img inside of it, urlify the alt text 
@@ -507,14 +529,21 @@ addressed in this post like:</p>
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">ChallahScript</li><li><a class="u-email" href="mailto:bachrach.hazel@gmail.com">bachrach.hazel@gmail.com</a></li></ul>
+          <li class="p-name">ChallahScript</li>
+<li><a class="u-email" href="mailto:hibachrach@gmail.com">hibachrach@gmail.com</a></li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/hibachrach"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">hibachrach</span></a></li><li><a rel="me" href="https://tech.lgbt/@hibachrach"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">hibachrach</span></a></li><li><a href="https://www.twitter.com/hibachrach"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">hibachrach</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list">
+<li><a href="https://github.com/hibachrach"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">hibachrach</span></a></li>
+<li><a href="https://bsky.app/profile/hibachrach.com"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#bluesky"></use></svg> <span class="username">hibachrach.com</span></a></li>
+<li><a rel="me" href="https://tech.lgbt/@hibachrach"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">hibachrach</span></a></li>
+</ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Hazel Bachrach&#39;s technical blog. Should include some dumb and not-so-dumb stuff about software engineering.</p>
+        <p>Hazel Bachrach's technical blog. Should include some dumb and not-so-dumb stuff about software engineering.</p>
       </div>
     </div>
 
