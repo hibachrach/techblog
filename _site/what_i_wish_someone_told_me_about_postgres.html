@@ -466,87 +466,89 @@ Here’s just a few in order of less to more restrictive:</p>
 
 <p>And here’s how they conflict (X means they are conflicting):</p>
 
-<table class="table" summary="Conflicting Lock Modes">
-  <colgroup>
-    <col>
-    <col>
-    <col>
-    <col>
-    <col>
-    <col>
-    <col>
-  </colgroup>
-  <thead>
-    <tr>
-      <th rowspan="2">Requested Lock Mode</th>
-      <th colspan="8" align="center">Existing Lock Mode</th>
-    </tr>
-    <tr>
-      <th><code>ACCESS SHARE</code></th>
-      <th><code>ROW SHARE</code></th>
-      <th><code>ROW EXCL.</code></th>
-      <th><code>SHARE UPDATE EXCL.</code></th>
-      <th><code>SHARE</code></th>
-      <th><code>ACCESS EXCL.</code></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>ACCESS SHARE</code></td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center">X</td>
-    </tr>
-    <tr>
-      <td><code>ROW SHARE</code></td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center">X</td>
-    </tr>
-    <tr>
-      <td><code>ROW EXCL.</code></td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center">X</td>
-      <td align="center">X</td>
-    </tr>
-    <tr>
-      <td><code>SHARE UPDATE EXCL.</code></td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center">X</td>
-      <td align="center">X</td>
-      <td align="center">X</td>
-    </tr>
-    <tr>
-      <td><code>SHARE</code></td>
-      <td align="center"> </td>
-      <td align="center"> </td>
-      <td align="center">X</td>
-      <td align="center">X</td>
-      <td align="center"> </td>
-      <td align="center">X</td>
-    </tr>
-    <tr>
-      <td><code>ACCESS EXCL.</code></td>
-      <td align="center">X</td>
-      <td align="center">X</td>
-      <td align="center">X</td>
-      <td align="center">X</td>
-      <td align="center">X</td>
-      <td align="center">X</td>
-    </tr>
-  </tbody>
-</table>
+<div class="scrollable-wrapper-x-mobile">
+  <table class="table" summary="Conflicting Lock Modes">
+    <colgroup>
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th rowspan="2">Requested Lock Mode</th>
+        <th colspan="8" align="center">Existing Lock Mode</th>
+      </tr>
+      <tr>
+        <th><code>ACCESS SHARE</code></th>
+        <th><code>ROW SHARE</code></th>
+        <th><code>ROW EXCL.</code></th>
+        <th><code>SHARE UPDATE EXCL.</code></th>
+        <th><code>SHARE</code></th>
+        <th><code>ACCESS EXCL.</code></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>ACCESS SHARE</code></td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center">X</td>
+      </tr>
+      <tr>
+        <td><code>ROW SHARE</code></td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center">X</td>
+      </tr>
+      <tr>
+        <td><code>ROW EXCL.</code></td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center">X</td>
+        <td align="center">X</td>
+      </tr>
+      <tr>
+        <td><code>SHARE UPDATE EXCL.</code></td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center">X</td>
+        <td align="center">X</td>
+        <td align="center">X</td>
+      </tr>
+      <tr>
+        <td><code>SHARE</code></td>
+        <td align="center"> </td>
+        <td align="center"> </td>
+        <td align="center">X</td>
+        <td align="center">X</td>
+        <td align="center"> </td>
+        <td align="center">X</td>
+      </tr>
+      <tr>
+        <td><code>ACCESS EXCL.</code></td>
+        <td align="center">X</td>
+        <td align="center">X</td>
+        <td align="center">X</td>
+        <td align="center">X</td>
+        <td align="center">X</td>
+        <td align="center">X</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <p>For example consider the following for a single table:</p>
 

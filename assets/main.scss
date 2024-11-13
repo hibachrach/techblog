@@ -3,3 +3,10 @@
 ---
 
 @import "minima";
+
+@include media-query($on-palm) {
+  .scrollable-wrapper-x-mobile {
+    overflow-x: auto;
+    mask: alpha linear-gradient(90deg, #000 97%, #fff0);
+  }
+}

@@ -280,4 +280,6 @@ table td { border: 1px solid #828282; }
 
 .highlight .il { color: #099; }
 
+@media screen and (max-width: 600px) { .scrollable-wrapper-x-mobile { overflow-x: auto; mask: alpha linear-gradient(90deg, #000 97%, #fff0); } }
+
 /*# sourceMappingURL=main.css.map */
