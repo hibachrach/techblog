@@ -560,7 +560,7 @@ However, it has its downsides if used improperly.
 
 ### JSONB can be slower than normal columns
 
-While JSONB is quite flexible, Postgres doesn't keep track of statistics which can mean that an equivalent query against a set of "normal" columns can be significantly slower than against a single JSONB column.
+While JSONB is quite flexible, Postgres doesn't keep track of JSONB columns' statistics which can mean that an equivalent query against a single JSONB column can be significantly slower than against a set of "normal" columns.
 [Here's a great blog post with someone demonstrating it making things 2000x slower!][jsonb_statistics_blog_post]
 
 [jsonb_statistics_blog_post]: https://www.heap.io/blog/when-to-avoid-jsonb-in-a-postgresql-schema
