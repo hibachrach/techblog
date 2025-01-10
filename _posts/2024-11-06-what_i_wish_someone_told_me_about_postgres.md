@@ -1,7 +1,8 @@
 ---
-layout: post
-title:  What I Wish Someone Told Me About Postgres
-date:   2024-11-11
+layout:       post
+title:        What I Wish Someone Told Me About Postgres
+date:         2024-11-11
+updated_date: 2025-01-09
 ---
 
 I've been working professionally for the better part of a decade on web apps and, in that time, I've had to learn how to use a lot of different systems and tools.
@@ -219,7 +220,7 @@ While useful, don't put this in any queries that you ship to production--your fu
 ### What is an index?
 
 An index is a data structure intended to help with looking up data--giving Postgres the responsibility of maintaining a "shortcut directory" to a table's rows by various fields.
-By far the most common kind is a [B-tree][b_tree] index, which is a kind of search tree that work for both exact equality conditions (e.g. `WHERE a = 3`) as well as range conditions (e.g. `WHERE a > 5`).
+By far the most common kind is a [B-tree][b_tree] index, which is a kind of search tree that works for both exact equality conditions (e.g. `WHERE a = 3`) as well as range conditions (e.g. `WHERE a > 5`).
 
 [b_tree]: https://www.baeldung.com/cs/b-tree-data-structure
 
@@ -415,7 +416,7 @@ For example consider the following for a single table:
 | Client 1 is doing... | Client 2 wants to do a ... | Can Client 2 start? |
 | --- | --- | --- |
 | `UPDATE` | `SELECT` | ✅ **Yes** |
-| `UPDATE` | `CREATE INDEX CONCURRENTLY` | 🚫 **No, must wait**  |
+| `UPDATE` | `CREATE INDEX CONCURRENTLY` | ✅ **Yes** |
 | `SELECT` | `CREATE INDEX` | ✅ **Yes**  |
 | `SELECT` | `ALTER TABLE` | 🚫 **No, must wait**[^alter_table_special_cases] |
 | `ALTER TABLE` | `SELECT` | 🚫 **No, must wait**[^alter_table_special_cases] |
@@ -621,11 +622,13 @@ What's more is [there are a bunch more operators and functions][jsonb_operators]
 ## Anyway...
 
 Hope you found this useful.
-Thank you to Lillie Chilen, [Monica Cowan][monicacowan], [Steven Harman][sharman], and [KWu][kwu] for encouragement and feedback on this post.
+Thank you to Lillie Chilen, [Monica Cowan][monicacowan], [Steven Harman][sharman], and [KWu][kwu] for encouragement and feedback on this post; thank you to [Viki Harrod][viki_harrod] and [Gonzalo Diethelm][gonzalo_diethelm] for corrections.
 If you have any corrections, feedback, or comments, you can find me on basically all sites as `hibachrach`.
 
 [kwu]: https://kwugirl.github.io/
 [monicacowan]: https://github.com/monicacowan
+[viki_harrod]: https://github.com/VikiAnn
+[gonzalo_diethelm]: https://github.com/gonzus
 
 ---
 

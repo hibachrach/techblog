@@ -104,7 +104,7 @@
     <h1 class="post-title p-name" itemprop="name headline">What I Wish Someone Told Me About Postgres</h1>
     <p class="post-meta"><time class="dt-published" datetime="2024-11-11T00:00:00-08:00" itemprop="datePublished">
         Nov 11, 2024
-      </time></p>
+      </time>• Last updated <time datetime="2025-01-09T00:00:00-08:00" itemprop="dateModified">Jan 9, 2025</time></p>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
@@ -344,7 +344,7 @@ Therefore, you can write the previous query as</p>
 <h3 id="what-is-an-index">What is an index?</h3>
 
 <p>An index is a data structure intended to help with looking up data–giving Postgres the responsibility of maintaining a “shortcut directory” to a table’s rows by various fields.
-By far the most common kind is a <a href="https://www.baeldung.com/cs/b-tree-data-structure">B-tree</a> index, which is a kind of search tree that work for both exact equality conditions (e.g. <code class="language-plaintext highlighter-rouge">WHERE a = 3</code>) as well as range conditions (e.g. <code class="language-plaintext highlighter-rouge">WHERE a &gt; 5</code>).</p>
+By far the most common kind is a <a href="https://www.baeldung.com/cs/b-tree-data-structure">B-tree</a> index, which is a kind of search tree that works for both exact equality conditions (e.g. <code class="language-plaintext highlighter-rouge">WHERE a = 3</code>) as well as range conditions (e.g. <code class="language-plaintext highlighter-rouge">WHERE a &gt; 5</code>).</p>
 
 <p>But you can’t tell Postgres to use a specific index.
 It needs to predict (using statistics it maintains for each table) that it’ll be faster than just reading the table from top to bottom to find the relevant data
@@ -570,7 +570,7 @@ Here’s just a few in order of less to more restrictive:</p>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">UPDATE</code></td>
       <td><code class="language-plaintext highlighter-rouge">CREATE INDEX CONCURRENTLY</code></td>
-      <td>🚫 <strong>No, must wait</strong>
+      <td>✅ <strong>Yes</strong>
 </td>
     </tr>
     <tr>
@@ -728,7 +728,7 @@ To correctly write this query, you need to enable Postgres to be able to do some
 <h2 id="anyway">Anyway…</h2>
 
 <p>Hope you found this useful.
-Thank you to Lillie Chilen, <a href="https://github.com/monicacowan">Monica Cowan</a>, <a href="https://stevenharman.net">Steven Harman</a>, and <a href="https://kwugirl.github.io/">KWu</a> for encouragement and feedback on this post.
+Thank you to Lillie Chilen, <a href="https://github.com/monicacowan">Monica Cowan</a>, <a href="https://stevenharman.net">Steven Harman</a>, and <a href="https://kwugirl.github.io/">KWu</a> for encouragement and feedback on this post; thank you to <a href="https://github.com/VikiAnn">Viki Harrod</a> and <a href="https://github.com/gonzus">Gonzalo Diethelm</a> for corrections.
 If you have any corrections, feedback, or comments, you can find me on basically all sites as <code class="language-plaintext highlighter-rouge">hibachrach</code>.</p>
 
 <hr>
