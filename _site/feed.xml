@@ -1,478 +1,523 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-19T22:48:09-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">ChallahScript</title><subtitle>Hazel Bachrach&apos;s technical blog. Should include some dumb and not-so-dumb stuff about software engineering.</subtitle><entry><title type="html">A Great Way To Ask Questions</title><link href="http://localhost:4000/a_great_way_to_ask_questions" rel="alternate" type="text/html" title="A Great Way To Ask Questions" /><published>2025-05-19T00:00:00-07:00</published><updated>2025-05-19T00:00:00-07:00</updated><id>http://localhost:4000/a_great_way_to_ask_questions</id><content type="html" xml:base="http://localhost:4000/a_great_way_to_ask_questions"><![CDATA[Following the spirit of [my last post on Postgres](/what_i_wish_someone_told_me_about_postgres),
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://challahscript.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://challahscript.com/" rel="alternate" type="text/html" /><updated>2025-05-20T09:31:00-07:00</updated><id>https://challahscript.com/feed.xml</id><title type="html">ChallahScript</title><subtitle>Hazel Bachrach&apos;s technical blog. Should include some dumb and not-so-dumb stuff about software engineering.</subtitle><entry><title type="html">A Great Way To Ask Questions</title><link href="https://challahscript.com/a_great_way_to_ask_questions" rel="alternate" type="text/html" title="A Great Way To Ask Questions" /><published>2025-05-19T00:00:00-07:00</published><updated>2025-05-19T00:00:00-07:00</updated><id>https://challahscript.com/a_great_way_to_ask_questions</id><content type="html" xml:base="https://challahscript.com/a_great_way_to_ask_questions"><![CDATA[<p>Following the spirit of <a href="/what_i_wish_someone_told_me_about_postgres">my last post on Postgres</a>,
 this is a guide to asking questions that I wish I had the opportunity to read earlier in my career.
-I'm mostly going to be noting the habits of those to whom I've looked up to in my time as a software engineer who are _great_ at asking questions.
+I’m mostly going to be noting the habits of those to whom I’ve looked up to in my time as a software engineer who are <em>great</em> at asking questions.</p>
 
-## Let's define a "great question" 
+<h2 id="lets-define-a-great-question">Let’s define a “great question”</h2>
 
-What makes a question "good"? Here, I'm defining a good question as one that...
-* ...requires a minimum of follow-on questions before understanding what the problem actually _is_
-* ...has a definitive answer (even if that answer is subjective or has doubt/uncertainty, e.g. "I don't know"!)
-* ...has a clear priority
-* ...can help educate others
+<p>What makes a question “good”? Here, I’m defining a good question as one that…</p>
+<ul>
+  <li>…requires a minimum of follow-on questions before understanding what the problem actually <em>is</em></li>
+  <li>…has a definitive answer (even if that answer is subjective or has doubt/uncertainty, e.g. “I don’t know”!)</li>
+  <li>…has a clear priority</li>
+  <li>…can help educate others</li>
+</ul>
 
-These are all attributes that make it easier for the person answering the question to help.
+<p>These are all attributes that make it easier for the person answering the question to help.</p>
 
-The assumed context here is one over text, such as on Slack or in a GitHub Pull Request.
-Each "place" is going to have some differences
+<p>The assumed context here is one over text, such as on Slack or in a GitHub Pull Request.
+Each “place” is going to have some differences
 (you might be a bit more fast and loose on Slack than GitHub, for example)
-but the core attributes are the same.
+but the core attributes are the same.</p>
 
-A few things can often look like a question:
-* a bug report
-* a blocking issue
-* a complaint
+<p>A few things can often look like a question:</p>
+<ul>
+  <li>a bug report</li>
+  <li>a blocking issue</li>
+  <li>a complaint</li>
+</ul>
 
-However, these are _requests_.
+<p>However, these are <em>requests</em>.
 A good request has many of the same attributes as a good question,
 and may come alongside a good question,
 but they are different things.
 A request is much more complex:
 it requires an understanding of the particular dynamic and relationship between requester and recipient.
-In fact, making a request under the guise of a question can often read poorly.
+In fact, making a request under the guise of a question can often read poorly.</p>
 
-So...how do you write one?
+<p>So…how do you write one?</p>
 
-## Where we're starting from
+<h2 id="where-were-starting-from">Where we’re starting from</h2>
 
-Let's say you're learning how to program for the first time.
-Consider this problem that you're working on:
+<p>Let’s say you’re learning how to program for the first time.
+Consider this problem that you’re working on:</p>
 
-You have a string which always takes the form:
-```
-{"id":1234,"name":"Emmy Noether","email":"1enoether@example.com"}
-```
-Starting out, you may not know that that's [JSON][wiki_json].
+<p>You have a string which always takes the form:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"id":1234,"name":"Emmy Noether","email":"1enoether@example.com"}
+</code></pre></div></div>
+<p>Starting out, you may not know that that’s <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>.</p>
 
-[wiki_json]: https://en.wikipedia.org/wiki/JSON
+<p>As part of your work, you need to get the <code class="language-plaintext highlighter-rouge">"Emmy Noether"</code> bit so you shoot a DM:</p>
+<blockquote>
+  <p>How can I get the part of a string between two of the same character?</p>
+</blockquote>
 
-As part of your work, you need to get the `"Emmy Noether"` bit so you shoot a DM:
-> How can I get the part of a string between two of the same character?
+<p>If that’s the only information the person helping you gets, they’re either going to</p>
+<ol>
+  <li>(Ideally) Ask for more information, taking up more of both of y’all’s time, or</li>
+  <li>Give a subpar answer (e.g. explaining the usage of regex matches to get substrings)</li>
+</ol>
 
-If that's the only information the person helping you gets, they're either going to
-1. (Ideally) Ask for more information, taking up more of both of y'all's time, or
-2. Give a subpar answer (e.g. explaining the usage of regex matches to get substrings)
+<h2 id="describe-the-problem-you-are-attempting-to-solve">Describe the problem you are attempting to solve</h2>
 
-## Describe the problem you are attempting to solve
+<p>A question can be for a bunch of different reasons.
+E.g. “I want to understand <em>foo</em> because…”</p>
+<ul>
+  <li>“…I need to work around something on my current task.”</li>
+  <li>“…I got paged at 3 a.m. and would rather not get paged again tonight.”</li>
+  <li>“…I just think it’s cool!”</li>
+</ul>
 
-A question can be for a bunch of different reasons.
-E.g. "I want to understand _foo_ because..."
-* "...I need to work around something on my current task."
-* "...I got paged at 3 a.m. and would rather not get paged again tonight."
-* "...I just think it's cool!"
+<p>This context is <em>crucial</em> for the person answering your question.</p>
 
-This context is _crucial_ for the person answering your question.
-
-When you leave out the problem you are trying to solve,
+<p>When you leave out the problem you are trying to solve,
 the person attempting to answer it has fewer options to help.
-These questions often take the form of asking for how to implement a solution you have come up with instead of asking about the root problem.[^xy]
+These questions often take the form of asking for how to implement a solution you have come up with instead of asking about the root problem.<sup id="fnref:xy" role="doc-noteref"><a href="#fn:xy" class="footnote" rel="footnote">1</a></sup></p>
 
-[^xy]: This is cryptically referred to as [the XY problem][wiki_xy_problem], a term seemingly beloved by overzealous StackOverflow moderators (but sadly unrelated to the classic late-2000s ABC Family sci-fi drama <i>[Kyle XY][kyle_xy]</i>)
-[wiki_xy_problem]: https://en.wikipedia.org/wiki/XY_problem
-[kyle_xy]: https://en.wikipedia.org/wiki/Kyle_XY
+<p>With context, they’d be able to tell what is likely the right answer
+(to use a JSON parsing library!).</p>
 
-With context, they'd be able to tell what is likely the right answer
-(to use a JSON parsing library!).
+<h2 id="list-what-youve-tried-so-far">List what you’ve tried so far</h2>
 
-## List what you've tried so far
+<p>This helps both of you in a few different ways:</p>
+<ul>
+  <li>You are saved from being given advice that you already know is unhelpful</li>
+  <li>You might get an idea for something you <em>haven’t</em> tried yet</li>
+  <li>The person helping you
+    <ul>
+      <li>better understands the problem you are experiencing</li>
+      <li>has a better sense of your understanding of the problem,
+which will help them explain the answer</li>
+    </ul>
+  </li>
+</ul>
 
-This helps both of you in a few different ways:
-* You are saved from being given advice that you already know is unhelpful
-* You might get an idea for something you _haven't_ tried yet
-* The person helping you
-  * better understands the problem you are experiencing
-  * has a better sense of your understanding of the problem,
-    which will help them explain the answer 
+<h2 id="state-your-assumptions">State your assumptions</h2>
 
-## State your assumptions
+<p>It’s possible the reason something doesn’t make sense is based in falsely held beliefs.
+The person helping you can much more easily steer you towards a solution if they know why you needed this guidance.</p>
 
-It's possible the reason something doesn't make sense is based in falsely held beliefs.
-The person helping you can much more easily steer you towards a solution if they know why you needed this guidance.
+<h2 id="communicate-a-level-of-urgency">Communicate a level of urgency</h2>
 
-## Communicate a level of urgency
-
-When I'm reading messages in a public channel,
-it's extremely helpful to know how much of an impact my intervention might have.
-It's always nice to help out (and I really quite enjoy it!),
+<p>When I’m reading messages in a public channel,
+it’s extremely helpful to know how much of an impact my intervention might have.
+It’s always nice to help out (and I really quite enjoy it!),
 but it helps me prioritize my work if I know how important that question is to that person.
-This is especially true when I'm fielding multiple questions from several individuals.
+This is especially true when I’m fielding multiple questions from several individuals.</p>
 
-## Ask for "the rest of the class"
+<h2 id="ask-for-the-rest-of-the-class">Ask for “the rest of the class”</h2>
 
-In general, I would urge you to ask questions in public channels if you feel comfortable doing so.[^comfort]
+<p>In general, I would urge you to ask questions in public channels if you feel comfortable doing so.<sup id="fnref:comfort" role="doc-noteref"><a href="#fn:comfort" class="footnote" rel="footnote">2</a></sup>
 Such public questions and answers are a rich resource for other folks
 (who may have the very same question)
 to learn.
-If you've ever googled a question and found the answer on a Q&A site like StackOverflow,
-you have relied on other folks asking questions in public forums.
+If you’ve ever googled a question and found the answer on a Q&amp;A site like StackOverflow,
+you have relied on other folks asking questions in public forums.</p>
 
-[^comfort]:
-    Sadly, this is something that may not be universal for a number of reasons.
-    One might be battling perceptions (or feel like they are) in asking questions because of who they are, how they look, sound, identify, etc.
-    Or you might be dealing with some immobilizing anxiety.
-    No shame in any of that.
-    It's something that I can't give great blanket advice on in this post.
-    However,
-    if you're in this situation,
-    consider finding someone whom you trust who can post questions for you to take the brunt of putting themselves out there.
+<h2 id="revisiting-our-question">Revisiting our question</h2>
 
-## Revisiting our question
+<p>Let’s try to layer in what we’ve talked about above.</p>
 
-Let's try to layer in what we've talked about above.
+<p>After some editing, we post the following in a Slack help channel:</p>
 
-After some editing, we post the following in a Slack help channel:
+<blockquote>
+  <p>I’m currently working on a JavaScript task where I get strings that look like this:</p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"id":1234,"name":"Emmy Noether","email":"1enoether@example.com"}
+</code></pre></div>  </div>
+  <p>and I need to get the part <code class="language-plaintext highlighter-rouge">Emmy Noether</code> to display somewhere else.
+So far I’ve tried iterating through the characters of the string to flag when it has the part <code class="language-plaintext highlighter-rouge">"name":</code>
+and then take the parts after the <code class="language-plaintext highlighter-rouge">:</code>
+but it runs into issues when there is a string like</p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"id":5678,"name":"\"SPECIAL\"","email":"special@example.com"}
+</code></pre></div>  </div>
+  <p>I’m assuming that the parts before the <code class="language-plaintext highlighter-rouge">:</code> always are wrapped in double quotes,
+but I’m not sure what the <code class="language-plaintext highlighter-rouge">\</code> means–is it something special?
+The task is due this Friday and unfortunately I’m blocked on this.</p>
+</blockquote>
 
-> I'm currently working on a JavaScript task where I get strings that look like this:
-> ```
-> {"id":1234,"name":"Emmy Noether","email":"1enoether@example.com"}
-> ```
-> and I need to get the part `Emmy Noether` to display somewhere else.
-> So far I've tried iterating through the characters of the string to flag when it has the part `"name":`
-> and then take the parts after the `:`
-> but it runs into issues when there is a string like
-> ```
-> {"id":5678,"name":"\"SPECIAL\"","email":"special@example.com"}
-> ```
-> I'm assuming that the parts before the `:` always are wrapped in double quotes,
-> but I'm not sure what the `\` means--is it something special?
-> The task is due this Friday and unfortunately I'm blocked on this.
+<p>Hopefully, whoever ends up helping you out appreciates the thought you put into asking the question.
+I know I would!</p>
 
-Hopefully, whoever ends up helping you out appreciates the thought you put into asking the question.
-I know I would!
+<hr />
 
----
+<p><br /></p>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:xy" role="doc-endnote">
+      <p>This is cryptically referred to as <a href="https://en.wikipedia.org/wiki/XY_problem">the XY problem</a>, a term seemingly beloved by overzealous StackOverflow moderators (but sadly unrelated to the classic late-2000s ABC Family sci-fi drama <i><a href="https://en.wikipedia.org/wiki/Kyle_XY">Kyle XY</a></i>) <a href="#fnref:xy" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:comfort" role="doc-endnote">
 
-<br>]]></content><author><name></name></author><summary type="html"><![CDATA[Following the spirit of my last post on Postgres, this is a guide to asking questions that I wish I had the opportunity to read earlier in my career. I’m mostly going to be noting the habits of those to whom I’ve looked up to in my time as a software engineer who are great at asking questions.]]></summary></entry><entry><title type="html">What I Wish Someone Told Me About Postgres</title><link href="http://localhost:4000/what_i_wish_someone_told_me_about_postgres" rel="alternate" type="text/html" title="What I Wish Someone Told Me About Postgres" /><published>2024-11-11T00:00:00-08:00</published><updated>2024-11-11T00:00:00-08:00</updated><id>http://localhost:4000/what_i_wish_someone_told_me_about_postgres</id><content type="html" xml:base="http://localhost:4000/what_i_wish_someone_told_me_about_postgres"><![CDATA[I've been working professionally for the better part of a decade on web apps and, in that time, I've had to learn how to use a lot of different systems and tools.
-During that education, I found that the official documentation typically proved to be the most helpful.
+      <p>Sadly, this is something that may not be universal for a number of reasons.
+One might be battling perceptions (or feel like they are) in asking questions because of who they are, how they look, sound, identify, etc.
+Or you might be dealing with some immobilizing anxiety.
+No shame in any of that.
+It’s something that I can’t give great blanket advice on in this post.
+However,
+if you’re in this situation,
+consider finding someone whom you trust who can post questions for you to take the brunt of putting themselves out there. <a href="#fnref:comfort" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[Following the spirit of my last post on Postgres, this is a guide to asking questions that I wish I had the opportunity to read earlier in my career. I’m mostly going to be noting the habits of those to whom I’ve looked up to in my time as a software engineer who are great at asking questions.]]></summary></entry><entry><title type="html">What I Wish Someone Told Me About Postgres</title><link href="https://challahscript.com/what_i_wish_someone_told_me_about_postgres" rel="alternate" type="text/html" title="What I Wish Someone Told Me About Postgres" /><published>2024-11-11T00:00:00-08:00</published><updated>2024-11-11T00:00:00-08:00</updated><id>https://challahscript.com/what_i_wish_someone_told_me_about_postgres</id><content type="html" xml:base="https://challahscript.com/what_i_wish_someone_told_me_about_postgres"><![CDATA[<p>I’ve been working professionally for the better part of a decade on web apps and, in that time, I’ve had to learn how to use a lot of different systems and tools.
+During that education, I found that the official documentation typically proved to be the most helpful.</p>
 
-Except...Postgres.
-It's not because the official docs aren't stellar (they are!)--they're just _massive_.
-For the current version (17 at the time of writing), if [printed as a standard PDF on US letter-sized paper](https://www.postgresql.org/files/documentation/pdf/17/postgresql-17-US.pdf), it's 3,200 pages long.[^a4_correction]
-It's not something any junior engineer can just sit down and read start to finish.
+<p>Except…Postgres.
+It’s not because the official docs aren’t stellar (they are!)–they’re just <em>massive</em>.
+For the current version (17 at the time of writing), if <a href="https://www.postgresql.org/files/documentation/pdf/17/postgresql-17-US.pdf">printed as a standard PDF on US letter-sized paper</a>, it’s 3,200 pages long.<sup id="fnref:a4_correction" role="doc-noteref"><a href="#fn:a4_correction" class="footnote" rel="footnote">1</a></sup>
+It’s not something any junior engineer can just sit down and read start to finish.</p>
 
-[^a4_correction]: If you print it on A4 paper, it's 3,024 pages; just another reason that standard is better, I guess.
+<p>So I want to try to catalog the bits that I wish someone had just told me before working with a Postgres database. 
+Hopefully, this makes things easier for the next person going on a journey similar to mine.</p>
 
-So I want to try to catalog the bits that I wish someone had just told me before working with a Postgres database. 
-Hopefully, this makes things easier for the next person going on a journey similar to mine.
+<p>Note that many of these things may also apply to other SQL database management systems (DBMSs) or other databases more generally,
+but I’m not as familiar with others so I’m not sure what does and does not apply.</p>
 
-Note that many of these things may also apply to other SQL database management systems (DBMSs) or other databases more generally,
-but I'm not as familiar with others so I'm not sure what does and does not apply.
+<h2 id="normalize-your-data-unless-you-have-a-good-reason-not-to">Normalize your data unless you have a good reason not to</h2>
 
-## Normalize your data unless you have a good reason not to
-
-Database normalization is the process of removing duplicate or redundant data from a [database schema][database_schema].
+<p>Database normalization is the process of removing duplicate or redundant data from a <a href="https://en.wikipedia.org/wiki/Database_schema">database schema</a>.
 For example, say you have a site where users can upload documents and users can subscribe to email notifications when folks view their documents.
-If you have a `documents` table, you shouldn't have a `user_email` column on said table:
-When a user wants to change their email, you shouldn't have to update the hundreds of rows for all the documents they've uploaded.
-Instead, you can have each row in `documents` represent a row in another table (e.g. `users`) with a foreign key (e.g. `user_id`).
+If you have a <code class="language-plaintext highlighter-rouge">documents</code> table, you shouldn’t have a <code class="language-plaintext highlighter-rouge">user_email</code> column on said table:
+When a user wants to change their email, you shouldn’t have to update the hundreds of rows for all the documents they’ve uploaded.
+Instead, you can have each row in <code class="language-plaintext highlighter-rouge">documents</code> represent a row in another table (e.g. <code class="language-plaintext highlighter-rouge">users</code>) with a foreign key (e.g. <code class="language-plaintext highlighter-rouge">user_id</code>).</p>
 
-If you search for "database normalization" online, you'll find a bunch of results about "1st normal form" and the like.
-You definitely don't need to know what each of those ["normal forms"][normal_forms] are,
-but [the general process][database_normalization_steps] is good to be familiar with as it can lead you to a more maintainable database schema.
+<p>If you search for “database normalization” online, you’ll find a bunch of results about “1st normal form” and the like.
+You definitely don’t need to know what each of those <a href="https://en.wikipedia.org/wiki/Database_normalization#Normal_forms">“normal forms”</a> are,
+but <a href="https://en.wikipedia.org/wiki/Database_normalization#Example_of_a_step-by-step_normalization">the general process</a> is good to be familiar with as it can lead you to a more maintainable database schema.</p>
 
-[database_schema]: https://en.wikipedia.org/wiki/Database_schema
-[normal_forms]: https://en.wikipedia.org/wiki/Database_normalization#Normal_forms
-[database_normalization_steps]: https://en.wikipedia.org/wiki/Database_normalization#Example_of_a_step-by-step_normalization
-
-There are occasions when having redundant data (that is, [denormalizing your schema][denormalizing]) can make sense:
-this is typically to make reading certain data faster so it doesn't have to be recomputed every time it's requested.
+<p>There are occasions when having redundant data (that is, <a href="https://en.wikipedia.org/wiki/Denormalization">denormalizing your schema</a>) can make sense:
+this is typically to make reading certain data faster so it doesn’t have to be recomputed every time it’s requested.
 E.g. you have an application that manages employee shifts at a bakery.
-A user might want to see how many hours they've worked so far this year.
+A user might want to see how many hours they’ve worked so far this year.
 To calculate that, you would need to do something like determine the duration of each of their shifts and then sum all of them together.
 It might make sense to instead calculate this amount on a regular interval or whenever the number of hours worked changes.
 This data can be denormalized within the Postgres database or outside of it (e.g. in a caching layer like Redis).
 Note that there is almost always a cost to denormalized data,
-whether that's possible data inconsistency or increased write complexity. 
+whether that’s possible data inconsistency or increased write complexity.</p>
 
-[denormalizing]: https://en.wikipedia.org/wiki/Denormalization
+<h2 id="follow-all-the-advice-from-the-folks-that-make-postgres">Follow all the advice from the folks that make Postgres</h2>
 
-## Follow all the advice from the folks that make Postgres
-
-There's a big list aptly titled ["Don't do this"][dont_do_this] on the official Postgres wiki.
+<p>There’s a big list aptly titled <a href="https://wiki.postgresql.org/wiki/Don%27t_Do_This">“Don’t do this”</a> on the official Postgres wiki.
 You may not understand all of the things listed.
-That's fine!
-If you don't understand, then you probably won't make the mistake.
-Some suggestions worth highlighting:
-1. [Just use the `text` type for all text storage](https://wiki.postgresql.org/wiki/Don%27t_Do_This#Text_storage)
-2. [Just use the `timestampz`/`time with time zone` type for all timestamp storage](https://wiki.postgresql.org/wiki/Don%27t_Do_This#Date.2FTime_storage)
-3. [Name your tables in snake_case](https://wiki.postgresql.org/wiki/Don%27t_Do_This#Don.27t_use_upper_case_table_or_column_names)
+That’s fine!
+If you don’t understand, then you probably won’t make the mistake.
+Some suggestions worth highlighting:</p>
+<ol>
+  <li><a href="https://wiki.postgresql.org/wiki/Don%27t_Do_This#Text_storage">Just use the <code class="language-plaintext highlighter-rouge">text</code> type for all text storage</a></li>
+  <li><a href="https://wiki.postgresql.org/wiki/Don%27t_Do_This#Date.2FTime_storage">Just use the <code class="language-plaintext highlighter-rouge">timestampz</code>/<code class="language-plaintext highlighter-rouge">time with time zone</code> type for all timestamp storage</a></li>
+  <li><a href="https://wiki.postgresql.org/wiki/Don%27t_Do_This#Don.27t_use_upper_case_table_or_column_names">Name your tables in snake_case</a></li>
+</ol>
 
-[dont_do_this]: https://wiki.postgresql.org/wiki/Don%27t_Do_This
+<h2 id="note-some-general-sql-eccentricities">Note some general SQL eccentricities</h2>
+<h3 id="saving-your-pinkies-you-dont-have-to-write-sql-in-all-caps">Saving your pinkies: you don’t have to write SQL in all caps</h3>
 
-## Note some general SQL eccentricities
-### Saving your pinkies: you don't have to write SQL in all caps
+<p>In most documentation and tutorials, you’ll see SQL written like so:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">my_table</span> <span class="k">WHERE</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
 
-In most documentation and tutorials, you'll see SQL written like so:
-```sql
-SELECT * FROM my_table WHERE x = 1 AND y > 2 LIMIT 10;
-```
+<p>The case for SQL keywords does not matter.
+That means the snippet above is the same as this:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">my_table</span> <span class="k">where</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">limit</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+<p>or this:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">my_table</span> <span class="k">WHERE</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+<p>As far as I know, this is not specific to Postgres.
+Your pinkies will thank you.</p>
 
-The case for SQL keywords does not matter.
-That means the snippet above is the same as this:
-```sql
-select * from my_table where x = 1 and y > 2 limit 10;
-```
-or this:
-```sql
-SELECT * from my_table WHERE x = 1 and y > 2 LIMIT 10;
-```
-As far as I know, this is not specific to Postgres.
-Your pinkies will thank you.
+<h3 id="null-is-weird"><code class="language-plaintext highlighter-rouge">NULL</code> is weird</h3>
 
-### `NULL` is weird
+<p>You’re probably familiar with <code class="language-plaintext highlighter-rouge">null</code> or <code class="language-plaintext highlighter-rouge">nil</code> values from other programming languages.
+SQL’s <code class="language-plaintext highlighter-rouge">NULL</code> is not like that.
+<code class="language-plaintext highlighter-rouge">NULL</code> is really more accurately an “unknown”.
+E.g. <code class="language-plaintext highlighter-rouge">NULL = NULL</code> returns <code class="language-plaintext highlighter-rouge">NULL</code> (because it’s unknown if one unknown equals another unknown!)
+This is true for almost any operator, not just <code class="language-plaintext highlighter-rouge">=</code>(we’ll go through some of the exceptions in a moment):
+if one side of the comparison is <code class="language-plaintext highlighter-rouge">NULL</code>, the result will be <code class="language-plaintext highlighter-rouge">NULL</code>.</p>
 
-You're probably familiar with `null` or `nil` values from other programming languages.
-SQL's `NULL` is not like that.
-`NULL` is really more accurately an "unknown".
-E.g. `NULL = NULL` returns `NULL` (because it's unknown if one unknown equals another unknown!)
-This is true for almost any operator, not just `=`(we'll go through some of the exceptions in a moment):
-if one side of the comparison is `NULL`, the result will be `NULL`.
+<p>There are a few operators that you can use to compare against <code class="language-plaintext highlighter-rouge">NULL</code> which don’t result in <code class="language-plaintext highlighter-rouge">NULL</code>:</p>
 
-There are a few operators that you can use to compare against `NULL` which don't result in `NULL`:
+<table>
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x IS NULL</code></td>
+      <td>returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">x</code> evaluates to <code class="language-plaintext highlighter-rouge">NULL</code>, <code class="language-plaintext highlighter-rouge">false</code> otherwise</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x IS NOT NULL</code></td>
+      <td>returns <code class="language-plaintext highlighter-rouge">true</code> if <code class="language-plaintext highlighter-rouge">x</code> does not evaluate to <code class="language-plaintext highlighter-rouge">NULL</code>, <code class="language-plaintext highlighter-rouge">false</code> otherwise</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x IS NOT DISTINCT FROM y</code></td>
+      <td>the same as <code class="language-plaintext highlighter-rouge">x = y</code> but <code class="language-plaintext highlighter-rouge">NULL</code> is treated as a normal value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x IS DISTINCT FROM y</code></td>
+      <td>the same as <code class="language-plaintext highlighter-rouge">x != y</code>/<code class="language-plaintext highlighter-rouge">x &lt;&gt; y</code> but <code class="language-plaintext highlighter-rouge">NULL</code> is treated as a normal value</td>
+    </tr>
+  </tbody>
+</table>
 
-|Operation|Description|
-|---|---|
-|`x IS NULL`|returns `true` if `x` evaluates to `NULL`, `false` otherwise|
-|`x IS NOT NULL`|returns `true` if `x` does not evaluate to `NULL`, `false` otherwise|
-|`x IS NOT DISTINCT FROM y`|the same as `x = y` but `NULL` is treated as a normal value|
-|`x IS DISTINCT FROM y`|the same as `x != y`/`x <> y` but `NULL` is treated as a normal value|
+<p><code class="language-plaintext highlighter-rouge">WHERE</code> clauses only match if the condition evaluates to <code class="language-plaintext highlighter-rouge">true</code>.
+This means that a query like <code class="language-plaintext highlighter-rouge">SELECT * FROM users WHERE title != 'manager'</code> won’t return rows where <code class="language-plaintext highlighter-rouge">title</code> is <code class="language-plaintext highlighter-rouge">NULL</code> because <code class="language-plaintext highlighter-rouge">NULL != 'manager'</code> is <code class="language-plaintext highlighter-rouge">NULL</code>.</p>
 
-`WHERE` clauses only match if the condition evaluates to `true`.
-This means that a query like `SELECT * FROM users WHERE title != 'manager'` won't return rows where `title` is `NULL` because `NULL != 'manager'` is `NULL`.
+<p>Another useful function when attempting to wrangle <code class="language-plaintext highlighter-rouge">NULL</code> is <code class="language-plaintext highlighter-rouge">COALESCE</code>:
+<code class="language-plaintext highlighter-rouge">COALESCE</code> will take any number of arguments and return the first one that is not <code class="language-plaintext highlighter-rouge">NULL</code>:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">COALESCE</span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">COALESCE</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">COALESCE</span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">)</span> <span class="k">IS</span> <span class="k">NULL</span>
+</code></pre></div></div>
 
-Another useful function when attempting to wrangle `NULL` is `COALESCE`:
-`COALESCE` will take any number of arguments and return the first one that is not `NULL`:
-```sql
-COALESCE(NULL, 5, 10) = 5
-COALESCE(2, NULL, 9) = 2
-COALESCE(NULL, NULL) IS NULL
-```
+<h2 id="you-can-make-psql-more-useful">You can make <code class="language-plaintext highlighter-rouge">psql</code> more useful</h2>
 
-## You can make `psql` more useful
+<h3 id="fix-your-unreadable-output">Fix your unreadable output</h3>
+<p>Have you ever done a query on a table with many columns or long values in those columns and the output is basically unreadable?
+It’s probably because you don’t have the pager enabled.
+A <a href="https://en.wikipedia.org/wiki/Terminal_pager">terminal pager</a> allows you to view a file (or table, in the case of <code class="language-plaintext highlighter-rouge">psql</code>) of text by scrolling a viewport around some larger canvas.
+Without a pager, it just dumps the text in your terminal, wrapping to a new line wherever it runs out of space.</p>
 
-### Fix your unreadable output
-Have you ever done a query on a table with many columns or long values in those columns and the output is basically unreadable?
-It's probably because you don't have the pager enabled.
-A [terminal pager][wiki_terminal_pager] allows you to view a file (or table, in the case of `psql`) of text by scrolling a viewport around some larger canvas.
-Without a pager, it just dumps the text in your terminal, wrapping to a new line wherever it runs out of space.
+<p><code class="language-plaintext highlighter-rouge">less</code> is a decent pager available on any Unix-like system.
+You can set it as your pager by setting the environment variable in your <code class="language-plaintext highlighter-rouge">~/.bashrc</code>/<code class="language-plaintext highlighter-rouge">~/.zshrc</code>/etc.:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Use the `-S` option so it truncates long lines for scrolling instead of wrapping them</span>
+<span class="nb">export </span><span class="nv">PAGER</span><span class="o">=</span><span class="s1">'less -S'</span>
+</code></pre></div></div>
 
-[wiki_terminal_pager]: https://en.wikipedia.org/wiki/Terminal_pager
+<p>Sometimes, even viewing things as a properly formatted table isn’t particularly useful, especially with tables with <em>many</em> columns.
+For this, you can switch to “expanded” mode with <code class="language-plaintext highlighter-rouge">\pset expanded</code> (or the shortcut <code class="language-plaintext highlighter-rouge">\x</code>) in your <code class="language-plaintext highlighter-rouge">psql</code> session.
+If you want to have this as the default, you can add a file called <code class="language-plaintext highlighter-rouge">.psqlrc</code> to your home directory (i.e. <code class="language-plaintext highlighter-rouge">~/.psqlrc</code>) and add <code class="language-plaintext highlighter-rouge">\x</code> to it.
+Any time you start up a <code class="language-plaintext highlighter-rouge">psql</code> session, it’ll run all the commands in that file first.</p>
 
-`less` is a decent pager available on any Unix-like system.
-You can set it as your pager by setting the environment variable in your `~/.bashrc`/`~/.zshrc`/etc.:
-```sh
-# Use the `-S` option so it truncates long lines for scrolling instead of wrapping them
-export PAGER='less -S'
-```
+<h3 id="clarify-ambiguous-nulls">Clarify ambiguous nulls</h3>
 
-Sometimes, even viewing things as a properly formatted table isn't particularly useful, especially with tables with _many_ columns.
-For this, you can switch to "expanded" mode with `\pset expanded` (or the shortcut `\x`) in your `psql` session.
-If you want to have this as the default, you can add a file called `.psqlrc` to your home directory (i.e. `~/.psqlrc`) and add `\x` to it.
-Any time you start up a `psql` session, it'll run all the commands in that file first.
+<p>It’s <em>very</em> important to know when a value is <code class="language-plaintext highlighter-rouge">NULL</code> in an output, but the default settings don’t make that particularly clear.
+You can give <code class="language-plaintext highlighter-rouge">psql</code> a string to output when it’s referring to <code class="language-plaintext highlighter-rouge">NULL</code>.
+I have it set to <code class="language-plaintext highlighter-rouge">[NULL]</code> by running</p>
+<pre><code class="language-psql">\pset null '[NULL]'
+</code></pre>
+<p>Any Unicode string is fine!
+It’s a bit past spooky season, but you can be like my friend <a href="https://stevenharman.net">Steven Harman</a> and set it to “👻”.</p>
 
-### Clarify ambiguous nulls
+<p>Once again, if you want to have this as the default, you can add a file called <code class="language-plaintext highlighter-rouge">.psqlrc</code> to your home directory (i.e. <code class="language-plaintext highlighter-rouge">~/.psqlrc</code>) and add <code class="language-plaintext highlighter-rouge">\pset null '[NULL]'</code> to it.
+Any time you start up a <code class="language-plaintext highlighter-rouge">psql</code> session, it’ll run all the commands in that file first.</p>
 
-It's _very_ important to know when a value is `NULL` in an output, but the default settings don't make that particularly clear.
-You can give `psql` a string to output when it's referring to `NULL`.
-I have it set to `[NULL]` by running
-```psql
-\pset null '[NULL]'
-```
-Any Unicode string is fine!
-It's a bit past spooky season, but you can be like my friend [Steven Harman][sharman] and set it to "👻".
+<h3 id="use-auto-completion">Use auto-completion</h3>
 
-[sharman]: https://stevenharman.net
-
-Once again, if you want to have this as the default, you can add a file called `.psqlrc` to your home directory (i.e. `~/.psqlrc`) and add `\pset null '[NULL]'` to it.
-Any time you start up a `psql` session, it'll run all the commands in that file first.
-
-### Use auto-completion
-
-`psql`, like many interactive consoles, will allow for auto-completion.
+<p><code class="language-plaintext highlighter-rouge">psql</code>, like many interactive consoles, will allow for auto-completion.
 It helps that SQL is a fairly rigid and fairly structured language.
-You can just start typing most keywords or table names and hit <kbd>Tab</kbd> and let `psql` fill out the rest:
+You can just start typing most keywords or table names and hit <kbd>Tab</kbd> and let <code class="language-plaintext highlighter-rouge">psql</code> fill out the rest:</p>
 
-```sql
--- start typing "SEL"
-SEL
--- ^ hit `Tab`
-SELECT
-```
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- start typing "SEL"</span>
+<span class="n">SEL</span>
+<span class="c1">-- ^ hit `Tab`</span>
+<span class="k">SELECT</span>
+</code></pre></div></div>
 
-### Lean on backslash shortcuts
+<h3 id="lean-on-backslash-shortcuts">Lean on backslash shortcuts</h3>
 
-There are a whole bunch of useful shortcut commands in `psql` for looking up stuff, command line editing, and more.
+<p>There are a whole bunch of useful shortcut commands in <code class="language-plaintext highlighter-rouge">psql</code> for looking up stuff, command line editing, and more.</p>
 
-|Command|What it does|
-|---|---|
-|`\?`|List all of the shortcuts|
-|`\d`|Shows list of relations (tables and sequences) as well as said relation's owner|
-|`\d+`|Same as `\d` but also includes the size and some other metadata|
-|`\d table_name`|Shows the schema of a table (list of columns, including said column's type, nullability, and default) as well as any indexes or foreign key constraints on said table|
-|`\e`|Opens your default editor (set as the `$EDITOR` environment variable) to edit your query there|
-|`\h SQL_KEYWORD`|Get syntax and link to docs for `SQL_KEYWORD`|
+<table>
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>What it does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">\?</code></td>
+      <td>List all of the shortcuts</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">\d</code></td>
+      <td>Shows list of relations (tables and sequences) as well as said relation’s owner</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">\d+</code></td>
+      <td>Same as <code class="language-plaintext highlighter-rouge">\d</code> but also includes the size and some other metadata</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">\d table_name</code></td>
+      <td>Shows the schema of a table (list of columns, including said column’s type, nullability, and default) as well as any indexes or foreign key constraints on said table</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">\e</code></td>
+      <td>Opens your default editor (set as the <code class="language-plaintext highlighter-rouge">$EDITOR</code> environment variable) to edit your query there</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">\h SQL_KEYWORD</code></td>
+      <td>Get syntax and link to docs for <code class="language-plaintext highlighter-rouge">SQL_KEYWORD</code></td>
+    </tr>
+  </tbody>
+</table>
 
-There are a ton of these and the table above only scratches the surface.
+<p>There are a ton of these and the table above only scratches the surface.</p>
 
-### Copy to a CSV
+<h3 id="copy-to-a-csv">Copy to a CSV</h3>
 
-Sometimes, you just want to share the output of a command with someone who wants to put it in Excel or something.
-In Postgres, it's actually really easy to copy the output of any query to a CSV on your local machine[^copy_permissions]:
+<p>Sometimes, you just want to share the output of a command with someone who wants to put it in Excel or something.
+In Postgres, it’s actually really easy to copy the output of any query to a CSV on your local machine<sup id="fnref:copy_permissions" role="doc-noteref"><a href="#fn:copy_permissions" class="footnote" rel="footnote">2</a></sup>:</p>
 
-[^copy_permissions]: This avoids having to use the more standard `COPY` statement which unfortunately often requires escalated privileges which you may or may not have access to.
+<pre><code class="language-psql">\copy (select * from some_table) to 'my_file.csv' CSV
+</code></pre>
+<p>If you want it to include an initial line with all the column names, you can add the <code class="language-plaintext highlighter-rouge">HEADER</code> option:</p>
+<pre><code class="language-psql">\copy (select * from some_table) to 'my_file.csv' CSV HEADER
+</code></pre>
+<p>For way more information (including how to get it to do the reverse: insert rows from data in a CSV!), check out <a href="https://www.postgresql.org/docs/current/app-psql.html#APP-PSQL-META-COMMANDS-COPY">the docs on this command</a>.</p>
 
-```psql
-\copy (select * from some_table) to 'my_file.csv' CSV
-```
-If you want it to include an initial line with all the column names, you can add the `HEADER` option:
-```psql
-\copy (select * from some_table) to 'my_file.csv' CSV HEADER
-```
-For way more information (including how to get it to do the reverse: insert rows from data in a CSV!), check out [the docs on this command][copy_docs].
+<h3 id="use-column-shorthands-and-aliases">Use column shorthands and aliases</h3>
 
-[copy_docs]: https://www.postgresql.org/docs/current/app-psql.html#APP-PSQL-META-COMMANDS-COPY
+<p>When doing a <code class="language-plaintext highlighter-rouge">SELECT</code> statement in <code class="language-plaintext highlighter-rouge">psql</code>, you can re-title each of the output columns to whatever you want (an “alias”) with the <code class="language-plaintext highlighter-rouge">AS</code> keyword:</p>
 
-### Use column shorthands and aliases
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">vendor</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">number_of_backpacks</span> <span class="k">FROM</span> <span class="n">backpacks</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">vendor</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">number_of_backpacks</span> <span class="k">DESC</span><span class="p">;</span> 
+</code></pre></div></div>
 
-When doing a `SELECT` statement in `psql`, you can re-title each of the output columns to whatever you want (an "alias") with the `AS` keyword:
+<p>This will also rename the column in the output.</p>
 
-```sql
-SELECT vendor, COUNT(*) AS number_of_backpacks FROM backpacks GROUP BY vendor ORDER BY number_of_backpacks DESC; 
-```
+<p>What’s more is that <code class="language-plaintext highlighter-rouge">GROUP BY</code> and <code class="language-plaintext highlighter-rouge">ORDER BY</code> have their own nice shorthand as well:
+you can reference output columns by the number they appear after <code class="language-plaintext highlighter-rouge">SELECT</code>.
+Therefore, you can write the previous query as</p>
 
-This will also rename the column in the output.
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">vendor</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">number_of_backpacks</span> <span class="k">FROM</span> <span class="n">backpacks</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="mi">1</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="mi">2</span> <span class="k">DESC</span><span class="p">;</span> 
+</code></pre></div></div>
 
-What's more is that `GROUP BY` and `ORDER BY` have their own nice shorthand as well:
-you can reference output columns by the number they appear after `SELECT`.
-Therefore, you can write the previous query as
+<p>While useful, don’t put this in any queries that you ship to production–your future self will thank you!</p>
 
-```sql
-SELECT vendor, COUNT(*) AS number_of_backpacks FROM backpacks GROUP BY 1 ORDER BY 2 DESC; 
-```
+<h2 id="its-possible-that-adding-an-index-will-do-nothing-particularly-if-its-misconfigured">It’s possible that adding an index will do nothing (particularly if it’s misconfigured)</h2>
 
-While useful, don't put this in any queries that you ship to production--your future self will thank you!
+<h3 id="what-is-an-index">What is an index?</h3>
 
-## It's possible that adding an index will do nothing (particularly if it's misconfigured)
+<p>An index is a data structure intended to help with looking up data–giving Postgres the responsibility of maintaining a “shortcut directory” to a table’s rows by various fields.
+By far the most common kind is a <a href="https://www.baeldung.com/cs/b-tree-data-structure">B-tree</a> index, which is a kind of search tree that works for both exact equality conditions (e.g. <code class="language-plaintext highlighter-rouge">WHERE a = 3</code>) as well as range conditions (e.g. <code class="language-plaintext highlighter-rouge">WHERE a &gt; 5</code>).</p>
 
-### What is an index?
+<p>But you can’t tell Postgres to use a specific index.
+It needs to predict (using statistics it maintains for each table) that it’ll be faster than just reading the table from top to bottom to find the relevant data
+(known as a “sequential scan” or “seq. scan”–pronounced “seek scan”–for short).
+You can see how Postgres is planning on executing a query by adding <code class="language-plaintext highlighter-rouge">EXPLAIN</code> before your <code class="language-plaintext highlighter-rouge">SELECT ... FROM ...</code>.
+This will give you a “query plan”: a plan for how Postgres is going to find the data and its estimate for how much work each task will take.
+There are many good guides for reading the output of these query plans like <a href="https://thoughtbot.com/blog/reading-an-explain-analyze-query-plan">this one from thoughtbot</a> or <a href="https://pganalyze.com/docs/explain">this one from pganalyze</a>.
+<a href="https://www.postgresql.org/docs/current/using-explain.html">The official docs</a> are also a good reference (albeit a bit overwhelming for a newbie).
+For analyzing query plans, I’ve found <a href="https://explain.depesz.com/">this tool</a> to often be very helpful</p>
 
-An index is a data structure intended to help with looking up data--giving Postgres the responsibility of maintaining a "shortcut directory" to a table's rows by various fields.
-By far the most common kind is a [B-tree][b_tree] index, which is a kind of search tree that works for both exact equality conditions (e.g. `WHERE a = 3`) as well as range conditions (e.g. `WHERE a > 5`).
+<h3 id="an-index-isnt-much-use-for-a-table-with-barely-any-rows-in-it">An index isn’t much use for a table with barely any rows in it</h3>
 
-[b_tree]: https://www.baeldung.com/cs/b-tree-data-structure
+<p>This is particularly important when doing development on your local database.
+Chances are, you don’t have millions of rows in your local database.
+Postgres may find that it’s faster just to do a seq. scan rather than use the index at all if it’s just dealing with 100 rows.</p>
 
-But you can't tell Postgres to use a specific index.
-It needs to predict (using statistics it maintains for each table) that it'll be faster than just reading the table from top to bottom to find the relevant data
-(known as a "sequential scan" or "seq. scan"--pronounced "seek scan"--for short).
-You can see how Postgres is planning on executing a query by adding `EXPLAIN` before your `SELECT ... FROM ...`.
-This will give you a "query plan": a plan for how Postgres is going to find the data and its estimate for how much work each task will take.
-There are many good guides for reading the output of these query plans like [this one from thoughtbot][thoughtbot_query_plan] or [this one from pganalyze][pganalyze_query_plan].
-[The official docs][explain_docs] are also a good reference (albeit a bit overwhelming for a newbie).
-For analyzing query plans, I've found [this tool][query_plan_analyzer] to often be very helpful
+<h3 id="when-indexing-multiple-columns-the-order-matters">When indexing multiple columns, the order matters</h3>
 
-[thoughtbot_query_plan]: https://thoughtbot.com/blog/reading-an-explain-analyze-query-plan
-[pganalyze_query_plan]: https://pganalyze.com/docs/explain
-[explain_docs]: https://www.postgresql.org/docs/current/using-explain.html
-[query_plan_analyzer]: https://explain.depesz.com/
+<p>Postgres supports multicolumn indexes which do what you might expect:
+if you create an index on columns <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">b</code> like so:</p>
 
-### An index isn't much use for a table with barely any rows in it
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">CONCURRENTLY</span> <span class="k">ON</span> <span class="n">tbl</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+</code></pre></div></div>
 
-This is particularly important when doing development on your local database.
-Chances are, you don't have millions of rows in your local database.
-Postgres may find that it's faster just to do a seq. scan rather than use the index at all if it's just dealing with 100 rows.
+<p>then a <code class="language-plaintext highlighter-rouge">WHERE</code> clause like</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">tbl</span> <span class="k">WHERE</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</code></pre></div></div>
+<p>will be faster than if two separate indexes were created for <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">b</code> respectively.
+This is because in one multicolumn index, Postgres just needs to traverse one B-tree which is able to efficiently combine the constraints of the search query.</p>
 
-### When indexing multiple columns, the order matters
+<p>This index speeds up queries filtering against just <code class="language-plaintext highlighter-rouge">a</code> just as much as an index against <code class="language-plaintext highlighter-rouge">a</code> alone.</p>
 
-Postgres supports multicolumn indexes which do what you might expect:
-if you create an index on columns `a` and `b` like so:
-
-```sql
-CREATE INDEX CONCURRENTLY ON tbl (a, b);
-```
-
-then a `WHERE` clause like
-```sql
-SELECT * FROM tbl WHERE a = 1 AND b = 2;
-```
-will be faster than if two separate indexes were created for `a` and `b` respectively.
-This is because in one multicolumn index, Postgres just needs to traverse one B-tree which is able to efficiently combine the constraints of the search query.
-
-This index speeds up queries filtering against just `a` just as much as an index against `a` alone.
-
-But what about a query like `SELECT * FROM tbl WHERE b = 5;`?
+<p>But what about a query like <code class="language-plaintext highlighter-rouge">SELECT * FROM tbl WHERE b = 5;</code>?
 Is that faster too?
 Possibly, but not as fast as it could be.
-It turns out the above index does _not_ obviate the need for an index on `b` alone.
-That's because the B-tree in the index is first keyed on `a` and secondarily keyed on `b`.
-So it will need to traverse all of the `a` values in the index to find all of the `b` values in the index.
+It turns out the above index does <em>not</em> obviate the need for an index on <code class="language-plaintext highlighter-rouge">b</code> alone.
+That’s because the B-tree in the index is first keyed on <code class="language-plaintext highlighter-rouge">a</code> and secondarily keyed on <code class="language-plaintext highlighter-rouge">b</code>.
+So it will need to traverse all of the <code class="language-plaintext highlighter-rouge">a</code> values in the index to find all of the <code class="language-plaintext highlighter-rouge">b</code> values in the index.
 Often if you need to use any combination of columns for you queries,
-you'll want to have indexes for both `(a, b)` as well as `b` alone.
-That said, you may be able to rely on indexes on `a` and `b` separately,
-depending on your needs.
+you’ll want to have indexes for both <code class="language-plaintext highlighter-rouge">(a, b)</code> as well as <code class="language-plaintext highlighter-rouge">b</code> alone.
+That said, you may be able to rely on indexes on <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">b</code> separately,
+depending on your needs.</p>
 
-### If doing prefix matches, use `text_pattern_ops`
+<h3 id="if-doing-prefix-matches-use-text_pattern_ops">If doing prefix matches, use <code class="language-plaintext highlighter-rouge">text_pattern_ops</code></h3>
 
-Let's say you're storing a hierarchical system of directories in your database using a [materialized path approach][materialized_path_slides] (where you store a list of all of a row's ancestors' ids in each row) and for some part of your application you need to get all descendant directories.
-So you need to query a table to find all rows where a column matches some common prefix:
+<p>Let’s say you’re storing a hierarchical system of directories in your database using a <a href="https://www.slideshare.net/slideshow/models-for-hierarchical-data/4179181#18">materialized path approach</a> (where you store a list of all of a row’s ancestors’ ids in each row) and for some part of your application you need to get all descendant directories.
+So you need to query a table to find all rows where a column matches some common prefix:</p>
 
-[materialized_path_slides]: https://www.slideshare.net/slideshow/models-for-hierarchical-data/4179181#18
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- % is a wildcard: the `WHERE` clause here is asking for `directories` where `path` starts with '/1/2/3/'</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">directories</span> <span class="k">WHERE</span> <span class="n">path</span> <span class="k">LIKE</span> <span class="s1">'/1/2/3/%'</span>
+</code></pre></div></div>
 
-```sql
--- % is a wildcard: the `WHERE` clause here is asking for `directories` where `path` starts with '/1/2/3/'
-SELECT * FROM directories WHERE path LIKE '/1/2/3/%'
-```
- 
-To keep things speedy, you add an index to the `path` column of `directories`:
+<p>To keep things speedy, you add an index to the <code class="language-plaintext highlighter-rouge">path</code> column of <code class="language-plaintext highlighter-rouge">directories</code>:</p>
 
-```sql
-CREATE INDEX CONCURRENTLY ON directories (path);
-```
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">CONCURRENTLY</span> <span class="k">ON</span> <span class="n">directories</span> <span class="p">(</span><span class="n">path</span><span class="p">);</span>
+</code></pre></div></div>
 
-Unfortunately, this may not be used:
+<p>Unfortunately, this may not be used:
 Most kinds of indexes
-(including the default B-tree index implicitly created in the `CREATE INDEX` statement above)
+(including the default B-tree index implicitly created in the <code class="language-plaintext highlighter-rouge">CREATE INDEX</code> statement above)
 depend on the ordering of values to work.
 To make Postgres able to do the basic character-by-character sorting that you need for this sort of prefix matching or pattern matching in general,
-you need to give it a different ["operator class"][operator_class_docs] when defining the index:
+you need to give it a different <a href="https://www.postgresql.org/docs/current/indexes-opclass.html">“operator class”</a> when defining the index:</p>
 
-```sql
-CREATE INDEX CONCURRENTLY ON directories (path text_pattern_ops);
-```
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">CONCURRENTLY</span> <span class="k">ON</span> <span class="n">directories</span> <span class="p">(</span><span class="n">path</span> <span class="n">text_pattern_ops</span><span class="p">);</span>
+</code></pre></div></div>
 
-[operator_class_docs]: https://www.postgresql.org/docs/current/indexes-opclass.html
+<h2 id="long-held-locks-can-break-your-app-even-access-share">Long-held locks can break your app (even <code class="language-plaintext highlighter-rouge">ACCESS SHARE</code>)</h2>
 
-## Long-held locks can break your app (even `ACCESS SHARE`)
-
-### What is a lock?
-A "lock" or "mutex" (short for "mutual exclusion") ensures only one client can do something dangerous at a time.
-This is a concept you'll see in a lot of places but they're particularly important in Postgres, as in any database, because updating an individual entity (whether that's a row, table, view, etc.) must entirely succeed or entirely fail.
+<h3 id="what-is-a-lock">What is a lock?</h3>
+<p>A “lock” or “mutex” (short for “mutual exclusion”) ensures only one client can do something dangerous at a time.
+This is a concept you’ll see in a lot of places but they’re particularly important in Postgres, as in any database, because updating an individual entity (whether that’s a row, table, view, etc.) must entirely succeed or entirely fail.
 One way that operations could only partially succeed is if two different clients/processes were attempting to perform them at the same time.
-As a result, any operation will need to acquire a "lock" on the relevant entity.
+As a result, any operation will need to acquire a “lock” on the relevant entity.</p>
 
-### How locks work in Postgres
-In Postgres, there are several different locking levels for tables which are more or less restrictive.
-Here's just a few in order of less to more restrictive:
+<h3 id="how-locks-work-in-postgres">How locks work in Postgres</h3>
+<p>In Postgres, there are several different locking levels for tables which are more or less restrictive.
+Here’s just a few in order of less to more restrictive:</p>
 
-| Lock Mode | Example Statements |
-| -------------- | --------------- |
-| `ACCESS SHARE` | `SELECT` |
-| `ROW SHARE` | `SELECT ... FOR UPDATE` |
-| `ROW EXCLUSIVE` | `UPDATE`, `DELETE`, `INSERT` |
-| `SHARE UPDATE EXCLUSIVE` | `CREATE INDEX CONCURRENTLY` |
-| `SHARE` | `CREATE INDEX` (not `CONCURRENTLY`) |
-| `ACCESS EXCLUSIVE` | Many forms of `ALTER TABLE` and `ALTER INDEX` |
+<table>
+  <thead>
+    <tr>
+      <th>Lock Mode</th>
+      <th>Example Statements</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ACCESS SHARE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SELECT</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ROW SHARE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SELECT ... FOR UPDATE</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ROW EXCLUSIVE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">UPDATE</code>, <code class="language-plaintext highlighter-rouge">DELETE</code>, <code class="language-plaintext highlighter-rouge">INSERT</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SHARE UPDATE EXCLUSIVE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CREATE INDEX CONCURRENTLY</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SHARE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CREATE INDEX</code> (not <code class="language-plaintext highlighter-rouge">CONCURRENTLY</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ACCESS EXCLUSIVE</code></td>
+      <td>Many forms of <code class="language-plaintext highlighter-rouge">ALTER TABLE</code> and <code class="language-plaintext highlighter-rouge">ALTER INDEX</code></td>
+    </tr>
+  </tbody>
+</table>
 
-And here's how they conflict (X means they are conflicting):
+<p>And here’s how they conflict (X means they are conflicting):</p>
 
 <div class="scrollable-wrapper-x-mobile">
   <table class="table" summary="Conflicting Lock Modes">
     <colgroup>
-      <col>
-      <col>
-      <col>
-      <col>
-      <col>
-      <col>
-      <col>
+      <col />
+      <col />
+      <col />
+      <col />
+      <col />
+      <col />
+      <col />
     </colgroup>
     <thead>
       <tr>
@@ -547,1095 +592,1092 @@ And here's how they conflict (X means they are conflicting):
   </table>
 </div>
 
-For example consider the following for a single table:
+<p>For example consider the following for a single table:</p>
 
-| Client 1 is doing... | Client 2 wants to do a ... | Can Client 2 start? |
-| --- | --- | --- |
-| `UPDATE` | `SELECT` | ✅ **Yes** |
-| `UPDATE` | `CREATE INDEX CONCURRENTLY` | ✅ **Yes** |
-| `SELECT` | `CREATE INDEX` | ✅ **Yes**  |
-| `SELECT` | `ALTER TABLE` | 🚫 **No, must wait**[^alter_table_special_cases] |
-| `ALTER TABLE` | `SELECT` | 🚫 **No, must wait**[^alter_table_special_cases] |
+<table>
+  <thead>
+    <tr>
+      <th>Client 1 is doing…</th>
+      <th>Client 2 wants to do a …</th>
+      <th>Can Client 2 start?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UPDATE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SELECT</code></td>
+      <td>✅ <strong>Yes</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UPDATE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CREATE INDEX CONCURRENTLY</code></td>
+      <td>✅ <strong>Yes</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SELECT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CREATE INDEX</code></td>
+      <td>✅ <strong>Yes</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SELECT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ALTER TABLE</code></td>
+      <td>🚫 <strong>No, must wait</strong><sup id="fnref:alter_table_special_cases" role="doc-noteref"><a href="#fn:alter_table_special_cases" class="footnote" rel="footnote">3</a></sup></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ALTER TABLE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SELECT</code></td>
+      <td>🚫 <strong>No, must wait</strong><sup id="fnref:alter_table_special_cases:1" role="doc-noteref"><a href="#fn:alter_table_special_cases" class="footnote" rel="footnote">3</a></sup></td>
+    </tr>
+  </tbody>
+</table>
 
+<p>For a full list of all of this information, look at <a href="https://www.postgresql.org/docs/current/explicit-locking.html#LOCKING-TABLES">the official documentation</a>.
+<a href="https://postgres-locks.husseinnasser.com/">This guide</a> is also a great reference to see what conflicts with what on an operation-by-operation basis (which is typically what you’re thinking about, instead of lock levels).</p>
 
-[^alter_table_special_cases]:
-    That is..._typically_. Some `ALTER TABLE` forms (like adding constraints) require a less restrictive lock.
-    See [its page in the docs](https://www.postgresql.org/docs/current/sql-altertable.html) for more info.
+<h3 id="how-this-can-cause-problems">How this can cause problems</h3>
 
-For a full list of all of this information, look at [the official documentation][table_lock_documentation].
-[This guide][postgres_lock_guide] is also a great reference to see what conflicts with what on an operation-by-operation basis (which is typically what you're thinking about, instead of lock levels).
+<p>In the previous section, we noted that an if one client is performing an <code class="language-plaintext highlighter-rouge">ALTER TABLE</code> statement, that can block a <code class="language-plaintext highlighter-rouge">SELECT</code> from running.
+This can be just as bad as it sounds if the <code class="language-plaintext highlighter-rouge">ALTER TABLE</code> statement takes a long time.
+If you’re updating a core table (e.g. <code class="language-plaintext highlighter-rouge">users</code>, one that all requests for your web app may need to reference) all <code class="language-plaintext highlighter-rouge">SELECT</code>s reading from that table will just be waiting.
+Before timing out, of course, causing your app to return 503s.</p>
 
-[table_lock_documentation]: https://www.postgresql.org/docs/current/explicit-locking.html#LOCKING-TABLES
-[postgres_lock_guide]: https://postgres-locks.husseinnasser.com/
+<p>Common recipes for slow <code class="language-plaintext highlighter-rouge">ALTER TABLE</code> statements include</p>
+<ul>
+  <li>Adding a column with a non-constant default<sup id="fnref:default_changes" role="doc-noteref"><a href="#fn:default_changes" class="footnote" rel="footnote">4</a></sup>
+    <ul>
+      <li>In my experience this is by far the most common cause of slowness</li>
+    </ul>
+  </li>
+  <li>Changing a column’s type</li>
+  <li>Adding a uniqueness constraint</li>
+</ul>
 
-### How this can cause problems
+<p>So, let’s say you’re adding a new column to a heavily used table. 
+You aren’t doing anything silly with your <code class="language-plaintext highlighter-rouge">ALTER TABLE</code> statements.
+Sure, you’re adding a new column, but it doesn’t have a variable default.
+This can still break your app.</p>
 
-In the previous section, we noted that an if one client is performing an `ALTER TABLE` statement, that can block a `SELECT` from running.
-This can be just as bad as it sounds if the `ALTER TABLE` statement takes a long time.
-If you're updating a core table (e.g. `users`, one that all requests for your web app may need to reference) all `SELECT`s reading from that table will just be waiting.
-Before timing out, of course, causing your app to return 503s.
-
-Common recipes for slow `ALTER TABLE` statements include
-* Adding a column with a non-constant default[^default_changes]
-  * In my experience this is by far the most common cause of slowness 
-* Changing a column's type
-* Adding a uniqueness constraint
-
-[^default_changes]:
-    It used to be that _any_ default could make adding a column slow, but [this was fixed in Postgres 11][alter_table_add_column], which feels recent to me but of course was released 6 years ago.
-
-[alter_table_add_column]: https://www.postgresql.org/docs/current/ddl-alter.html#DDL-ALTER-ADDING-A-COLUMN
-
-So, let's say you're adding a new column to a heavily used table. 
-You aren't doing anything silly with your `ALTER TABLE` statements.
-Sure, you're adding a new column, but it doesn't have a variable default.
-This can still break your app.
-
-See, that `ALTER TABLE` statement _will_ be fast...once it acquires the lock.
+<p>See, that <code class="language-plaintext highlighter-rouge">ALTER TABLE</code> statement <em>will</em> be fast…once it acquires the lock.
 But say that, years ago, you made some internal dashboard that does periodic queries against that table.
 Over time, that query got slower and slower.
 What once took milliseconds now takes minutes.
-Which is normally fine--it's just a `SELECT` statement after all.
-But if your `ALTER TABLE` statement gets executed while one of those is running, it will have to wait.
+Which is normally fine–it’s just a <code class="language-plaintext highlighter-rouge">SELECT</code> statement after all.
+But if your <code class="language-plaintext highlighter-rouge">ALTER TABLE</code> statement gets executed while one of those is running, it will have to wait.</p>
 
-That all probably isn't too surprising.
+<p>That all probably isn’t too surprising.
 But you might find this a bit surprising:
 Any subsequent statements querying that table will have to wait, too.
-That's because Postgres locks form a queue:
+That’s because Postgres locks form a queue:</p>
 
-```mermaid!
-%%{init: {'theme':'dark'}}%%
-flowchart BT
-    subgraph Currently Executing
-    n0["SELECT ... FROM ... users ... ;
-        Holding ACCESS SHARE;
-        Lock Acquired at time t=0
-        🐌 <u>***SLOW***</u> 🐌"]
-    n1["SELECT ... FROM ... users ... ;
-        Holding ACCESS SHARE;
-        Lock Acquired at time t=1"]
-    end
-    n2["ALTER TABLE users ... ;
-        Requesting ACCESS EXCLUSIVE;
-        Lock Requested at time t=2"]
-    n3["SELECT ... FROM ... users ... ;
-        Requesting ACCESS SHARE;
-        Lock Requested at time t=3"]
-    n4["..."]
-    n5["SELECT ... FROM ... users ... ;
-        Requesting ACCESS SHARE;
-        Lock Requested at time t=20"
-    ]
-    n2--Waiting on-->n0
-    n2--Waiting on-->n1
-    n3--Waiting on-->n2
-    n4--Waiting on-->n2
-    n5--Waiting on-->n2
-    style n0 fill:#9fa647,color:black
-```
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiJSV7aW5pdDogeyd0aGVtZSc6J2RhcmsnfX0lJVxuZmxvd2NoYXJ0IEJUXG5zdWJncmFwaCBDdXJyZW50bHkgRXhlY3V0aW5nXG5uMFtcIlNFTEVDVCAuLi4gRlJPTSAuLi4gdXNlcnMgLi4uIDtcbkhvbGRpbmcgQUNDRVNTIFNIQVJFO1xuTG9jayBBY3F1aXJlZCBhdCB0aW1lIHQ9MFxu8J-QjCA8dT4qKipTTE9XKioqPC91PiDwn5CMXCJdXG5uMVtcIlNFTEVDVCAuLi4gRlJPTSAuLi4gdXNlcnMgLi4uIDtcbkhvbGRpbmcgQUNDRVNTIFNIQVJFO1xuTG9jayBBY3F1aXJlZCBhdCB0aW1lIHQ9MVwiXVxuZW5kXG5uMltcIkFMVEVSIFRBQkxFIHVzZXJzIC4uLiA7XG5SZXF1ZXN0aW5nIEFDQ0VTUyBFWENMVVNJVkU7XG5Mb2NrIFJlcXVlc3RlZCBhdCB0aW1lIHQ9MlwiXVxubjNbXCJTRUxFQ1QgLi4uIEZST00gLi4uIHVzZXJzIC4uLiA7XG5SZXF1ZXN0aW5nIEFDQ0VTUyBTSEFSRTtcbkxvY2sgUmVxdWVzdGVkIGF0IHRpbWUgdD0zXCJdXG5uNFtcIi4uLlwiXVxubjVbXCJTRUxFQ1QgLi4uIEZST00gLi4uIHVzZXJzIC4uLiA7XG5SZXF1ZXN0aW5nIEFDQ0VTUyBTSEFSRTtcbkxvY2sgUmVxdWVzdGVkIGF0IHRpbWUgdD0yMFwiXG5dXG5uMi0tV2FpdGluZyBvbi0tPm4wXG5uMi0tV2FpdGluZyBvbi0tPm4xXG5uMy0tV2FpdGluZyBvbi0tPm4yXG5uNC0tV2FpdGluZyBvbi0tPm4yXG5uNS0tV2FpdGluZyBvbi0tPm4yXG5zdHlsZSBuMCBmaWxsOiM5ZmE2NDcsY29sb3I6YmxhY2siLCJtZXJtYWlkIjpudWxsfQ" /></p>
 
-For a great article on this exact scenario happening, see [here][lock_queue_article].
+<p>For a great article on this exact scenario happening, see <a href="https://xata.io/blog/migrations-and-exclusive-locks">here</a>.</p>
 
-[lock_queue_article]: https://xata.io/blog/migrations-and-exclusive-locks
+<h3 id="long-running-transactions-can-be-just-as-bad">Long-running transactions can be just as bad</h3>
 
-### Long-running transactions can be just as bad
+<p>If you’re not familiar with <a href="https://www.postgresql.org/docs/current/tutorial-transactions.html">transactions</a>, they’re a way of grouping together a series of database statements so they act as all-or-nothing (in fancy lingo, they’re “atomic”).
+Once you begin a transaction (with <code class="language-plaintext highlighter-rouge">BEGIN</code>, of course), you’re hiding away.
+No other clients can see any changes you’re making.
+You can finish the transaction (with <code class="language-plaintext highlighter-rouge">COMMIT</code>) which then “publishes” them to the rest of the database.
+Transactions are, in an abstract way, similar to locks: they allow you avoid issues with other clients messing up what you’re trying to do.</p>
 
-If you're not familiar with [transactions][transactions], they're a way of grouping together a series of database statements so they act as all-or-nothing (in fancy lingo, they're "atomic").
-Once you begin a transaction (with `BEGIN`, of course), you're hiding away.
-No other clients can see any changes you're making.
-You can finish the transaction (with `COMMIT`) which then "publishes" them to the rest of the database.
-Transactions are, in an abstract way, similar to locks: they allow you avoid issues with other clients messing up what you're trying to do.
-
-[transactions]: https://www.postgresql.org/docs/current/tutorial-transactions.html
-
-A classic example of a task begging for transactions is transferring money from one bank account to another.
+<p>A classic example of a task begging for transactions is transferring money from one bank account to another.
 You would want to decrement the balance of one account and increment the balance of the other.
 If the database goes down or the originating account balance goes negative midway, you want to cancel the whole operation.
-Transactions can make that possible.
+Transactions can make that possible.</p>
 
-However, you can easily shoot yourself in the foot when writing transactions if you keep them running too long.
-That's because once a transaction acquires a lock, it holds onto it until the transaction commits.
-For example, let's say Client 1 opened up `psql` and wrote the following:
-```sql
-BEGIN;
-SELECT * FROM backpacks WHERE id = 2;
-UPDATE backpacks SET content_count = 3 WHERE id = 2;
-SELECT count(*) FROM backpacks;
--- ...
-```
+<p>However, you can easily shoot yourself in the foot when writing transactions if you keep them running too long.
+That’s because once a transaction acquires a lock, it holds onto it until the transaction commits.
+For example, let’s say Client 1 opened up <code class="language-plaintext highlighter-rouge">psql</code> and wrote the following:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">BEGIN</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">backpacks</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">UPDATE</span> <span class="n">backpacks</span> <span class="k">SET</span> <span class="n">content_count</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">backpacks</span><span class="p">;</span>
+<span class="c1">-- ...</span>
+</code></pre></div></div>
 
-Oops! Client 1 has stepped away from their desk:
+<p>Oops! Client 1 has stepped away from their desk:
 Someone just brought home some cupcakes!
-Even though Client 1 is effectively "done" updating the row with `id = 2`, they still have the lock.[^row_locks]
-If another client wanted to delete this row, they would run this:
-```sql
-DELETE FROM backpacks WHERE id = 2;
--- ...
--- ?
-```
-But it would just hang.
-It wouldn't actually delete anything until Client 1 came back and committed the transaction.
+Even though Client 1 is effectively “done” updating the row with <code class="language-plaintext highlighter-rouge">id = 2</code>, they still have the lock.<sup id="fnref:row_locks" role="doc-noteref"><a href="#fn:row_locks" class="footnote" rel="footnote">5</a></sup>
+If another client wanted to delete this row, they would run this:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">backpacks</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="c1">-- ...</span>
+<span class="c1">-- ?</span>
+</code></pre></div></div>
+<p>But it would just hang.
+It wouldn’t actually delete anything until Client 1 came back and committed the transaction.</p>
 
-[^row_locks]:
-    In this case, the lock at issue is a [row lock][row_lock_docs], which (as you might guess) is a lock that is on the row.
-    Row locks work fairly similarly to the table-level locks we were discussing earlier, but are a bit simpler and only have 4 levels.
+<p>You can imagine how this can lead to all kinds of scenarios where clients are holding onto locks for much longer than they need, preventing others from successfully making queries against or updates to the database.</p>
 
-[row_lock_docs]: https://www.postgresql.org/docs/current/explicit-locking.html#LOCKING-ROWS
+<h2 id="jsonb-is-a-sharp-knife">JSONB is a sharp knife</h2>
 
-You can imagine how this can lead to all kinds of scenarios where clients are holding onto locks for much longer than they need, preventing others from successfully making queries against or updates to the database.
+<p>Postgres has a remarkably powerful feature: you can store queryable and efficiently serialized JSON as a value in a row.<sup id="fnref:json_vs_jsonb" role="doc-noteref"><a href="#fn:json_vs_jsonb" class="footnote" rel="footnote">6</a></sup>
+In many ways, it makes Postgres have all the strengths of a <a href="https://en.wikipedia.org/wiki/Document-oriented_database">document-oriented database</a> (like MongoDB, for example) without having to spin up a new service or coordinate between two different data stores.</p>
 
-## JSONB is a sharp knife
+<p>However, it has its downsides if used improperly.</p>
 
-Postgres has a remarkably powerful feature: you can store queryable and efficiently serialized JSON as a value in a row.[^json_vs_jsonb]
-In many ways, it makes Postgres have all the strengths of a [document-oriented database][wiki_document_store] (like MongoDB, for example) without having to spin up a new service or coordinate between two different data stores.
+<h3 id="jsonb-can-be-slower-than-normal-columns">JSONB can be slower than normal columns</h3>
 
-[^json_vs_jsonb]:
-    Postgres has both JSON values (where the text is stored as text) and JSONB where the JSON is converted to an efficient binary format.
-    JSONB has a number of advantages (e.g. you can index it!) to the point where one can consider the JSON format to just be for special cases (in my experience, anyway).
+<p>While JSONB is quite flexible, Postgres doesn’t keep track of JSONB columns’ statistics which can mean that an equivalent query against a single JSONB column can be significantly slower than against a set of “normal” columns.
+<a href="https://www.heap.io/blog/when-to-avoid-jsonb-in-a-postgresql-schema">Here’s a great blog post with someone demonstrating it making things 2000x slower!</a></p>
 
-[wiki_document_store]: https://en.wikipedia.org/wiki/Document-oriented_database
+<h3 id="jsonb-is-not-as-self-documenting-as-a-standard-table-schema">JSONB is not as self-documenting as a standard table schema</h3>
 
-However, it has its downsides if used improperly.
-
-### JSONB can be slower than normal columns
-
-While JSONB is quite flexible, Postgres doesn't keep track of JSONB columns' statistics which can mean that an equivalent query against a single JSONB column can be significantly slower than against a set of "normal" columns.
-[Here's a great blog post with someone demonstrating it making things 2000x slower!][jsonb_statistics_blog_post]
-
-[jsonb_statistics_blog_post]: https://www.heap.io/blog/when-to-avoid-jsonb-in-a-postgresql-schema
-
-### JSONB is not as self-documenting as a standard table schema
-
-A JSONB column can have basically anything in it--that's one of the main reasons it's so powerful!
-But it also means you have few guarantees about how it's structured.
+<p>A JSONB column can have basically anything in it–that’s one of the main reasons it’s so powerful!
+But it also means you have few guarantees about how it’s structured.
 With a normal table, you can look up the schema and see what a query will return.
 Will a key be written in camelCase? snake_case?
-Will states be described with boolean `true`/`false`? Or with enums like `yes`/`maybe`/`no`?
-You have no idea with JSONB as it doesn't have the same static typing that Postgres data normally has.
+Will states be described with boolean <code class="language-plaintext highlighter-rouge">true</code>/<code class="language-plaintext highlighter-rouge">false</code>? Or with enums like <code class="language-plaintext highlighter-rouge">yes</code>/<code class="language-plaintext highlighter-rouge">maybe</code>/<code class="language-plaintext highlighter-rouge">no</code>?
+You have no idea with JSONB as it doesn’t have the same static typing that Postgres data normally has.</p>
 
-### JSONB Postgres types are a bit awkward to work with
+<h3 id="jsonb-postgres-types-are-a-bit-awkward-to-work-with">JSONB Postgres types are a bit awkward to work with</h3>
 
-Let's say you have a table called `backpacks` with a JSONB column `data` where you have a `brand` field.
-You want to find the JanSport `backpacks` because you love the early 90s aesthetic.
-So you write the query:[^jsonb_subscripting]
-```sql
--- WARNING: Does not work!
-select * from backpacks where data['brand'] = 'JanSport';
-```
-and you get the error back
-```
-ERROR:  invalid input syntax for type json
+<p>Let’s say you have a table called <code class="language-plaintext highlighter-rouge">backpacks</code> with a JSONB column <code class="language-plaintext highlighter-rouge">data</code> where you have a <code class="language-plaintext highlighter-rouge">brand</code> field.
+You want to find the JanSport <code class="language-plaintext highlighter-rouge">backpacks</code> because you love the early 90s aesthetic.
+So you write the query:<sup id="fnref:jsonb_subscripting" role="doc-noteref"><a href="#fn:jsonb_subscripting" class="footnote" rel="footnote">7</a></sup></p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- WARNING: Does not work!</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">backpacks</span> <span class="k">where</span> <span class="k">data</span><span class="p">[</span><span class="s1">'brand'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'JanSport'</span><span class="p">;</span>
+</code></pre></div></div>
+<p>and you get the error back</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR:  invalid input syntax for type json
 LINE 1: select * from backpacks where data['brand'] = 'JanSport';
                                                       ^
 DETAIL:  Token "JanSport" is invalid.
 CONTEXT:  JSON data, line 1: JanSport
-```
+</code></pre></div></div>
 
-What gives?
-Postgres is expecting the right-hand side type of the comparison to match the left-hand side type; that is, for it to be a correctly formatted JSON document--therefore, it needs to be a JSON object, array, string, number, boolean, or null.
-Keep in mind that none of these types have anything to do with Postgres types like `boolean` or `integer`. And `NULL` in SQL works very differently from JSONB's `null`, which acts more just like a normal type.[^jsonb_null]
-To correctly write this query, you need to enable Postgres to be able to do some coercion.
-```sql
-select * from backpacks where data['brand'] = '"JanSport"';
--- ^ This is really equivalent to the following (because Postgres knows the left-hand side is `jsonb`)
-select * from backpacks where data['brand'] = '"JanSport"'::jsonb;
--- Alternatively, you could convert the left-hand side to Postgres `text`:
-select * from backpacks where data->>'brand' = 'JanSport';
-```
+<p>What gives?
+Postgres is expecting the right-hand side type of the comparison to match the left-hand side type; that is, for it to be a correctly formatted JSON document–therefore, it needs to be a JSON object, array, string, number, boolean, or null.
+Keep in mind that none of these types have anything to do with Postgres types like <code class="language-plaintext highlighter-rouge">boolean</code> or <code class="language-plaintext highlighter-rouge">integer</code>. And <code class="language-plaintext highlighter-rouge">NULL</code> in SQL works very differently from JSONB’s <code class="language-plaintext highlighter-rouge">null</code>, which acts more just like a normal type.<sup id="fnref:jsonb_null" role="doc-noteref"><a href="#fn:jsonb_null" class="footnote" rel="footnote">8</a></sup>
+To correctly write this query, you need to enable Postgres to be able to do some coercion.</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">backpacks</span> <span class="k">where</span> <span class="k">data</span><span class="p">[</span><span class="s1">'brand'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'"JanSport"'</span><span class="p">;</span>
+<span class="c1">-- ^ This is really equivalent to the following (because Postgres knows the left-hand side is `jsonb`)</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">backpacks</span> <span class="k">where</span> <span class="k">data</span><span class="p">[</span><span class="s1">'brand'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'"JanSport"'</span><span class="p">::</span><span class="n">jsonb</span><span class="p">;</span>
+<span class="c1">-- Alternatively, you could convert the left-hand side to Postgres `text`:</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">backpacks</span> <span class="k">where</span> <span class="k">data</span><span class="o">-&gt;&gt;</span><span class="s1">'brand'</span> <span class="o">=</span> <span class="s1">'JanSport'</span><span class="p">;</span>
+</code></pre></div></div>
 
-[^jsonb_null]: Most notably, `'null'::jsonb = 'null'::jsonb` is `true` whereas `NULL = NULL` is `NULL`
-[^jsonb_subscripting]: This is leveraging [the relatively new subscripting syntax introduced in Postgres 14][jsonb_subscripting_blog_post] (in my opinion, better than the original `->` syntax which feels less familiar compared with how JSON is traversed elsewhere).
+<p>Note the double quotes inside the single quotes.
+<code class="language-plaintext highlighter-rouge">JanSport</code> on its own isn’t valid JSON.</p>
 
-[jsonb_subscripting_blog_post]: https://www.crunchydata.com/blog/better-json-in-postgres-with-postgresql-14
+<p>What’s more is <a href="https://www.postgresql.org/docs/current/functions-json.html">there are a bunch more operators and functions</a> that are specific to JSONB and are hard to remember all at once.</p>
 
-Note the double quotes inside the single quotes.
-`JanSport` on its own isn't valid JSON.
+<h2 id="anyway">Anyway…</h2>
 
-What's more is [there are a bunch more operators and functions][jsonb_operators] that are specific to JSONB and are hard to remember all at once.
+<p>Hope you found this useful.
+Thank you to Lillie Chilen, <a href="https://github.com/monicacowan">Monica Cowan</a>, <a href="https://stevenharman.net">Steven Harman</a>, and <a href="https://kwugirl.github.io/">KWu</a> for encouragement and feedback on this post; thank you to <a href="https://github.com/VikiAnn">Viki Harrod</a> and <a href="https://github.com/gonzus">Gonzalo Diethelm</a> for corrections.
+If you have any corrections, feedback, or comments, you can find me on basically all sites as <code class="language-plaintext highlighter-rouge">hibachrach</code>.</p>
 
-[jsonb_operators]: https://www.postgresql.org/docs/current/functions-json.html
+<hr />
 
-## Anyway...
+<p><br /></p>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:a4_correction" role="doc-endnote">
+      <p>If you print it on A4 paper, it’s 3,024 pages; just another reason that standard is better, I guess. <a href="#fnref:a4_correction" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:copy_permissions" role="doc-endnote">
+      <p>This avoids having to use the more standard <code class="language-plaintext highlighter-rouge">COPY</code> statement which unfortunately often requires escalated privileges which you may or may not have access to. <a href="#fnref:copy_permissions" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:alter_table_special_cases" role="doc-endnote">
 
-Hope you found this useful.
-Thank you to Lillie Chilen, [Monica Cowan][monicacowan], [Steven Harman][sharman], and [KWu][kwu] for encouragement and feedback on this post; thank you to [Viki Harrod][viki_harrod] and [Gonzalo Diethelm][gonzalo_diethelm] for corrections.
-If you have any corrections, feedback, or comments, you can find me on basically all sites as `hibachrach`.
+      <p>That is…<em>typically</em>. Some <code class="language-plaintext highlighter-rouge">ALTER TABLE</code> forms (like adding constraints) require a less restrictive lock.
+See <a href="https://www.postgresql.org/docs/current/sql-altertable.html">its page in the docs</a> for more info. <a href="#fnref:alter_table_special_cases" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:alter_table_special_cases:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:default_changes" role="doc-endnote">
 
-[kwu]: https://kwugirl.github.io/
-[monicacowan]: https://github.com/monicacowan
-[viki_harrod]: https://github.com/VikiAnn
-[gonzalo_diethelm]: https://github.com/gonzus
+      <p>It used to be that <em>any</em> default could make adding a column slow, but <a href="https://www.postgresql.org/docs/current/ddl-alter.html#DDL-ALTER-ADDING-A-COLUMN">this was fixed in Postgres 11</a>, which feels recent to me but of course was released 6 years ago. <a href="#fnref:default_changes" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:row_locks" role="doc-endnote">
 
----
+      <p>In this case, the lock at issue is a <a href="https://www.postgresql.org/docs/current/explicit-locking.html#LOCKING-ROWS">row lock</a>, which (as you might guess) is a lock that is on the row.
+Row locks work fairly similarly to the table-level locks we were discussing earlier, but are a bit simpler and only have 4 levels. <a href="#fnref:row_locks" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:json_vs_jsonb" role="doc-endnote">
 
-<br>]]></content><author><name></name></author><summary type="html"><![CDATA[I’ve been working professionally for the better part of a decade on web apps and, in that time, I’ve had to learn how to use a lot of different systems and tools. During that education, I found that the official documentation typically proved to be the most helpful.]]></summary></entry><entry><title type="html">JavaScript Improvements</title><link href="http://localhost:4000/javascript_improvements" rel="alternate" type="text/html" title="JavaScript Improvements" /><published>2020-10-07T00:00:00-07:00</published><updated>2020-10-07T00:00:00-07:00</updated><id>http://localhost:4000/javascript_improvements</id><content type="html" xml:base="http://localhost:4000/javascript_improvements"><![CDATA[In this article I go over three things that, in my mind, would make JavaScript
+      <p>Postgres has both JSON values (where the text is stored as text) and JSONB where the JSON is converted to an efficient binary format.
+JSONB has a number of advantages (e.g. you can index it!) to the point where one can consider the JSON format to just be for special cases (in my experience, anyway). <a href="#fnref:json_vs_jsonb" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:jsonb_subscripting" role="doc-endnote">
+      <p>This is leveraging <a href="https://www.crunchydata.com/blog/better-json-in-postgres-with-postgresql-14">the relatively new subscripting syntax introduced in Postgres 14</a> (in my opinion, better than the original <code class="language-plaintext highlighter-rouge">-&gt;</code> syntax which feels less familiar compared with how JSON is traversed elsewhere). <a href="#fnref:jsonb_subscripting" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:jsonb_null" role="doc-endnote">
+      <p>Most notably, <code class="language-plaintext highlighter-rouge">'null'::jsonb = 'null'::jsonb</code> is <code class="language-plaintext highlighter-rouge">true</code> whereas <code class="language-plaintext highlighter-rouge">NULL = NULL</code> is <code class="language-plaintext highlighter-rouge">NULL</code> <a href="#fnref:jsonb_null" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[I’ve been working professionally for the better part of a decade on web apps and, in that time, I’ve had to learn how to use a lot of different systems and tools. During that education, I found that the official documentation typically proved to be the most helpful.]]></summary></entry><entry><title type="html">JavaScript Improvements</title><link href="https://challahscript.com/javascript_improvements" rel="alternate" type="text/html" title="JavaScript Improvements" /><published>2020-10-07T00:00:00-07:00</published><updated>2020-10-07T00:00:00-07:00</updated><id>https://challahscript.com/javascript_improvements</id><content type="html" xml:base="https://challahscript.com/javascript_improvements"><![CDATA[<p>In this article I go over three things that, in my mind, would make JavaScript
 better. None are new ideas. This post is an expansion of a tweet I had when I saw
 someone asking about improvements for JS. (though probably are impossible for
-various reasons). I'm going to be primarily speaking about browsers and the web,
-though much of this might apply to Node.js (though I'm not as familiar with that
-area so I can't speak on it confidently).
+various reasons). I’m going to be primarily speaking about browsers and the web,
+though much of this might apply to Node.js (though I’m not as familiar with that
+area so I can’t speak on it confidently).</p>
 
-# Versions for JS
+<h1 id="versions-for-js">Versions for JS</h1>
 
-Just as a heads up: I'm not really talking about different ECMAScript versions
-(e.g. ES6, ES2019, etc.) here--I'm talking about how most programming languages
-refer to versions.
+<p>Just as a heads up: I’m not really talking about different ECMAScript versions
+(e.g. ES6, ES2019, etc.) here–I’m talking about how most programming languages
+refer to versions.</p>
 
-Right now, there are two versions of JS: [Strict mode][strict_mode] and ["sloppy
-mode"][sloppy_mode]. Feature detection is done dynamically: if a
-script makes use of any feature or change in the language that isn't supported
+<p>Right now, there are two versions of JS: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">Strict mode</a> and <a href="https://developer.mozilla.org/en-US/docs/Glossary/Sloppy_mode">“sloppy
+mode”</a>. Feature detection is done dynamically: if a
+script makes use of any feature or change in the language that isn’t supported
 by the environment running it, it will error, either silently or loudly
-depending on what that feature is.
+depending on what that feature is.</p>
 
-To get around this, developers do one or both of the following:
+<p>To get around this, developers do one or both of the following:</p>
 
-## Strategy 1: Transpile/polyfill to the lowest common denominator
+<h2 id="strategy-1-transpilepolyfill-to-the-lowest-common-denominator">Strategy 1: Transpile/polyfill to the lowest common denominator</h2>
 
-To get around browsers not supporting features, we use tools like [Babel][babel]
+<p>To get around browsers not supporting features, we use tools like <a href="https://babeljs.io/">Babel</a>
 to convert JS making use of newer features to JS supported by all or polyfill
 them with. However, this
-has a few problems:
+has a few problems:</p>
 
-1. Most of the time, the transpilation increases file size and parsing time.
-   [Here][for_of_example] is a dramatic instance of that ([not that this is
-   Babel's fault...][babel_for_of_faq]). This is despite the fact that most
-   browsers don't need this extra code.
-2. Transpilation requires a target platform. For now, it seems like the defacto
-   standard is ES5, but this is already changing: websites that can afford to
-   drop older browsers like IE11 are doing so (e.g. GitHub). What is the _right_
-   target? This might get harder to answer once IE11 disappears and we truly
-   only need to support evergreen (i.e. silently auto-updating) browsers.
-   Different browsers might implement features in different orders. Automated
-   tools like [`browserslist`][browserslist] reduce the impact of this point,
-   but they require upkeep. If a website stops development now but stays online,
-   its JS bundle won't get any faster despite the herd of browsers moving to
-   support the newer features in the source JS.
-3. If one takes shortcuts (via options like "loose mode" for various Babel
-   transpilations) you could actually be introducing bugs by fragmenting the
-   underling semantics of a particular feature (though I admit this problem is
-   not super likely).
-4. Transpilation does not get around efforts to dramatically evolve the JS
-   language (especially those which remove old baggage). Syntax that is
-   fundamentally incompatible with old and seldom-used features simply can't be
-   introduced because we [can't break the web][dont_break_the_web].
- 
+<ol>
+  <li>Most of the time, the transpilation increases file size and parsing time.
+<a href="https://babeljs.io/repl#?browsers=ie%2011e&amp;build=&amp;builtIns=false&amp;spec=false&amp;loose=false&amp;code_lz=GYewTgBAFAxiB2BnALhAhhEwICMCUEA3gFAC-QA&amp;debug=false&amp;forceAllTransforms=true&amp;shippedProposals=false&amp;circleciRepo=&amp;evaluate=false&amp;fileSize=false&amp;timeTravel=false&amp;sourceType=module&amp;lineWrap=true&amp;presets=es2015&amp;prettier=false&amp;targets=&amp;version=7.11.6&amp;externalPlugins=">Here</a> is a dramatic instance of that (<a href="https://babeljs.io/docs/en/faq#why-is-the-output-of-forof-so-verbose-and-ugly">not that this is
+Babel’s fault…</a>). This is despite the fact that most
+browsers don’t need this extra code.</li>
+  <li>Transpilation requires a target platform. For now, it seems like the defacto
+standard is ES5, but this is already changing: websites that can afford to
+drop older browsers like IE11 are doing so (e.g. GitHub). What is the <em>right</em>
+target? This might get harder to answer once IE11 disappears and we truly
+only need to support evergreen (i.e. silently auto-updating) browsers.
+Different browsers might implement features in different orders. Automated
+tools like <a href="https://github.com/browserslist/browserslist"><code class="language-plaintext highlighter-rouge">browserslist</code></a> reduce the impact of this point,
+but they require upkeep. If a website stops development now but stays online,
+its JS bundle won’t get any faster despite the herd of browsers moving to
+support the newer features in the source JS.</li>
+  <li>If one takes shortcuts (via options like “loose mode” for various Babel
+transpilations) you could actually be introducing bugs by fragmenting the
+underling semantics of a particular feature (though I admit this problem is
+not super likely).</li>
+  <li>Transpilation does not get around efforts to dramatically evolve the JS
+language (especially those which remove old baggage). Syntax that is
+fundamentally incompatible with old and seldom-used features simply can’t be
+introduced because we <a href="https://www.w3.org/TR/html-design-principles/#support-existing-content">can’t break the web</a>.</li>
+</ol>
 
-## Strategy 2: Offer different bundles to different platforms based on proxies
+<h2 id="strategy-2-offer-different-bundles-to-different-platforms-based-on-proxies">Strategy 2: Offer different bundles to different platforms based on proxies</h2>
 
-The idea is that you can identify what a browser might need based on the version
-presented in its "user agent" (UA). There's [a whole article on MDN on why this is a
-bad idea in general][mdn_user_agent_sniffing]. However, this hasn't stopped
-influential companies like Twitter from [doing it][twitter_bundles].
+<p>The idea is that you can identify what a browser might need based on the version
+presented in its “user agent” (UA). There’s <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent">a whole article on MDN on why this is a
+bad idea in general</a>. However, this hasn’t stopped
+influential companies like Twitter from <a href="https://twitter.com/CharlieCroom/status/1291478104016289799">doing it</a>.</p>
 
-Google Developers instead [encourages using the support for `<script
-type="module">` as a discriminating factor][google_bundles]. This seems a bit
-better, but of course this is just one test--[Safari is not an evergreen
-browser][safari_not_evergreen] and so despite it supporting modules, we can't
-rely on this to check for support for "generally new feature" availability in
-the medium or long-term.
+<p>Google Developers instead <a href="https://web.dev/codelab-serve-modern-code/#using-es-modules-with-babel">encourages using the support for <code class="language-plaintext highlighter-rouge">&lt;script
+type="module"&gt;</code> as a discriminating factor</a>. This seems a bit
+better, but of course this is just one test–<a href="https://thingsthemselves.com/reminder-safari-is-not-an-evergreen-browser/">Safari is not an evergreen
+browser</a> and so despite it supporting modules, we can’t
+rely on this to check for support for “generally new feature” availability in
+the medium or long-term.</p>
 
-## How versioning fits in
+<h2 id="how-versioning-fits-in">How versioning fits in</h2>
 
-As I said at the beginning, there already is a versioning scheme for JS. [Strict
-mode][strict_mode] changes the behavior of JS scripts in a backwards
-incompatible way: if you had a script that worked in "sloppy mode", it might
-break in strict mode.
+<p>As I said at the beginning, there already is a versioning scheme for JS. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">Strict
+mode</a> changes the behavior of JS scripts in a backwards
+incompatible way: if you had a script that worked in “sloppy mode”, it might
+break in strict mode.</p>
 
-However, it doesn't look like there are any plans to further extend this
-approach. When ["#SmooshGate"][smooshgate] (an incident of browsers accidentally
+<p>However, it doesn’t look like there are any plans to further extend this
+approach. When <a href="https://developers.google.com/web/updates/2018/03/smooshgate">“#SmooshGate”</a> (an incident of browsers accidentally
 breaking sites relying on old JS extensions by adding incompatible features)
-happened, versioning was suggested by [more][versioning_js_comment_1]
-[than][versioning_js_comment_2] [one][versioning_js_comment_3]
-[person][versioning_js_comment_4]. After all, with versioned JS, the issue
+happened, versioning was suggested by <a href="https://www.reddit.com/r/javascript/comments/8ln83r/at_todays_tc39_meeting_smooshgate_was_resolved_by/dzhvvhy?utm_source=share&amp;utm_medium=web2x&amp;context=3">more</a>
+<a href="https://news.ycombinator.com/item?id=17141522">than</a> <a href="https://news.ycombinator.com/item?id=17141494">one</a>
+<a href="https://dev.to/joelnet/a-pragmatic-solution-to-flatten-proposal-problem-smooshgate-javascript--jal">person</a>. After all, with versioned JS, the issue
 evaporates. Commenters on Hacker News responded to these suggestions, suggesting
-that supporting multiple distinct versions [introduces significant complexity
-for developers of JS engines][hacker_news_no_js_engine_forks]. One person even
-[noted][hacker_news_its_by_design]
-> This has been discussed at length and they have decided not to do it. It's not
-> a missing feature, it's by design. 
+that supporting multiple distinct versions <a href="https://news.ycombinator.com/item?id=17141024">introduces significant complexity
+for developers of JS engines</a>. One person even
+<a href="https://news.ycombinator.com/item?id=17143251">noted</a></p>
+<blockquote>
+  <p>This has been discussed at length and they have decided not to do it. It’s not
+a missing feature, it’s by design.</p>
+</blockquote>
 
-There are other negatives to versioning expounded on in [this wonderful
-article][one_javascript], such as the following quoted here:
+<p>There are other negatives to versioning expounded on in <a href="https://exploringjs.com/es6/ch_one-javascript.html#sec_versioning">this wonderful
+article</a>, such as the following quoted here:</p>
 
-> * Engines become bloated, because they need to implement the semantics of all
->   versions. The same applies to tools analyzing the language (e.g. style
->   checkers such as JSLint).
-> * Programmers need to remember how the versions differ.
-> * Code becomes harder to refactor, because you need to take versions into
->   consideration when you move pieces of code.
+<blockquote>
+  <ul>
+    <li>Engines become bloated, because they need to implement the semantics of all
+versions. The same applies to tools analyzing the language (e.g. style
+checkers such as JSLint).</li>
+    <li>Programmers need to remember how the versions differ.</li>
+    <li>Code becomes harder to refactor, because you need to take versions into
+consideration when you move pieces of code.</li>
+  </ul>
+</blockquote>
 
-I can't speak much to the work of maintaining engines--this is done by engineers
+<p>I can’t speak much to the work of maintaining engines–this is done by engineers
 far more skilled than myself. My immediate reaction is that managing different
 versions might enable stricter handling of various code, leading to
-simplification, though that's probably a naive perspective.
+simplification, though that’s probably a naive perspective.</p>
 
-On the topic of remembering how versions differ, I would say this is simple in
+<p>On the topic of remembering how versions differ, I would say this is simple in
 comparison to the inconsistent mess of browser compatibility, JS transpilation
 configuration, and generally frequent change within the ecosystem (though I will
 be the first to say that the last point has been fairly exaggerated). In other
-languages, versions change, and this is considered business as usual.
+languages, versions change, and this is considered business as usual.</p>
 
-With regards to added difficulty in refactoring, I would say that this again is
+<p>With regards to added difficulty in refactoring, I would say that this again is
 probably simpler than other things which we do semi-regularly, such as upgrading
 major versions of important libraries (e.g. jQuery, webpack), and is likely able
 to be automated. Additionally, the difficulty is highly dependent on the
 audacity of those at the reins of JavaScript, who, based on the current
-environment, seem unlikely to cause unnecessary upset.
+environment, seem unlikely to cause unnecessary upset.</p>
 
-# Everything is an expression
+<h1 id="everything-is-an-expression">Everything is an expression</h1>
 
-The main area where I wish this were the standard within JS is with `if`/`else`,
-`try`/`catch`, and `switch`/`case` statements. This is something that I use very
-frequently within Ruby
+<p>The main area where I wish this were the standard within JS is with <code class="language-plaintext highlighter-rouge">if</code>/<code class="language-plaintext highlighter-rouge">else</code>,
+<code class="language-plaintext highlighter-rouge">try</code>/<code class="language-plaintext highlighter-rouge">catch</code>, and <code class="language-plaintext highlighter-rouge">switch</code>/<code class="language-plaintext highlighter-rouge">case</code> statements. This is something that I use very
+frequently within Ruby</p>
 
-## Example: `if`/`else`
+<h2 id="example-ifelse">Example: <code class="language-plaintext highlighter-rouge">if</code>/<code class="language-plaintext highlighter-rouge">else</code></h2>
 
-```javascript
-const a =
-  if (cond) {
-    b
-  } else {
-    c
-  };
-```
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">cond</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">b</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">c</span>
+  <span class="p">};</span>
+</code></pre></div></div>
 
-## Example: `try`/`catch`
+<h2 id="example-trycatch">Example: <code class="language-plaintext highlighter-rouge">try</code>/<code class="language-plaintext highlighter-rouge">catch</code></h2>
 
-```javascript
-const a =
-  try {
-    somethingThatMightFail()
-  } else {
-    fallbackValue
-  };
-```
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">somethingThatMightFail</span><span class="p">()</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">fallbackValue</span>
+  <span class="p">};</span>
+</code></pre></div></div>
 
-## Example: `switch`/`case`
+<h2 id="example-switchcase">Example: <code class="language-plaintext highlighter-rouge">switch</code>/<code class="language-plaintext highlighter-rouge">case</code></h2>
 
-```javascript
-const a =
-  switch (b) {
-    case 'apple' {
-      'fruit'
-    }
-    case 'broccoli' {
-      'vegetable'
-    }
-    default {
-      'unknown'
-    }
-  };
-```
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">apple</span><span class="dl">'</span> <span class="p">{</span>
+      <span class="dl">'</span><span class="s1">fruit</span><span class="dl">'</span>
+    <span class="p">}</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">broccoli</span><span class="dl">'</span> <span class="p">{</span>
+      <span class="dl">'</span><span class="s1">vegetable</span><span class="dl">'</span>
+    <span class="p">}</span>
+    <span class="k">default</span> <span class="p">{</span>
+      <span class="dl">'</span><span class="s1">unknown</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+</code></pre></div></div>
 
-Its possible this would need to use different keywords to replace `case` and
-`default` for the sake of JS interpreters and maximizing backwards
-compatibility because `case`s function as labels.
+<p>Its possible this would need to use different keywords to replace <code class="language-plaintext highlighter-rouge">case</code> and
+<code class="language-plaintext highlighter-rouge">default</code> for the sake of JS interpreters and maximizing backwards
+compatibility because <code class="language-plaintext highlighter-rouge">case</code>s function as labels.</p>
 
-## Current proposals
+<h2 id="current-proposals">Current proposals</h2>
 
-To achieve this, `do` expressions were [proposed 2 years
-ago][do_expression_proposal], which satisfy the requirements with slightly
-more verbose syntax. E.g. for the `if`/`else`, you'd write
-```javascript
-const a = do {
-  if (cond) {
-    b
-  } else {
-    c
-  }
-};
-```
+<p>To achieve this, <code class="language-plaintext highlighter-rouge">do</code> expressions were <a href="https://github.com/tc39/proposal-do-expressions">proposed 2 years
+ago</a>, which satisfy the requirements with slightly
+more verbose syntax. E.g. for the <code class="language-plaintext highlighter-rouge">if</code>/<code class="language-plaintext highlighter-rouge">else</code>, you’d write</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">do</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">cond</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">b</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">c</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
 
-However, the proposal is still at stage 1 of [the 4-stage TC39 (effective JS
-steering committee) process][tc39_process], though [it's still being
-discussed][do_exp_june_2020_issue]. Some have asked "why do we need the `do`?"
-and make the first syntax (without the explicit `do`) part of the language,
-though [this can't be done without interfering with existing uncommon language
-features][do_exp_labels] (another example of not being able to change syntax due
-to "version constraint")
+<p>However, the proposal is still at stage 1 of <a href="https://tc39.es/process-document/">the 4-stage TC39 (effective JS
+steering committee) process</a>, though <a href="https://github.com/tc39/proposal-do-expressions/issues/49">it’s still being
+discussed</a>. Some have asked “why do we need the <code class="language-plaintext highlighter-rouge">do</code>?”
+and make the first syntax (without the explicit <code class="language-plaintext highlighter-rouge">do</code>) part of the language,
+though <a href="https://github.com/tc39/proposal-do-expressions/issues/39#issuecomment-468645498">this can’t be done without interfering with existing uncommon language
+features</a> (another example of not being able to change syntax due
+to “version constraint”)</p>
 
-# Improved caching
+<h1 id="improved-caching">Improved caching</h1>
 
-I would explain this, but there are actually people [already solving this
-problem][pika_dev], and they've put together [this article explaining how
-caching can be improved around the web][pika_dev_about].
+<p>I would explain this, but there are actually people <a href="https://www.pika.dev/">already solving this
+problem</a>, and they’ve put together <a href="https://www.pika.dev/about">this article explaining how
+caching can be improved around the web</a>.</p>
 
-However, there are still unresolved issues here: how does this work for
-different browser targets? It's fine if all libraries are only using
-browser-supported features, but we all know that that won't be consistent for
+<p>However, there are still unresolved issues here: how does this work for
+different browser targets? It’s fine if all libraries are only using
+browser-supported features, but we all know that that won’t be consistent for
 all features across all browsers into the future. A lot of this builds on the
 issues presented in the section on versioning above: if there are no ways to
-talk consistently about versioning, then it's much harder to solve these
-problems in an automated way.
-
-[strict_mode]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
-[sloppy_mode]: https://developer.mozilla.org/en-US/docs/Glossary/Sloppy_mode
-[babel]: https://babeljs.io/
-[for_of_example]: https://babeljs.io/repl#?browsers=ie%2011e&build=&builtIns=false&spec=false&loose=false&code_lz=GYewTgBAFAxiB2BnALhAhhEwICMCUEA3gFAC-QA&debug=false&forceAllTransforms=true&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015&prettier=false&targets=&version=7.11.6&externalPlugins=
-[babel_for_of_faq]: https://babeljs.io/docs/en/faq#why-is-the-output-of-forof-so-verbose-and-ugly
-[browserslist]: https://github.com/browserslist/browserslist
-[mdn_user_agent_sniffing]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
-[twitter_bundles]: https://twitter.com/CharlieCroom/status/1291478104016289799
-[google_bundles]: https://web.dev/codelab-serve-modern-code/#using-es-modules-with-babel
-[safari_not_evergreen]: https://thingsthemselves.com/reminder-safari-is-not-an-evergreen-browser/
-[dont_break_the_web]: https://www.w3.org/TR/html-design-principles/#support-existing-content
-[hacker_news_no_js_engine_forks]: https://news.ycombinator.com/item?id=17141024
-[versioning_js_comment_1]: https://www.reddit.com/r/javascript/comments/8ln83r/at_todays_tc39_meeting_smooshgate_was_resolved_by/dzhvvhy?utm_source=share&utm_medium=web2x&context=3
-[versioning_js_comment_2]: https://news.ycombinator.com/item?id=17141522
-[versioning_js_comment_3]: https://news.ycombinator.com/item?id=17141494
-[versioning_js_comment_4]: https://dev.to/joelnet/a-pragmatic-solution-to-flatten-proposal-problem-smooshgate-javascript--jal
-[hacker_news_its_by_design]: https://news.ycombinator.com/item?id=17143251
-[smooshgate]: https://developers.google.com/web/updates/2018/03/smooshgate
-[do_expression_proposal]: https://github.com/tc39/proposal-do-expressions
-[tc39_process]: https://tc39.es/process-document/
-[do_exp_june_2020_issue]: https://github.com/tc39/proposal-do-expressions/issues/49
-[do_exp_labels]: https://github.com/tc39/proposal-do-expressions/issues/39#issuecomment-468645498
-[bundling_http_1x]: https://stackoverflow.com/a/53690469/3839114
-[pika_dev]: https://www.pika.dev/
-[pika_dev_about]: https://www.pika.dev/about
-[one_javascript]: https://exploringjs.com/es6/ch_one-javascript.html#sec_versioning]]></content><author><name></name></author><summary type="html"><![CDATA[In this article I go over three things that, in my mind, would make JavaScript better. None are new ideas. This post is an expansion of a tweet I had when I saw someone asking about improvements for JS. (though probably are impossible for various reasons). I’m going to be primarily speaking about browsers and the web, though much of this might apply to Node.js (though I’m not as familiar with that area so I can’t speak on it confidently).]]></summary></entry><entry><title type="html">A Hierarchy of Documentation</title><link href="http://localhost:4000/hiearchy_of_documentation" rel="alternate" type="text/html" title="A Hierarchy of Documentation" /><published>2020-04-24T00:00:00-07:00</published><updated>2020-04-24T00:00:00-07:00</updated><id>http://localhost:4000/hiearchy_of_documentation</id><content type="html" xml:base="http://localhost:4000/hiearchy_of_documentation"><![CDATA["Where should this information live?" is a common question I encounter daily as
+talk consistently about versioning, then it’s much harder to solve these
+problems in an automated way.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[In this article I go over three things that, in my mind, would make JavaScript better. None are new ideas. This post is an expansion of a tweet I had when I saw someone asking about improvements for JS. (though probably are impossible for various reasons). I’m going to be primarily speaking about browsers and the web, though much of this might apply to Node.js (though I’m not as familiar with that area so I can’t speak on it confidently).]]></summary></entry><entry><title type="html">A Hierarchy of Documentation</title><link href="https://challahscript.com/hiearchy_of_documentation" rel="alternate" type="text/html" title="A Hierarchy of Documentation" /><published>2020-04-24T00:00:00-07:00</published><updated>2020-04-24T00:00:00-07:00</updated><id>https://challahscript.com/hiearchy_of_documentation</id><content type="html" xml:base="https://challahscript.com/hiearchy_of_documentation"><![CDATA[<p>“Where should this information live?” is a common question I encounter daily as
 a software engineer. I (alone or in consultation with others) will make a
-decision and that information needs to persist...somewhere. The goal of course
+decision and that information needs to persist…somewhere. The goal of course
 is to prevent some future engineer (often myself) from encountering some code
-and asking "why?" or, even worse, "what?".
+and asking “why?” or, even worse, “what?”.</p>
 
-I've found there's a sort of hierarchy to the accessibility
-of various information that I found useful in sharing. 
+<p>I’ve found there’s a sort of hierarchy to the accessibility
+of various information that I found useful in sharing.</p>
 
-In order of most accessible to least, the hierarchy is as follows:
+<p>In order of most accessible to least, the hierarchy is as follows:</p>
 
-1. Code (identifiers)
-2. In-code comments
-3. Commit messages
-4. Pull/merge requests & issue trackers
+<ol>
+  <li>Code (identifiers)</li>
+  <li>In-code comments</li>
+  <li>Commit messages</li>
+  <li>Pull/merge requests &amp; issue trackers</li>
+</ol>
 
-This list may be different for other people and may change in time as tools
-get better, but for now, this has held true for me.
+<p>This list may be different for other people and may change in time as tools
+get better, but for now, this has held true for me.</p>
 
-I'm sure that similar things have also been said before. Shoulders of giants and
-all that---would love to read any previous writings on similar topics!
+<p>I’m sure that similar things have also been said before. Shoulders of giants and
+all that—would love to read any previous writings on similar topics!</p>
 
-So! Let's get into some of the reasoning...
+<p>So! Let’s get into some of the reasoning…</p>
 
-## Code (Identifiers)
+<h2 id="code-identifiers">Code (Identifiers)</h2>
 
-### Accessibility
+<h3 id="accessibility">Accessibility</h3>
 
-By far, the most important place to put information is in the code itself. Why?
+<p>By far, the most important place to put information is in the code itself. Why?</p>
 
-* It can be easily searched with tools like `grep`, `ag`, `ripgrep`, or your
-  favorite file searcher
-* It (generally) follows a predictable structure and connections between
-  components can be traced (e.g. through the call stack)
-* It is _very_ unlikely to be discarded accidentally
+<ul>
+  <li>It can be easily searched with tools like <code class="language-plaintext highlighter-rouge">grep</code>, <code class="language-plaintext highlighter-rouge">ag</code>, <code class="language-plaintext highlighter-rouge">ripgrep</code>, or your
+favorite file searcher</li>
+  <li>It (generally) follows a predictable structure and connections between
+components can be traced (e.g. through the call stack)</li>
+  <li>It is <em>very</em> unlikely to be discarded accidentally</li>
+</ul>
 
-### Responsibilities
+<h3 id="responsibilities">Responsibilities</h3>
 
-Because of their inherent visibility, identifiers[^identifiers_meaning] should
-always be the first place to put information, especially
+<p>Because of their inherent visibility, identifiers<sup id="fnref:identifiers_meaning" role="doc-noteref"><a href="#fn:identifiers_meaning" class="footnote" rel="footnote">1</a></sup> should
+always be the first place to put information, especially</p>
 
-* What values represent
-* What functions do & how they do it
-* (Sparingly) when functions are invoked[^identifiers_when]
+<ul>
+  <li>What values represent</li>
+  <li>What functions do &amp; how they do it</li>
+  <li>(Sparingly) when functions are invoked<sup id="fnref:identifiers_when" role="doc-noteref"><a href="#fn:identifiers_when" class="footnote" rel="footnote">2</a></sup></li>
+</ul>
 
-### Identifiers and Code Simplification
+<h3 id="identifiers-and-code-simplification">Identifiers and Code Simplification</h3>
 
-I'm going to intentionally give you no context for the following code:
+<p>I’m going to intentionally give you no context for the following code:</p>
 
-```javascript
-if (
-  userSession['signed']['admin']['update'] ||
-  AdminOverrides[userSession['signed']['id']]
-) {
-  repository.delete();
-  return render({
-    status: 200,
-    body: {
-      notice: 'Repository successfully deleted.'
-    }
-  });
-} else {
-  return render({
-    status: 403,
-    body: {
-      errors: ['You are not allowed to perform that action.']
-    }
-  });
-}
-```
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span>
+  <span class="nx">userSession</span><span class="p">[</span><span class="dl">'</span><span class="s1">signed</span><span class="dl">'</span><span class="p">][</span><span class="dl">'</span><span class="s1">admin</span><span class="dl">'</span><span class="p">][</span><span class="dl">'</span><span class="s1">update</span><span class="dl">'</span><span class="p">]</span> <span class="o">||</span>
+  <span class="nx">AdminOverrides</span><span class="p">[</span><span class="nx">userSession</span><span class="p">[</span><span class="dl">'</span><span class="s1">signed</span><span class="dl">'</span><span class="p">][</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">]]</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="nx">repository</span><span class="p">.</span><span class="k">delete</span><span class="p">();</span>
+  <span class="k">return</span> <span class="nx">render</span><span class="p">({</span>
+    <span class="na">status</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">notice</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Repository successfully deleted.</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">render</span><span class="p">({</span>
+    <span class="na">status</span><span class="p">:</span> <span class="mi">403</span><span class="p">,</span>
+    <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">errors</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">You are not allowed to perform that action.</span><span class="dl">'</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-Okay, pretty straightforward. But consider this version instead:
+<p>Okay, pretty straightforward. But consider this version instead:</p>
 
-```javascript
-const userHasUpdateAccess = (
-  userSession['signed']['admin']['update'] ||
-  AdminOverrides.update[userSession['signed']['id']]
-);
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">userHasUpdateAccess</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="nx">userSession</span><span class="p">[</span><span class="dl">'</span><span class="s1">signed</span><span class="dl">'</span><span class="p">][</span><span class="dl">'</span><span class="s1">admin</span><span class="dl">'</span><span class="p">][</span><span class="dl">'</span><span class="s1">update</span><span class="dl">'</span><span class="p">]</span> <span class="o">||</span>
+  <span class="nx">AdminOverrides</span><span class="p">.</span><span class="nx">update</span><span class="p">[</span><span class="nx">userSession</span><span class="p">[</span><span class="dl">'</span><span class="s1">signed</span><span class="dl">'</span><span class="p">][</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">]]</span>
+<span class="p">);</span>
 
-if (userHasAdminUpdateAccess) {
-  repository.delete();
-  return render({
-    status: STATUS_CODES.ok,
-    body: {
-      notice: 'Repository successfully deleted.'
-    }
-  });
-} else {
-  return render({
-    status: STATUS_CODES.unauthorized,
-    body: {
-      errors: ['You are not allowed to perform that action.']
-    }
-  });
-}
-```
+<span class="k">if</span> <span class="p">(</span><span class="nx">userHasAdminUpdateAccess</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">repository</span><span class="p">.</span><span class="k">delete</span><span class="p">();</span>
+  <span class="k">return</span> <span class="nx">render</span><span class="p">({</span>
+    <span class="na">status</span><span class="p">:</span> <span class="nx">STATUS_CODES</span><span class="p">.</span><span class="nx">ok</span><span class="p">,</span>
+    <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">notice</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Repository successfully deleted.</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">render</span><span class="p">({</span>
+    <span class="na">status</span><span class="p">:</span> <span class="nx">STATUS_CODES</span><span class="p">.</span><span class="nx">unauthorized</span><span class="p">,</span>
+    <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">errors</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">You are not allowed to perform that action.</span><span class="dl">'</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-We've made a few updates. First, we've pulled the condition out into its own
-variable. What that's done is document the intention of what the condition is
-*supposed* to mean. This has a few benefits:
+<p>We’ve made a few updates. First, we’ve pulled the condition out into its own
+variable. What that’s done is document the intention of what the condition is
+<em>supposed</em> to mean. This has a few benefits:</p>
 
-* **Each line is doing less, cognitively.** That means you have to think about
-  less when reading. You're going to read code way more than you're going to
-  write it---why make it harder for yourself?[^code_boring_good]
-* **Pulling that connection out and labeling it makes it harder to miss when
-  changes happen.** At some point, how we determine whether a user has
-  update access will probably change. Additionally, the body of the first branch
-  of the `if` may get much larger. It's always easier to keep things tidy one
-  piece at a time (as opposed to going back and cleaning it up later)!
+<ul>
+  <li><strong>Each line is doing less, cognitively.</strong> That means you have to think about
+less when reading. You’re going to read code way more than you’re going to
+write it—why make it harder for yourself?<sup id="fnref:code_boring_good" role="doc-noteref"><a href="#fn:code_boring_good" class="footnote" rel="footnote">3</a></sup></li>
+  <li><strong>Pulling that connection out and labeling it makes it harder to miss when
+changes happen.</strong> At some point, how we determine whether a user has
+update access will probably change. Additionally, the body of the first branch
+of the <code class="language-plaintext highlighter-rouge">if</code> may get much larger. It’s always easier to keep things tidy one
+piece at a time (as opposed to going back and cleaning it up later)!</li>
+</ul>
 
-The other two changes are to replace the HTTP status codes (which are
-essentially [magic numbers][magic_numbers]) with references to a global
-`STATUS_CODES` object. While HTTP status codes are fairly well known (e.g. a
-"404" is meaningful to many that have never done web development), they're
-likely not going to be better known than English.
+<p>The other two changes are to replace the HTTP status codes (which are
+essentially <a href="https://en.wikipedia.org/wiki/Magic_number_(programming)">magic numbers</a>) with references to a global
+<code class="language-plaintext highlighter-rouge">STATUS_CODES</code> object. While HTTP status codes are fairly well known (e.g. a
+“404” is meaningful to many that have never done web development), they’re
+likely not going to be better known than English.</p>
 
-Generally, breaking things down like this makes the answer to "why?" very
-obvious.
+<p>Generally, breaking things down like this makes the answer to “why?” very
+obvious.</p>
 
-### Caveat: Enigmatic language syntax
+<h3 id="caveat-enigmatic-language-syntax">Caveat: Enigmatic language syntax</h3>
 
-Unlike libraries which can often be worked around, specific hard-to-parse
-features of a language's syntax may be unavoidable. For example, most languages
+<p>Unlike libraries which can often be worked around, specific hard-to-parse
+features of a language’s syntax may be unavoidable. For example, most languages
 have regular expressions which are infamous for how easy they are to mess up.
-Consider the following regular expression in JavaScript:
+Consider the following regular expression in JavaScript:</p>
 
-```javascript
-const IS_VALID_EMAIL_REGEX = /^[^@]+@[^@]+$/;
-```
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">IS_VALID_EMAIL_REGEX</span> <span class="o">=</span> <span class="sr">/^</span><span class="se">[^</span><span class="sr">@</span><span class="se">]</span><span class="sr">+@</span><span class="se">[^</span><span class="sr">@</span><span class="se">]</span><span class="sr">+$/</span><span class="p">;</span>
+</code></pre></div></div>
 
-There's not really much more we can do in terms of adding/changing identifiers
+<p>There’s not really much more we can do in terms of adding/changing identifiers
 to clarify how the regular expression determines which email addresses are valid
-and which aren't--you just have to know the specific syntax of (JavaScript)
-regular expressions. In cases like these, an in-code comment (which we'll talk
-about more in the next section) is the next best place to put this information:
+and which aren’t–you just have to know the specific syntax of (JavaScript)
+regular expressions. In cases like these, an in-code comment (which we’ll talk
+about more in the next section) is the next best place to put this information:</p>
 
-```javascript
-// Matches one or more non-`@` characters, folloed by a `@` character, followed
-// by one or more non-`@` characters.
-const IS_VALID_EMAIL_REGEX = /^[^@]+@[^@]+$/;
-```
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Matches one or more non-`@` characters, folloed by a `@` character, followed</span>
+<span class="c1">// by one or more non-`@` characters.</span>
+<span class="kd">const</span> <span class="nx">IS_VALID_EMAIL_REGEX</span> <span class="o">=</span> <span class="sr">/^</span><span class="se">[^</span><span class="sr">@</span><span class="se">]</span><span class="sr">+@</span><span class="se">[^</span><span class="sr">@</span><span class="se">]</span><span class="sr">+$/</span><span class="p">;</span>
+</code></pre></div></div>
 
-## In-code comments
+<h2 id="in-code-comments">In-code comments</h2>
 
-### Accessibility
+<h3 id="accessibility-1">Accessibility</h3>
 
-One of the points made about code also apply to in-code comments: they are
+<p>One of the points made about code also apply to in-code comments: they are
 easily searchable using a file searcher. Also, they do not need any further
-seeking out than code,[^dimmed_comments] unlike something like commit messages.
+seeking out than code,<sup id="fnref:dimmed_comments" role="doc-noteref"><a href="#fn:dimmed_comments" class="footnote" rel="footnote">4</a></sup> unlike something like commit messages.</p>
 
-However, as they are in a non-programming language, they can be a bit less
-predictable in terms of structure---you'll have a harder of a time breaking an
+<p>However, as they are in a non-programming language, they can be a bit less
+predictable in terms of structure—you’ll have a harder of a time breaking an
 English sentence into an abstract syntax tree than compared with something like
-JavaScript!
+JavaScript!</p>
 
-Additionally, in-code comments are related to their subjects
+<p>Additionally, in-code comments are related to their subjects
 typically by proximity alone. If someone moves that code without taking the
 comment with it, the comment ceases to be helpful (or, worse, becomes
-confusing/misleading). We talk about this more in the ["Pitfall"
-section](#common-pitfall-poor-comment-location) below.
+confusing/misleading). We talk about this more in the <a href="#common-pitfall-poor-comment-location">“Pitfall”
+section</a> below.</p>
 
-### Responsibilities
+<h3 id="responsibilities-1">Responsibilities</h3>
 
-Comments, while still being very visible, afford a much greater level of
+<p>Comments, while still being very visible, afford a much greater level of
 flexibility in comparison with code identifiers for documenting behavior,
-decisions, etc. Comments are where you put
+decisions, etc. Comments are where you put</p>
 
-* Explanations of why a section of code is the way that it is
-* Explanations of why a section of code _isn't_ written another way **if one may
-  be tempted to rewrite it** 
-* Contextual information for where a code snippet came from if possibly helpful
-  to future readers[^snippet_came_from]
-* Explanations of [enigmatic language syntax](#caveat-enigmatic-language-syntax)
-* (Sparingly) warnings and assumptions[^warnings_and_assumptions]
+<ul>
+  <li>Explanations of why a section of code is the way that it is</li>
+  <li>Explanations of why a section of code <em>isn’t</em> written another way <strong>if one may
+be tempted to rewrite it</strong></li>
+  <li>Contextual information for where a code snippet came from if possibly helpful
+to future readers<sup id="fnref:snippet_came_from" role="doc-noteref"><a href="#fn:snippet_came_from" class="footnote" rel="footnote">5</a></sup></li>
+  <li>Explanations of <a href="#caveat-enigmatic-language-syntax">enigmatic language syntax</a></li>
+  <li>(Sparingly) warnings and assumptions<sup id="fnref:warnings_and_assumptions" role="doc-noteref"><a href="#fn:warnings_and_assumptions" class="footnote" rel="footnote">6</a></sup></li>
+</ul>
 
-### Common Pitfall: Poor Comment Location
+<h3 id="common-pitfall-poor-comment-location">Common Pitfall: Poor Comment Location</h3>
 
-For example, say we have this method:
+<p>For example, say we have this method:</p>
 
-```javascript
-// Must be done in reverse order to be done in O(N) time due to
-// Kleppner's Law of Stupid Data Structures
-function smooshify(newElements) {
-  for (let i = newElements.length - 1; i >= 0; i--) {
-    this.flarbo.insert(newElements[i])
-  }
-}
-```
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Must be done in reverse order to be done in O(N) time due to</span>
+<span class="c1">// Kleppner's Law of Stupid Data Structures</span>
+<span class="kd">function</span> <span class="nx">smooshify</span><span class="p">(</span><span class="nx">newElements</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">newElements</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">flarbo</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">newElements</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-At some later point, it turns out are some `null` elements that need to be
-screened out:[^null_screening]
+<p>At some later point, it turns out are some <code class="language-plaintext highlighter-rouge">null</code> elements that need to be
+screened out:<sup id="fnref:null_screening" role="doc-noteref"><a href="#fn:null_screening" class="footnote" rel="footnote">7</a></sup></p>
 
-```javascript
-// Must be done in reverse order to be done in O(N) time due to
-// Kleppner's Law of Stupid Data Structures
-function smooshify(newElements) {
-  const nonNullNewElements = newElements.withoutNulls();
-  for (let i = newElements.length - 1; i >= 0; i--) {
-    this.flarbo.insert(nonNullNewElements[i])
-  }
-}
-```
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Must be done in reverse order to be done in O(N) time due to</span>
+<span class="c1">// Kleppner's Law of Stupid Data Structures</span>
+<span class="kd">function</span> <span class="nx">smooshify</span><span class="p">(</span><span class="nx">newElements</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">nonNullNewElements</span> <span class="o">=</span> <span class="nx">newElements</span><span class="p">.</span><span class="nx">withoutNulls</span><span class="p">();</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">newElements</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">flarbo</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">nonNullNewElements</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-With the code as it is now, another dev may stumble along one day and ask "Is
-`withoutNulls` iterating in reverse order?" While this may be a bit of a trivial
-example, these things can lead to a lot more headache down the line
+<p>With the code as it is now, another dev may stumble along one day and ask “Is
+<code class="language-plaintext highlighter-rouge">withoutNulls</code> iterating in reverse order?” While this may be a bit of a trivial
+example, these things can lead to a lot more headache down the line</p>
 
-The only way to truly avoid mistakes like this is by is by keeping a vigilant
-eye on comments. Some techniques I've found to be helpful:
+<p>The only way to truly avoid mistakes like this is by is by keeping a vigilant
+eye on comments. Some techniques I’ve found to be helpful:</p>
 
-* Keep comments as closely positioned to the code they're describing as
-  possible. E.g. if talking about code in the first branch of an `if` statement,
-  put that comment **in the first branch**, not above the entire statement:
+<ul>
+  <li>
+    <p>Keep comments as closely positioned to the code they’re describing as
+possible. E.g. if talking about code in the first branch of an <code class="language-plaintext highlighter-rouge">if</code> statement,
+put that comment <strong>in the first branch</strong>, not above the entire statement:</p>
 
-  ```javascript
-  // comment about why `floarp` should be used --- BAD
-  if (somethingOrOther()) {
-    // comment about why `floarp` should be used --- GOOD
-    floarp();
-  } else {
-    blarg();
-  }
-  ```
-* Make references to specific identifiers in comments as these tend to garner
-  more attention and help establish a more explicit relationship between the
-  comment and the code
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// comment about why `floarp` should be used --- BAD</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">somethingOrOther</span><span class="p">())</span> <span class="p">{</span>
+  <span class="c1">// comment about why `floarp` should be used --- GOOD</span>
+  <span class="nx">floarp</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">blarg</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Make references to specific identifiers in comments as these tend to garner
+more attention and help establish a more explicit relationship between the
+comment and the code</p>
+  </li>
+</ul>
 
-## Commit Messages
+<h2 id="commit-messages">Commit Messages</h2>
 
-Most code that I've interacted with is version-controlled with something like
-Git, and if not Git, some other version-control software like Mercurial. I'm
-going to be referring to Git exclusively in this section, but I'm sure that
-there are similar tools for other version-control software.
+<p>Most code that I’ve interacted with is version-controlled with something like
+Git, and if not Git, some other version-control software like Mercurial. I’m
+going to be referring to Git exclusively in this section, but I’m sure that
+there are similar tools for other version-control software.</p>
 
-### Accessibility
+<h3 id="accessibility-2">Accessibility</h3>
 
-Unlike code or in-code comments, commit messages are not immediately visible
+<p>Unlike code or in-code comments, commit messages are not immediately visible
 when browsing a codebase. However, they can be made much more easily accessible
-with tools like [Fugitive][fugitive] (for Vim) or
-[GitLens][gitlens]
-(for VSCode). However, they can be searched--just run `git log` and press
-<kbd>/</kbd> and _BAM_! You can search through all your commit history (thanks
-to [`less`][less])
+with tools like <a href="https://github.com/tpope/vim-fugitive">Fugitive</a> (for Vim) or
+<a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">GitLens</a>
+(for VSCode). However, they can be searched–just run <code class="language-plaintext highlighter-rouge">git log</code> and press
+<kbd>/</kbd> and <em>BAM</em>! You can search through all your commit history (thanks
+to <a href="https://en.wikipedia.org/wiki/Less_(Unix)"><code class="language-plaintext highlighter-rouge">less</code></a>)</p>
 
-Unfortunately, commit messages can sometimes be squashed or lost during a
+<p>Unfortunately, commit messages can sometimes be squashed or lost during a
 rebase, so the information placed there may not be preserved forever, though
-this mostly depends upon the other collaborators working on the repository.
+this mostly depends upon the other collaborators working on the repository.</p>
 
-### Responsibilities
+<h3 id="responsibilities-2">Responsibilities</h3>
 
-Much has been written about [how to write good commit
-messages][writing_good_commits], so I won't be too
-comprehensive here. However, I'd say the things I'm talking about here are, in
+<p>Much has been written about <a href="https://chris.beams.io/posts/git-commit/">how to write good commit
+messages</a>, so I won’t be too
+comprehensive here. However, I’d say the things I’m talking about here are, in
 my opinion, the most important things about writing a useful commit message.  As
 much as I like consistency, the grammatical aspects of commit message guidelines
-are not nearly as helpful as guidelines on the _content_ of the message (as long
-as it's readable!).
+are not nearly as helpful as guidelines on the <em>content</em> of the message (as long
+as it’s readable!).</p>
 
-Commit messages are all about change. A commit itself is an object representing
-a change to a codebase and commit messages ought to do the following:
+<p>Commit messages are all about change. A commit itself is an object representing
+a change to a codebase and commit messages ought to do the following:</p>
 
-* Briefly summarize what changed, from a high level
-* Explain why the changes in the commit are necessary
-* Explain why other possible strategies were _not_ attempted, if relevant
+<ul>
+  <li>Briefly summarize what changed, from a high level</li>
+  <li>Explain why the changes in the commit are necessary</li>
+  <li>Explain why other possible strategies were <em>not</em> attempted, if relevant</li>
+</ul>
 
-These are much easier to accomplish when the commits you make are small and
-focused (within reason).[^atomic_commits]
+<p>These are much easier to accomplish when the commits you make are small and
+focused (within reason).<sup id="fnref:atomic_commits" role="doc-noteref"><a href="#fn:atomic_commits" class="footnote" rel="footnote">8</a></sup></p>
 
-### Tip: using references to other commits
+<h3 id="tip-using-references-to-other-commits">Tip: using references to other commits</h3>
 
-While commit messages allow you to tell a story, any single commit rarely allows
+<p>While commit messages allow you to tell a story, any single commit rarely allows
 you to tell the whole story. If referencing earlier changes, I highly encourage
 you to make such references by using the commit hash. This will enable those
 reading those commit messages later to gain the same context you had when
-writing the message in the first place with a simple `git show`. A word of
+writing the message in the first place with a simple <code class="language-plaintext highlighter-rouge">git show</code>. A word of
 warning however: commit hashes will change when you rebase or amend a commit, so
 if referencing an earlier commit in a commit message, make sure to update that
-hash if the earlier commit is ever altered.
+hash if the earlier commit is ever altered.</p>
 
-## Pull/merge requests & issue trackers
+<h2 id="pullmerge-requests--issue-trackers">Pull/merge requests &amp; issue trackers</h2>
 
-These are your GitHubs, your Asanas, your Jiras. I'm lumping issue trackers and
+<p>These are your GitHubs, your Asanas, your Jiras. I’m lumping issue trackers and
 hosted version control together because some of these services function as both
-(e.g.  GitHub).
+(e.g.  GitHub).</p>
 
-### Accessibility
+<h3 id="accessibility-3">Accessibility</h3>
 
-While there's a large amount of variance here, I always have found messages and
+<p>While there’s a large amount of variance here, I always have found messages and
 comments to get lost somehow, even when generally good search functionality is
 present.  Some services are better than others at this, but even in GitHub
 (which automatically doubly-link issues to pull requests), comments will be
-collapsed or hidden in large pull requests, making them a pain to excavate.
+collapsed or hidden in large pull requests, making them a pain to excavate.</p>
 
-### Responsibilities
+<h3 id="responsibilities-3">Responsibilities</h3>
 
-These services are all about facilitating conversation and communication. As
-such, their responsibilities are focused on those topics:[^use_of_trackers]
+<p>These services are all about facilitating conversation and communication. As
+such, their responsibilities are focused on those topics:<sup id="fnref:use_of_trackers" role="doc-noteref"><a href="#fn:use_of_trackers" class="footnote" rel="footnote">9</a></sup></p>
 
-* Documenting why certain changes weren't done and/or aren't worth doing
-  * However, these should instead be put in the relevant commit messages if they
-    are related to certain changes that _did_ make it into the codebase
-* Containing or summarizing deliberation about proposed changes, even when that
-  deliberation happens in real life or on something like Slack
+<ul>
+  <li>Documenting why certain changes weren’t done and/or aren’t worth doing
+    <ul>
+      <li>However, these should instead be put in the relevant commit messages if they
+are related to certain changes that <em>did</em> make it into the codebase</li>
+    </ul>
+  </li>
+  <li>Containing or summarizing deliberation about proposed changes, even when that
+deliberation happens in real life or on something like Slack</li>
+</ul>
 
-## Conclusion
+<h2 id="conclusion">Conclusion</h2>
 
-Hope you found this helpful in answering the question "where do I put this
-information?". If you have any thoughts, [I'm on Twitter][twitter_profile].
+<p>Hope you found this helpful in answering the question “where do I put this
+information?”. If you have any thoughts, <a href="https://twitter.com/hibachrach">I’m on Twitter</a>.</p>
 
-[^code_boring_good]: [This is not a new idea][code_boring_good_search].
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:identifiers_meaning" role="doc-endnote">
 
-[^identifiers_when]:
-    I'll probably make another post about this, but I've found
-    answering the question of "when" to be a bit of a slippery slope, especially
-    in function names. When you answer the question of "when", you are often doing
-    so at the expense of "what". Who hasn't written a function like `onClick` or
-    `after_save` that spans 20+ lines, accomplishing many disparate tasks? One
-    technique I've employed when these are unavoidable (as these identifiers are
-    often dictated by some external API) is to push all sense of "how" out of the
-    bodies of these functions---they merely list off the things to do and the "how"
-    is pushed into other functions. If you read on, we're trying to lighten
-    cognitive load here!
+      <p>Identifiers include variable names, function names,
+class names/types, operators—basically anything that has a name that you can
+control! <a href="#fnref:identifiers_meaning" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:identifiers_when" role="doc-endnote">
 
-[^identifiers_meaning]:
-    Identifiers include variable names, function names,
-    class names/types, operators---basically anything that has a name that you can
-    control!
+      <p>I’ll probably make another post about this, but I’ve found
+answering the question of “when” to be a bit of a slippery slope, especially
+in function names. When you answer the question of “when”, you are often doing
+so at the expense of “what”. Who hasn’t written a function like <code class="language-plaintext highlighter-rouge">onClick</code> or
+<code class="language-plaintext highlighter-rouge">after_save</code> that spans 20+ lines, accomplishing many disparate tasks? One
+technique I’ve employed when these are unavoidable (as these identifiers are
+often dictated by some external API) is to push all sense of “how” out of the
+bodies of these functions—they merely list off the things to do and the “how”
+is pushed into other functions. If you read on, we’re trying to lighten
+cognitive load here! <a href="#fnref:identifiers_when" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:code_boring_good" role="doc-endnote">
+      <p><a href="https://www.google.com/search?q=code+boring+good">This is not a new idea</a>. <a href="#fnref:code_boring_good" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:dimmed_comments" role="doc-endnote">
+      <p>However, they may be slightly dimmed depending on the code editor. <a href="#fnref:dimmed_comments" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:snippet_came_from" role="doc-endnote">
+      <p>I most often use this for adaptations of code from StackOverflow or blog posts. <a href="#fnref:snippet_came_from" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:warnings_and_assumptions" role="doc-endnote">
 
-[^null_screening]:
-    If this were real code, I would hope that someone would also
-    leave a comment explaining why we are doing this screening!
+      <p>If possible, these should be replaced with good identifier naming, type
+checking, validations, etc. <a href="#fnref:warnings_and_assumptions" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:null_screening" role="doc-endnote">
 
-[^warnings_and_assumptions]:
-    If possible, these should be replaced with good identifier naming, type
-    checking, validations, etc.
+      <p>If this were real code, I would hope that someone would also
+leave a comment explaining why we are doing this screening! <a href="#fnref:null_screening" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:atomic_commits" role="doc-endnote">
 
-[^snippet_came_from]: I most often use this for adaptations of code from StackOverflow or blog posts.
+      <p>I found <a href="https://www.freshconsulting.com/atomic-commits/">this article</a> a great summary of the how/why
+of keeping commits small <a href="#fnref:atomic_commits" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:use_of_trackers" role="doc-endnote">
 
-[^dimmed_comments]: However, they may be slightly dimmed depending on the code editor.
+      <p>Of course, these services have usages beyond the topics
+addressed in this post like:</p>
+      <ul>
+        <li>centralizing the agreed upon priority of upcoming work</li>
+        <li>establishing the owner(s) of specific tasks</li>
+        <li>informing those outside the dev team about the progress of tasks, etc.</li>
+      </ul>
+      <p><a href="#fnref:use_of_trackers" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[“Where should this information live?” is a common question I encounter daily as a software engineer. I (alone or in consultation with others) will make a decision and that information needs to persist…somewhere. The goal of course is to prevent some future engineer (often myself) from encountering some code and asking “why?” or, even worse, “what?”.]]></summary></entry><entry><title type="html">A Brief Tour of Tools</title><link href="https://challahscript.com/tools" rel="alternate" type="text/html" title="A Brief Tour of Tools" /><published>2018-04-01T00:00:00-07:00</published><updated>2018-04-01T00:00:00-07:00</updated><id>https://challahscript.com/tools</id><content type="html" xml:base="https://challahscript.com/tools"><![CDATA[<h2 id="core-philosophy">Core philosophy</h2>
 
-[^atomic_commits]:
-    I found [this article][atomic_commit_article] a great summary of the how/why
-    of keeping commits small
+<h3 id="make-your-tools-as-ergonomic-as-possible">Make your tools as ergonomic as possible</h3>
 
-[^use_of_trackers]:
-    Of course, these services have usages beyond the topics
-    addressed in this post like: 
-    * centralizing the agreed upon priority of upcoming work
-    * establishing the owner(s) of specific tasks
-    * informing those outside the dev team about the progress of tasks, etc.
-
-[magic_numbers]: https://en.wikipedia.org/wiki/Magic_number_(programming)
-[twitter_profile]: https://twitter.com/hibachrach
-[atomic_commit_article]: https://www.freshconsulting.com/atomic-commits/
-[code_boring_good_search]: https://www.google.com/search?q=code+boring+good
-[fugitive]: https://github.com/tpope/vim-fugitive
-[gitlens]: https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens
-[less]: https://en.wikipedia.org/wiki/Less_(Unix)
-[writing_good_commits]: https://chris.beams.io/posts/git-commit/]]></content><author><name></name></author><summary type="html"><![CDATA[“Where should this information live?” is a common question I encounter daily as a software engineer. I (alone or in consultation with others) will make a decision and that information needs to persist…somewhere. The goal of course is to prevent some future engineer (often myself) from encountering some code and asking “why?” or, even worse, “what?”.]]></summary></entry><entry><title type="html">A Brief Tour of Tools</title><link href="http://localhost:4000/tools" rel="alternate" type="text/html" title="A Brief Tour of Tools" /><published>2018-04-01T00:00:00-07:00</published><updated>2018-04-01T00:00:00-07:00</updated><id>http://localhost:4000/tools</id><content type="html" xml:base="http://localhost:4000/tools"><![CDATA[## Core philosophy
-
-### Make your tools as ergonomic as possible
-
-Ergonomics often comes up when talking with HR during onboarding: it's the
+<p>Ergonomics often comes up when talking with HR during onboarding: it’s the
 reason why you should use comfortable, supportive chairs, keyboards, mice, and
-such. "Battle scars" from work shouldn't be encouraged. If your eyes, wrists, or
-butt cheeks are hurting, try to address that problem. You're doing labor. Labor
-that most likely isn't as tolling, as say, construction, but labor nonetheless.
-Take care of your body. If you try to fight it, it's likely to win. Even if
-you're not feeling active pain now, you might start experiencing symptoms after
-years of damage. "It works for me" shouldn't be the end of it. Get an ergonomic
-chair, keyboard, and mouse to reduce strain. Here[^1][^2] are some good
+such. “Battle scars” from work shouldn’t be encouraged. If your eyes, wrists, or
+butt cheeks are hurting, try to address that problem. You’re doing labor. Labor
+that most likely isn’t as tolling, as say, construction, but labor nonetheless.
+Take care of your body. If you try to fight it, it’s likely to win. Even if
+you’re not feeling active pain now, you might start experiencing symptoms after
+years of damage. “It works for me” shouldn’t be the end of it. Get an ergonomic
+chair, keyboard, and mouse to reduce strain. Here<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup><sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> are some good
 guidelines on reducing eyestrain (I can personally vouch for tools like
-[f.lux](https://justgetflux.com/)!).
+<a href="https://justgetflux.com/">f.lux</a>!).</p>
 
-What does this mean for software? If you don't like the way you're interacting
-with your tools (physical _or_ virtual), you're not going to have as much fun
-using them.
+<p>What does this mean for software? If you don’t like the way you’re interacting
+with your tools (physical <em>or</em> virtual), you’re not going to have as much fun
+using them.</p>
 
-Sometimes that can be a _good_ thing: if a tool
-_shouldn't_ be used, then you can design your system with that idea in mind. As
-we are all designers in some way, this should be a familiar idea---e.g. if you
-add a feature that forces a user to do 10 clicks instead of one, they're less
-likely to use that feature (c.f. trying to close your Amazon account).
+<p>Sometimes that can be a <em>good</em> thing: if a tool
+<em>shouldn’t</em> be used, then you can design your system with that idea in mind. As
+we are all designers in some way, this should be a familiar idea—e.g. if you
+add a feature that forces a user to do 10 clicks instead of one, they’re less
+likely to use that feature (c.f. trying to close your Amazon account).</p>
 
-Notice that I'm not talking about speed. The amount of time that you save with
-one configuration or another probably isn't going to save you the amount of time
-that you put into setting it up (unless something was _really_ wrong
+<p>Notice that I’m not talking about speed. The amount of time that you save with
+one configuration or another probably isn’t going to save you the amount of time
+that you put into setting it up (unless something was <em>really</em> wrong
 before-hand). But reducing UX friction can often make you more productive,
 reduce extraneous repetitive motion, and eliminate unnecessary mental work to
-get from point A to point B. Some things that help towards this end include:
+get from point A to point B. Some things that help towards this end include:</p>
 
-- Reducing mouse usage[^4]
-- Reducing chorded shortcuts (e.g. minimizing stuff like <kbd>shift</kbd>+<kbd>&#8984;</kbd>+<kbd>option</kbd>+<kbd>t</kbd>)
-- Reducing the steps to switch between tools and contexts
+<ul>
+  <li>Reducing mouse usage<sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote" rel="footnote">3</a></sup></li>
+  <li>Reducing chorded shortcuts (e.g. minimizing stuff like <kbd>shift</kbd>+<kbd>&#8984;</kbd>+<kbd>option</kbd>+<kbd>t</kbd>)</li>
+  <li>Reducing the steps to switch between tools and contexts</li>
+</ul>
 
-### Make your tools accessible to an outsider without a large amount of reconfiguration
+<h3 id="make-your-tools-accessible-to-an-outsider-without-a-large-amount-of-reconfiguration">Make your tools accessible to an outsider without a large amount of reconfiguration</h3>
 
-Everything that you do to configure your machine is most likely increasing the
-barrier to entry somehow. That's okay. It's your machine---it should be most
-comfortable for _you_. However, that doesn't mean there won't be a time where
+<p>Everything that you do to configure your machine is most likely increasing the
+barrier to entry somehow. That’s okay. It’s your machine—it should be most
+comfortable for <em>you</em>. However, that doesn’t mean there won’t be a time where
 someone else might have to use your keyboard or read your monitor. It should be
-easy enough for that visitor to understand what's going on or do some simple
-tasks without you restarting your damn machine. Note that that doesn't mean
-disabling all of your config when someone walks over[^wizardry].
+easy enough for that visitor to understand what’s going on or do some simple
+tasks without you restarting your damn machine. Note that that doesn’t mean
+disabling all of your config when someone walks over<sup id="fnref:wizardry" role="doc-noteref"><a href="#fn:wizardry" class="footnote" rel="footnote">4</a></sup>.</p>
 
-### Don't overdo it
+<h3 id="dont-overdo-it">Don’t overdo it</h3>
 
-Your tools or configuration won't make you a significantly better developer. It
-might even make you a more annoying developer if you won't stop talking about
-such topics. And it always takes time to customize these things---the increased
-efficiency won't make up for that. Again, it's about getting you to enjoy using
-the tools while reducing strain, whether that strain is physical or mental.
+<p>Your tools or configuration won’t make you a significantly better developer. It
+might even make you a more annoying developer if you won’t stop talking about
+such topics. And it always takes time to customize these things—the increased
+efficiency won’t make up for that. Again, it’s about getting you to enjoy using
+the tools while reducing strain, whether that strain is physical or mental.</p>
 
-## tmux
+<h2 id="tmux">tmux</h2>
 
-I use tmux inside of iTerm2[^3]. Tmux is a "terminal multiplexer" which is an
+<p>I use tmux inside of iTerm2<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">5</a></sup>. Tmux is a “terminal multiplexer” which is an
 incredibly geeky way of saying it allows you to have windows/splits inside of a
-OS level window. Here are my main motivations for using it.
+OS level window. Here are my main motivations for using it.</p>
 
-### Attach and detach
+<h3 id="attach-and-detach">Attach and detach</h3>
 
-When you start up tmux you're starting up a server, on which you create and
-attach "sessions" (basically just workspaces) where you can create windows
+<p>When you start up tmux you’re starting up a server, on which you create and
+attach “sessions” (basically just workspaces) where you can create windows
 (really closer to tabs) which can have splits. These sessions can be attached
 to and detached from at will. And that action is a completely distinct one from
 opening or closing iTerm2, meaning if iTerm2 has to close for one reason or
-another, my windows and splits set up exactly as when I left them.
+another, my windows and splits set up exactly as when I left them.</p>
 
-This is great on a local machine but invaluable on remote sessions: when I was
-doing research on machines that could only be SSH'd into, a random drop in the
+<p>This is great on a local machine but invaluable on remote sessions: when I was
+doing research on machines that could only be SSH’d into, a random drop in the
 Internet connection just meant I had to reattach to the session that was running
 on the remote server. Note that the server will still die if your computer has
-to restart.
+to restart.</p>
 
-I also find that this navigation is much easier than fiddling with actual
+<p>I also find that this navigation is much easier than fiddling with actual
 windows in a GUI. Which tend to be pretty poorly organized for search and
 retrieval. Even in macOS, if I have a window that is minimized, I have to either
 use my mouse to inspect my collection of hidden windows or cycle through them
-using <kbd>control</kbd>+<kbd>f4</kbd>[^cycle].
+using <kbd>control</kbd>+<kbd>f4</kbd><sup id="fnref:cycle" role="doc-noteref"><a href="#fn:cycle" class="footnote" rel="footnote">6</a></sup>.</p>
 
-### Prefixes over chords
+<h3 id="prefixes-over-chords">Prefixes over chords</h3>
 
-This is going to be a bit of a recurring theme, but tmux allows you to go from
+<p>This is going to be a bit of a recurring theme, but tmux allows you to go from
 split to split, window to window, or session to session without pressing many
-keys _simultaneously_. Instead, you can define a common prefix (I have
+keys <em>simultaneously</em>. Instead, you can define a common prefix (I have
 <kbd>control</kbd>+<kbd>space</kbd>) and then press the tmux-specific shortcut
-of your choosing.
+of your choosing.</p>
 
-### How to get started
+<h3 id="how-to-get-started">How to get started</h3>
 
-If you're on a Mac, you can use Homebrew:
+<p>If you’re on a Mac, you can use Homebrew:</p>
 
-```
-brew install tmux
-```
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install tmux
+</code></pre></div></div>
 
-[Here's][tmux-tutorial] a tutorial to get you started.
+<p><a href="https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340">Here’s</a> a tutorial to get you started.</p>
 
-## Vim/Neovim
+<h2 id="vimneovim">Vim/Neovim</h2>
 
-I could talk probably all day about Vim and why I love it. I'll try to summarize
-here to save your time and/or sanity. I _will_ note that Vim has a fairly steep
-learning curve but I find is worth it in the end. See [here][vim-usability] for
-a great blogpost about Vim and usability.
+<p>I could talk probably all day about Vim and why I love it. I’ll try to summarize
+here to save your time and/or sanity. I <em>will</em> note that Vim has a fairly steep
+learning curve but I find is worth it in the end. See <a href="http://www.terminally-incoherent.com/blog/2012/09/05/vim-is-a-usability-nightmare/">here</a> for
+a great blogpost about Vim and usability.</p>
 
-### Ubiquity
+<h3 id="ubiquity">Ubiquity</h3>
 
-Vi or Vim is on basically every \*nix machine that you might come across. If you
-know how to use it in one place, you can use it anywhere.
+<p>Vi or Vim is on basically every *nix machine that you might come across. If you
+know how to use it in one place, you can use it anywhere.</p>
 
-### Keyboard-first design
+<h3 id="keyboard-first-design">Keyboard-first design</h3>
 
-Every interaction with Vim is intended to be done with the keyboard. There are
-some things that _can_ be done with the mouse (like scrolling or cursor
-movement), but it's primarily designed to be manipulated via the keyboard. That
+<p>Every interaction with Vim is intended to be done with the keyboard. There are
+some things that <em>can</em> be done with the mouse (like scrolling or cursor
+movement), but it’s primarily designed to be manipulated via the keyboard. That
 makes it generally quite fast, eliminating the time to move your hand to the
-mouse and back.
+mouse and back.</p>
 
-### Composability
+<h3 id="composability">Composability</h3>
 
-This is probably the biggest and most Vim-specific point here. When you
-manipulate text in Vim, you do so in a sort of "language", complete with verbs,
-nouns, adjectives, adverbs, etc.
+<p>This is probably the biggest and most Vim-specific point here. When you
+manipulate text in Vim, you do so in a sort of “language”, complete with verbs,
+nouns, adjectives, adverbs, etc.</p>
 
-Let's say I'm editing a Ruby script and I've got this double negative here. We
-want to make this a bit more readable, replacing the `unless` with an `if` and
-the `empty?` with a `present?`.
+<p>Let’s say I’m editing a Ruby script and I’ve got this double negative here. We
+want to make this a bit more readable, replacing the <code class="language-plaintext highlighter-rouge">unless</code> with an <code class="language-plaintext highlighter-rouge">if</code> and
+the <code class="language-plaintext highlighter-rouge">empty?</code> with a <code class="language-plaintext highlighter-rouge">present?</code>.</p>
 
-<script src="https://asciinema.org/a/HRBzkylrV8Bih8llxcEY8nJWV.js" id="asciicast-HRBzkylrV8Bih8llxcEY8nJWV" async></script>
+<script src="https://asciinema.org/a/HRBzkylrV8Bih8llxcEY8nJWV.js" id="asciicast-HRBzkylrV8Bih8llxcEY8nJWV" async=""></script>
 
-Here are all the key presses I needed to do to perform the above:
-```
-ciwifjjwwwct?presentjj:wq
-```
+<p>Here are all the key presses I needed to do to perform the above:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ciwifjjwwwct?presentjj:wq
+</code></pre></div></div>
 
-Let's break that down:
+<p>Let’s break that down:</p>
 
-- `ciw`: This is basically a "sentence". I'm pressing these keys them in what is
-  called "normal mode". `c` means "change", `i` means "inner", and `w` means
-  "word". "Change" means delete and then go into "insert mode", the mode where
-  when I type, those characters appear on screen. I applied that "verb" to what
-  is called a "text object". Here that "text object" is made up of the adjective
-  "inner" with the noun "word".
-- `if`: This is just me typing the word "if".
-- `jj`: This is a command I have set up for "insert mode" that gets me back to
-  "normal mode". This is <kbd>escape</kbd> by default but I find this much
-  easier.
-- `www`: Here I'm pressing that "noun" `w` three times. Since there's no "verb"
-  here, that just moves my cursor 1 "word" each time. I could have also typed
-  `3w` and achieved the same thing.
-- `ct?`: Here I'm using the same `c` verb but this time with the "noun" `t?`
-  which means "to `?`", i.e. all the characters from my current position up to
-  (but not including) the next incidence of the character `?` on the current
-  line.
-- `present`: This is just me typing the word "present".
-- `jj`: Same as before.
-- `:wq`: Here I'm performing what is known as a "command". `:` gets me into
-  "command mode" (moving my cursor temporarily to the bottom of the Vim window)
-  where I then type `w` for "write" (meaning "save") and `q` for "quit".
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ciw</code>: This is basically a “sentence”. I’m pressing these keys them in what is
+called “normal mode”. <code class="language-plaintext highlighter-rouge">c</code> means “change”, <code class="language-plaintext highlighter-rouge">i</code> means “inner”, and <code class="language-plaintext highlighter-rouge">w</code> means
+“word”. “Change” means delete and then go into “insert mode”, the mode where
+when I type, those characters appear on screen. I applied that “verb” to what
+is called a “text object”. Here that “text object” is made up of the adjective
+“inner” with the noun “word”.</li>
+  <li><code class="language-plaintext highlighter-rouge">if</code>: This is just me typing the word “if”.</li>
+  <li><code class="language-plaintext highlighter-rouge">jj</code>: This is a command I have set up for “insert mode” that gets me back to
+“normal mode”. This is <kbd>escape</kbd> by default but I find this much
+easier.</li>
+  <li><code class="language-plaintext highlighter-rouge">www</code>: Here I’m pressing that “noun” <code class="language-plaintext highlighter-rouge">w</code> three times. Since there’s no “verb”
+here, that just moves my cursor 1 “word” each time. I could have also typed
+<code class="language-plaintext highlighter-rouge">3w</code> and achieved the same thing.</li>
+  <li><code class="language-plaintext highlighter-rouge">ct?</code>: Here I’m using the same <code class="language-plaintext highlighter-rouge">c</code> verb but this time with the “noun” <code class="language-plaintext highlighter-rouge">t?</code>
+which means “to <code class="language-plaintext highlighter-rouge">?</code>”, i.e. all the characters from my current position up to
+(but not including) the next incidence of the character <code class="language-plaintext highlighter-rouge">?</code> on the current
+line.</li>
+  <li><code class="language-plaintext highlighter-rouge">present</code>: This is just me typing the word “present”.</li>
+  <li><code class="language-plaintext highlighter-rouge">jj</code>: Same as before.</li>
+  <li><code class="language-plaintext highlighter-rouge">:wq</code>: Here I’m performing what is known as a “command”. <code class="language-plaintext highlighter-rouge">:</code> gets me into
+“command mode” (moving my cursor temporarily to the bottom of the Vim window)
+where I then type <code class="language-plaintext highlighter-rouge">w</code> for “write” (meaning “save”) and <code class="language-plaintext highlighter-rouge">q</code> for “quit”.</li>
+</ul>
 
-This is a simple example, but as you can see, you can mix and match all these
+<p>This is a simple example, but as you can see, you can mix and match all these
 building blocks to manipulate your files in quite complex ways. Many Vim users
-also create plugins that add core "parts of speech" to the editor. E.g.
-[vim-surround][vim-surround] enables the sequence `cs"'` which allows you to
-"change the surrounding characters" (`cs`) from `"` to `'` as well as the
-sequence `ysiw]` "add surrounding characters" (`ys`) to the "inner word" (`iw`),
-specifically brackets (`]`).
+also create plugins that add core “parts of speech” to the editor. E.g.
+<a href="https://github.com/tpope/vim-surround">vim-surround</a> enables the sequence <code class="language-plaintext highlighter-rouge">cs"'</code> which allows you to
+“change the surrounding characters” (<code class="language-plaintext highlighter-rouge">cs</code>) from <code class="language-plaintext highlighter-rouge">"</code> to <code class="language-plaintext highlighter-rouge">'</code> as well as the
+sequence <code class="language-plaintext highlighter-rouge">ysiw]</code> “add surrounding characters” (<code class="language-plaintext highlighter-rouge">ys</code>) to the “inner word” (<code class="language-plaintext highlighter-rouge">iw</code>),
+specifically brackets (<code class="language-plaintext highlighter-rouge">]</code>).</p>
 
-### Integration with the terminal
+<h3 id="integration-with-the-terminal">Integration with the terminal</h3>
 
-(Partly thanks to tmux) I can run Vim in the same program that has my
-`foreman` procs, my git interface, my logs, and pretty much everything else.
+<p>(Partly thanks to tmux) I can run Vim in the same program that has my
+<code class="language-plaintext highlighter-rouge">foreman</code> procs, my git interface, my logs, and pretty much everything else.
 Switching between all of those things is super easy thanks to a plugin I use
-called [vim-tmux-navigator][vim-tmux-navigator]. Basically I can use
+called <a href="https://github.com/christoomey/vim-tmux-navigator">vim-tmux-navigator</a>. Basically I can use</p>
 
-- <kbd>control</kbd>+<kbd>h</kbd> (left)
-- <kbd>control</kbd>+<kbd>j</kbd> (down)
-- <kbd>control</kbd>+<kbd>k</kbd> (up)
-- <kbd>control</kbd>+<kbd>l</kbd> (right)
+<ul>
+  <li><kbd>control</kbd>+<kbd>h</kbd> (left)</li>
+  <li><kbd>control</kbd>+<kbd>j</kbd> (down)</li>
+  <li><kbd>control</kbd>+<kbd>k</kbd> (up)</li>
+  <li><kbd>control</kbd>+<kbd>l</kbd> (right)</li>
+</ul>
 
-to navigate between tmux and Vim panes indiscriminately.
+<p>to navigate between tmux and Vim panes indiscriminately.</p>
 
-When I need to run a test, I have a plugin called [vim-test][vim-test] that
+<p>When I need to run a test, I have a plugin called <a href="https://github.com/janko-m/vim-test">vim-test</a> that
 allows me to run a test in a neighboring tmux pane and then interact with that
-terminal session afterwards.
+terminal session afterwards.</p>
 
-There are many other niceties here as well (e.g. sending the contents of a SQL
-query edited in a Vim session to an interactive `psql` session) that I may go
-into in a later post.
+<p>There are many other niceties here as well (e.g. sending the contents of a SQL
+query edited in a Vim session to an interactive <code class="language-plaintext highlighter-rouge">psql</code> session) that I may go
+into in a later post.</p>
 
+<h3 id="so-much-more">So much more</h3>
 
-### So much more
-
-
-Again, I can talk about Vim all day (and probably will). There are many things
+<p>Again, I can talk about Vim all day (and probably will). There are many things
 not covered here that I will return to later (possibly including a breakdown of
-my `.vimrc`).
+my <code class="language-plaintext highlighter-rouge">.vimrc</code>).</p>
 
+<h3 id="how-to-get-started-1">How to get started</h3>
 
-### How to get started
+<p>Like I said before, Vim is famous for having a bit of a steep learning curve.
+I’d recommend trying it out in your leisure time because it <em>will</em> slow you down
+at first.</p>
 
-Like I said before, Vim is famous for having a bit of a steep learning curve.
-I'd recommend trying it out in your leisure time because it _will_ slow you down
-at first.
+<p>Once again, the download for the newest version (probably more up to date than
+what you have on your machine already) is on Homebrew as well. However, I’d
+recommend installing the relatively recent fork <code class="language-plaintext highlighter-rouge">neovim</code> instead (it has a few
+nicities including better built-in tutorial:</p>
 
-Once again, the download for the newest version (probably more up to date than
-what you have on your machine already) is on Homebrew as well. However, I'd
-recommend installing the relatively recent fork `neovim` instead (it has a few
-nicities including better built-in tutorial:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install neovim
+</code></pre></div></div>
 
-```
-brew install neovim
-```
+<p>Launch it from the shell (using the name <code class="language-plaintext highlighter-rouge">nvim</code>, <em>not</em> <code class="language-plaintext highlighter-rouge">neovim</code>). Then I’d
+follow the built-in tutorial by typing <code class="language-plaintext highlighter-rouge">:Tutor</code>. The first online resource given
+at the bottom of the tutorial, <a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">“Learn Vim
+Progressively”</a> is also great—it’s how I first
+started.</p>
 
-Launch it from the shell (using the name `nvim`, *not* `neovim`). Then I'd
-follow the built-in tutorial by typing `:Tutor`. The first online resource given
-at the bottom of the tutorial, ["Learn Vim
-Progressively"][learn-vim-progressively] is also great---it's how I first
-started.
+<h2 id="fzf">FZF</h2>
 
+<p>FZF is a fuzzy-finder for the shell that you can use in a bunch of different
+ways, like…</p>
 
-## FZF
+<h3 id="finding-files-while-also-obeying-your-gitignore">Finding files (while also obeying your <code class="language-plaintext highlighter-rouge">.gitignore</code>)<sup id="fnref:vim-color-note" role="doc-noteref"><a href="#fn:vim-color-note" class="footnote" rel="footnote">7</a></sup></h3>
+<script src="https://asciinema.org/a/28rDzTqI5nEE9mM89DKZmf5Zo.js" id="asciicast-28rDzTqI5nEE9mM89DKZmf5Zo" async=""></script>
 
-FZF is a fuzzy-finder for the shell that you can use in a bunch of different
-ways, like...
+<h3 id="finding-git-commits">Finding git commits</h3>
+<script src="https://asciinema.org/a/xYrk74sFKjQXzGKEPJSrdypXs.js" id="asciicast-xYrk74sFKjQXzGKEPJSrdypXs" async=""></script>
 
-### Finding files (while also obeying your `.gitignore`)[^vim-color-note]
-<script src="https://asciinema.org/a/28rDzTqI5nEE9mM89DKZmf5Zo.js" id="asciicast-28rDzTqI5nEE9mM89DKZmf5Zo" async></script>
-### Finding git commits
-<script src="https://asciinema.org/a/xYrk74sFKjQXzGKEPJSrdypXs.js" id="asciicast-xYrk74sFKjQXzGKEPJSrdypXs" async></script>
-### Finding old commands
-I couldn't manage to record this one without any potentially sensitive
-information, but it works as you might expect.
+<h3 id="finding-old-commands">Finding old commands</h3>
+<p>I couldn’t manage to record this one without any potentially sensitive
+information, but it works as you might expect.</p>
 
-At its core, FZF is just a way of filtering data in a human-friendly way. You
+<p>At its core, FZF is just a way of filtering data in a human-friendly way. You
 can pipe anything in and get the same fuzzy-find interface
-(e.g. `cat file.txt | fzf`).
+(e.g. <code class="language-plaintext highlighter-rouge">cat file.txt | fzf</code>).</p>
 
-### How to get started
+<h3 id="how-to-get-started-2">How to get started</h3>
 
-Once again, if you can, just use Homebrew.
+<p>Once again, if you can, just use Homebrew.</p>
 
-```
-brew install fzf
-```
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install fzf
+</code></pre></div></div>
 
-See [the project's installation instructions][fzf-installation-instructions] for
+<p>See <a href="https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew">the project’s installation instructions</a> for
 details, including howt to integrate FZF with tmux and vim. These integrations
-work incredibly well so I'd highly recommend setting that up.
-
+work incredibly well so I’d highly recommend setting that up.</p>
 
 <div style="text-align: center;">•••</div>
 
-That's it for now! More posts on this stuff to come, I'm sure.
+<p>That’s it for now! More posts on this stuff to come, I’m sure.</p>
 
 <!--footnotes & references-->
 
-[^1]: <https://ergonomics.ucla.edu/injuries-and-prevention/eye-strain.html>
-[^2]: <https://lifehacker.com/5818056/how-do-i-prevent-eyestrain>
-[^3]: The main reason for using it over the default macOS Terminal is for 256 color support.
-[^4]:
-    This isn't a cure-all for repetitive strain injuries. Stretching and
-    regular breaks are more important.
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p><a href="https://ergonomics.ucla.edu/injuries-and-prevention/eye-strain.html">https://ergonomics.ucla.edu/injuries-and-prevention/eye-strain.html</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p><a href="https://lifehacker.com/5818056/how-do-i-prevent-eyestrain">https://lifehacker.com/5818056/how-do-i-prevent-eyestrain</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:4" role="doc-endnote">
 
-[^wizardry]:
-    It can be a great way to learn tricks
-    when you see someone do some keyboard wizardry and you ask "How did you do that!?"
+      <p>This isn’t a cure-all for repetitive strain injuries. Stretching and
+regular breaks are more important. <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:wizardry" role="doc-endnote">
 
-[^cycle]:
-    Just as a heads up: you can cycle through open applications with
-    <kbd>&#8984;</kbd>+<kbd>tab</kbd> and open windows for your current
-    application with <kbd>&#8984;</kbd>+<kbd>`</kbd>.
+      <p>It can be a great way to learn tricks
+when you see someone do some keyboard wizardry and you ask “How did you do that!?” <a href="#fnref:wizardry" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p>The main reason for using it over the default macOS Terminal is for 256 color support. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:cycle" role="doc-endnote">
 
-[^vim-color-note]:
-    I'm not sure why the colors on this recording are inaccurate,
-    but I assure you Vim on my machine is quite colorful. I use the colorscheme
-    [seoul256][seoul256].
+      <p>Just as a heads up: you can cycle through open applications with
+<kbd>&#8984;</kbd>+<kbd>tab</kbd> and open windows for your current
+application with <kbd>&#8984;</kbd>+<kbd>`</kbd>. <a href="#fnref:cycle" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:vim-color-note" role="doc-endnote">
 
-[vim-tmux-navigator]: https://github.com/christoomey/vim-tmux-navigator
-[vim-usability]: http://www.terminally-incoherent.com/blog/2012/09/05/vim-is-a-usability-nightmare/
-[vim-test]: https://github.com/janko-m/vim-test
-[vim-surround]: https://github.com/tpope/vim-surround
-[fzf-installation-instructions]: https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
-[seoul256]: https://github.com/junegunn/seoul256.vim
-[tmux-tutorial]: https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340
-[learn-vim-progressively]: http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/]]></content><author><name></name></author><summary type="html"><![CDATA[Core philosophy]]></summary></entry></feed>
+      <p>I’m not sure why the colors on this recording are inaccurate,
+but I assure you Vim on my machine is quite colorful. I use the colorscheme
+<a href="https://github.com/junegunn/seoul256.vim">seoul256</a>. <a href="#fnref:vim-color-note" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[Core philosophy]]></summary></entry></feed>
